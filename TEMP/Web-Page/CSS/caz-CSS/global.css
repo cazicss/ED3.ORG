@@ -16,9 +16,12 @@ a {
 
 
 
-article{
+#sidebar{
 	border: solid 1px #5555ff;
-		
+	margin: 10px; 
+	width: 220px; 
+	float:left; 
+	position: fixed;
 }
 
 .flex-container{
