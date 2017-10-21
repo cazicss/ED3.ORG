@@ -15,7 +15,6 @@ a {
 }
 
 
-
 .sidebar{
 	text-align: center;
 	color: white;
@@ -128,11 +127,15 @@ header {
 		width: 98%;
 		margin: 10px auto;
 		position: relative;
-	}
-	
-	.w3-bar-item{
+		font-size: 10px;
 		z-index: 1;
 	}
 	
+	
+	w3-dropdown{
+		position: absolute;
+		z-index: 99;
+		
+	}
 
 }
