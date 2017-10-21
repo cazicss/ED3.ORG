@@ -16,16 +16,39 @@ a {
 
 
 
-#sidebar{
+.sidebar{
+	text-align: center;
+	color: white;
 	border: solid 1px #5555ff;
 	margin: 10px; 
 	width: 220px; 
 	float:left; 
 	position: fixed;
+	background-color: #5555ff;
+	border-radius: 15px 15px 0px 0px;
+}
+
+.sidebar .button{
+	background-color: #5555ff;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-top: solid 1px gray;
+	color: white;
+}
+
+.sidebar .button a{
+	text-decoration: none;
+	color: white;
+}
+
+.sidebar .button:hover{
+	background-color: blue;
+	color: white;
 }
 
 .flex-container{
 	max-width: 1020px;
+	min-width: 0px;
 	margin: auto;
 	border-left: solid 1px #888888;
 	border-right: solid 1px #888888;
@@ -49,13 +72,20 @@ header {
 
 }
 
+.content{
+	margin: 10px;
+	margin-left: 25%;
+	border-radius: 15px 15px 15px 15px;
+}
+
 
 .w3-bar{
 	
-	margin: auto;
+	margin-left: 25%;
 	margin-top: 10px;
 	margin-bottom: 10px;
-	width: 98%;
+
+	width: 74%;
 	
 	border-radius: 15px 15px 15px 15px;
 }
@@ -75,3 +105,34 @@ header {
 	background-color: #5555FF;;
 }
 
+@media (max-width:600px){
+	
+	.flex-container{
+		margin: 10px;
+	}
+	
+	.w3-bar{
+		width: 98%;
+		margin: 10px auto;
+		position: relative;
+	}
+	
+	.sidebar{
+		width: 98%;
+		margin: auto;
+		float: none;
+		position: relative;
+	}
+	
+	.content{
+		width: 98%;
+		margin: 10px auto;
+		position: relative;
+	}
+	
+	.w3-bar-item{
+		z-index: 1;
+	}
+	
+
+}
