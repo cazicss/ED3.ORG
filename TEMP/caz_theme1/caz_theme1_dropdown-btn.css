@@ -1,0 +1,14 @@
+
+.dropdown-btn{
+	width: 120px;
+	display: inline-block;
+	text-align: center;
+}
+
+.dropdown-btn:hover {
+	background-color: blue;
+}
+
+.dropdown-btn:hover .menu{
+	display: block;
+}
