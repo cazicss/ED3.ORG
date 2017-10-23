@@ -1,0 +1,141 @@
+pre{
+	padding: 0px;
+	margin:  0px;
+	display: inline;
+	font: inherit;
+}
+
+h1, h2, h3, h4 ,h5{
+	font-weight: bold;
+	font-style: italic;
+}
+
+a {
+	color: #0000ff;
+}
+
+
+.sidebar{
+	text-align: center;
+	color: white;
+	border: solid 1px #5555ff;
+	margin: 10px; 
+	width: 220px; 
+	float:left; 
+	position: fixed;
+	background-color: #5555ff;
+	border-radius: 15px 15px 0px 0px;
+}
+
+.sidebar .button{
+	background-color: #5555ff;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-top: solid 1px gray;
+	color: white;
+}
+
+.sidebar .button a{
+	text-decoration: none;
+	color: white;
+}
+
+.sidebar .button:hover{
+	background-color: blue;
+	color: white;
+}
+
+.flex-container{
+	max-width: 1020px;
+	min-width: 0px;
+	margin: auto;
+	border-left: solid 1px #888888;
+	border-right: solid 1px #888888;
+	margin-top: 15px;
+	margin-bot: 15px;
+}
+
+
+header {
+	width: 98%;
+	margin: auto;
+	border-radius: 15px 15px 15px 15px;
+	background-color: transparent;
+
+}
+
+
+.w3-container{
+	margin: 10px;
+	border-radius: 15px 15px 15px 15px;
+
+}
+
+.content{
+	margin: 10px;
+	margin-left: 250px;
+	border-radius: 15px 15px 15px 15px;
+}
+
+
+.w3-bar{
+	
+	margin-left: 25%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+
+	width: 74%;
+	
+	border-radius: 15px 15px 15px 15px;
+}
+
+
+.w3-theme {
+	background-color: #5555FF;
+}
+
+
+.w3-bar-item{
+	background-color: #5555FF;;
+}
+
+
+.w3-button{
+	background-color: #5555FF;;
+}
+
+@media (max-width:600px){
+	
+	.flex-container{
+		margin: 10px;
+	}
+	
+	.w3-bar{
+		width: 98%;
+		margin: 10px auto;
+		position: relative;
+	}
+	
+	.sidebar{
+		width: 98%;
+		margin: auto;
+		float: none;
+		position: relative;
+	}
+	
+	.content{
+		width: 98%;
+		margin: 10px auto;
+		position: relative;
+		font-size: 10px;
+		z-index: 1;
+	}
+	
+	
+	w3-dropdown{
+		position: absolute;
+		z-index: 99;
+		
+	}
+
+}

@@ -1,0 +1,14 @@
+
+.menu{
+	display: none;
+	position: absolute;
+	background-color: #5555ff;
+	border-bottom: 1px solid gray;
+	width: inherit;
+	position: absolute;
+
+}
+
+.menu .menu-item:first-child{
+	border-top: 1px solid gray;
+}
