@@ -1,4 +1,4 @@
-pre{
+pre, p{
 	padding: 0px;
 	margin:  0px;
 	display: inline;
@@ -14,3 +14,15 @@ a {
 	color: #0000ff;
 }
 
+li{
+	padding-top: 5px;
+}
+
+
+@media (max-width:601px){
+	
+	article{
+		display: none;
+	}
+	
+}
