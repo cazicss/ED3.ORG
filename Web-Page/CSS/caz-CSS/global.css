@@ -25,4 +25,17 @@ li{
 		display: none;
 	}
 	
+	.w3-bar{
+		display: none;
+	}
+	
+	.mobile-nav{
+		display: block;
+		width: 100%;
+		background-color: blue;
+		color: white;
+		text-align: center;
+		padding: 3px 0px;
+		
+	}
 }

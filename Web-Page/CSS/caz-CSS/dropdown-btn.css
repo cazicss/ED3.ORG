@@ -1,0 +1,14 @@
+
+.dropdown-btn{
+	width: 120px;
+	display: inline-block;
+	text-align: center;
+}
+
+.dropdown-btn:hover {
+
+}
+
+.dropdown-btn:hover .menu{
+	/* display: block; // disabled for JS control instead */ 
+}
