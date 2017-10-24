@@ -18,6 +18,10 @@ li{
 	padding-top: 5px;
 }
 
+.mobile-nav{
+	display: none;
+}
+
 
 @media (max-width:601px){
 	
