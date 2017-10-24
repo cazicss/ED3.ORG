@@ -1,0 +1,15 @@
+
+.menu-item {
+	display: block;
+	color: white;
+	font-size: inherit;
+	background-color: #blue;
+	padding: 5px 0px 5px 5px;
+	text-decoration: none;
+	border-bottom: 1px solid gray;
+}
+
+.menu-item:hover {
+	background-color: blue;
+	color: red;
+}
