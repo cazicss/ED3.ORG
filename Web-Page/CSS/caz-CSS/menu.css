@@ -2,11 +2,14 @@
 .menu{
 	display: none;
 	position: relative;
-	background-color: blue;
+	z-index: 50;
+	background-color: transparent;
 	border-bottom: 1px solid gray;
-	width: inherit;
+	width: 80%;
+	margin: auto;
 }
 
 .menu .menu-item:first-child{
 	border-top: 1px solid gray;
+	margin-top: 5px;
 }

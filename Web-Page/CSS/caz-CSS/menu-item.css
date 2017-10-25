@@ -1,15 +1,24 @@
 
 .menu-item {
 	display: block;
+	position: relative;
+	z-index: 50;
 	color: white;
 	font-size: inherit;
 	background-color: #blue;
 	padding: 5px 0px 5px 5px;
 	text-decoration: none;
-	border-bottom: 1px solid gray;
+	border: 1px solid gray;
+	transition: 0.5s;
 }
 
 .menu-item:hover {
-	background-color: blue;
-	color: red;
+	background-color: #0055ff;
+}
+
+@media(max-width: 601px){
+	
+	.menu-item{
+	}
+	
 }
