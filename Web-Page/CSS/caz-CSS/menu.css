@@ -8,6 +8,7 @@
 	border-bottom: 1px solid gray;
 	width: 100%;
 	margin-top: 2px;
+	padding-bottom: 2px;
 }
 
 .menu .menu-item:first-child{
