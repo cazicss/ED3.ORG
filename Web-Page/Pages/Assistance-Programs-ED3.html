@@ -70,6 +70,11 @@
 				
 				var list = catElement.nextElementSibling;
 				
+				if(list.style.display === ""){
+					list.style.display ="block";
+					return;
+				}
+				
 				if(list.style.display === "none"){
 					list.style.display = "block";
 				}
