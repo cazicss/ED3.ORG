@@ -28,23 +28,54 @@
 		<script type="text/javascript" src="../JS/Scroll-Button.js"></script>
 	
 		<script>
-		
-			function ShowNavMenu(){
-				
-				var menu = document.querySelector(".mobile-nav .menu");
-				menu.setAttribute("style", "display:block;");
-				
-				var closeBtn = document.getElementById("nav-close-btn");
-				closeBtn.setAttribute("style", " float: right; margin: 10px; padding:5px 10px; border: 1px solid gray; display: block;");			
+			
+			function ShowEleId(id){
+				var element = document.getElementById(id);
+				element.style.display = "block";
 			}
 			
-			function HideNavMenu(){
+			function HideEleId(id){
+				var element = document.getElementById(id);
+				element.style.display = "none";	
+			}
+			
+			function ShowEle(element){
+				element.style.display = "block";
+			}
+			
+			function HideEle(element){
+				element.style.display = "none";
+			}
+			
+			function CloseMobileNav(){
+				var navMenu = document.getElementById("small-nav-menu");
+				var xbtn = document.getElementById("nav-close-btn");
+				var navBarText = document.getElementById("nav-bar-text");
 				
-				var menu = document.querySelector(".mobile-nav .menu");
-				menu.setAttribute("style", "display:none;");
+				navMenu.style.display = "none";
+				xbtn.style.display = "none";
+				navBarText.style.display = "block";
+			}
+			
+			function OpenMobileNav(){
+				var navMenu = document.getElementById("small-nav-menu");
+				var xbtn = document.getElementById("nav-close-btn");
+				var navBarText = document.getElementById("nav-bar-text");
+				navMenu.style.display = "block";
+				xbtn.style.display = "block";
+				navBarText.style.display = "none";				
+			}
+			
+			function ToggleCategoryList(catElement){
 				
-				var closeBtn = document.getElementById("nav-close-btn");
-				closeBtn.setAttribute("style", "display: none;");
+				var list = catElement.nextElementSibling;
+				
+				if(list.style.display === "none"){
+					list.style.display = "block";
+				}
+				else{
+					list.style.display = "none";
+				}
 			}
 		
 		</script>
@@ -71,45 +102,60 @@
 			</header>
 			<!---End Top of page Set up--->
 			
-			<nav class="mobile-nav" style="cursor: pointer;">
+			<nav id="small-nav" class="mobile-nav">
 				
-				<p id="nav-close-btn" onclick="HideNavMenu()" style="display: none;"> x </p>
+				<div id="nav-close-btn" onclick="CloseMobileNav()"> x </div>
 				
 				<div class="dropdown-btn"> 
 					
-					<p onclick="ShowNavMenu()">- Menu -</p>
+					<div id="nav-bar-text" onclick="OpenMobileNav()">- Menu -</div>
 						
-					<div class="menu">
+					<div id="small-nav-menu" class="menu">
 					
-						<a class="menu-item" href="../Index.html">Home</a>
-						<a class="menu-item" href="./Location-ED3.html">Location</a>
-						<a class="menu-item" href="./History-ED3.html">History</a>
-						<a class="menu-item" href="./Board-Agenda-ED3.html">Board Agenda</a>
+						<div onclick="ToggleCategoryList(this)" class="menu-item menu-category">Home</div>
+						<div class="menu-category-list">
+							<a class="menu-item" href="../Index.html">Home Page</a>
+							<a class="menu-item" href="./Location-ED3.html">Location</a>
+							<a class="menu-item" href="./History-ED3.html">History</a>
+							<a class="menu-item" href="./Board-Agenda-ED3.html">Board Agenda</a>
+						</div>
 					
-						<a class="menu-item" href="./About-Online-Paying-ED3.html">About Paying Online</a>
-						<a class="menu-item" href="./View-Pay-Bill-ED3.html">View/Pay Bill</a>
-						<a class="menu-item" href="./Service-Charges-&-Fees-ED3.html">Service Fees</a>
-						<a class="menu-item" href="./E-Bill-Sign-Up-ED3.html">E-Bill Sign-Up</a>
-						<a class="menu-item" href="./Plans-N-Programs-ED3.html">Plans & Programs</a>
-
-						<a class="menu-item" href="./Rates-and-Guidelines-ED3.html">Rates & Guide Lines</a>
-						<a class="menu-item" href="./Energy-Saving-Tips-ED3.html">Tips & Information</a>
-						<a class="menu-item" href="./Blue-Staking-ED3.html">Blue Stakes</a>
-						<a class="menu-item" href="./Meter-Read-Dates/Meter-Read-ED3.html">Meter Read Dates</a>
-						<a class="menu-item" href="./Solar-Power-Program-ED3.html">Solar Power Program</a>
-						<a class="menu-item" href="./Life-Support-ED3.html">Life Support Information</a>
-						<a class="menu-item" href="./Child-Safety-ED3.html">Child Safety</a>
-						<a class="menu-item" href="./Eletronic-Protection-ED3.html">Eletronic Protection</a>
-
-						<a class="menu-item" href="./Assistance-Programs-ED3.html">Assistance Programs</a>
-						<a class="menu-item" href="./Community-Links-ED3.html" >Community Links</a>
-						<a class="menu-item" href="./NEWS-ED3.html" >News</a>	
+						<div onclick="ToggleCategoryList(this)" class="menu-item menu-category">Bill Pay</div>
+						<div class="menu-category-list">
+							<a class="menu-item" href="./About-Online-Paying-ED3.html">About Paying Online</a>
+							<a class="menu-item" href="./View-Pay-Bill-ED3.html">View/Pay Bill</a>
+							<a class="menu-item" href="./Service-Charges-&-Fees-ED3.html">Service Fees</a>
+							<a class="menu-item" href="./E-Bill-Sign-Up-ED3.html">E-Bill Sign-Up</a>
+							<a class="menu-item" href="./Plans-N-Programs-ED3.html">Plans & Programs</a>
+						</div>
 						
-						<a class="menu-item" href="./Contact-Us-ED3.html">Contact Us</a>
-						<a class="menu-item" href="./Prevent-Power-Theft-ED3.html">Power Theft</a>
-						<a class="menu-item" href="./Questions-ED3.html">Questions</a>
-						<a class="menu-item" href="./Employment-ED3.html">Employment</a>
-						<a class="menu-item" href="./Street-Light-Repair-ED3.html">Street Light Repair</a>
+						<div onclick="ToggleCategoryList(this)" class="menu-item menu-category">Information</div>
+						<div class="menu-category-list">
+							<a class="menu-item" href="./Rates-and-Guidelines-ED3.html">Rates & Guide Lines</a>
+							<a class="menu-item" href="./Energy-Saving-Tips-ED3.html">Tips & Information</a>
+							<a class="menu-item" href="./Blue-Staking-ED3.html">Blue Stakes</a>
+							<a class="menu-item" href="./Meter-Read-Dates/Meter-Read-ED3.html">Meter Read Dates</a>
+							<a class="menu-item" href="./Solar-Power-Program-ED3.html">Solar Power Program</a>
+							<a class="menu-item" href="./Life-Support-ED3.html">Life Support Information</a>
+							<a class="menu-item" href="./Child-Safety-ED3.html">Child Safety</a>
+							<a class="menu-item" href="./Eletronic-Protection-ED3.html">Eletronic Protection</a>
+						</div>
+						
+						<div onclick="ToggleCategoryList(this)" class="menu-item menu-category">Community</div>
+						<div class="menu-category-list">
+							<a class="menu-item" href="./Assistance-Programs-ED3.html">Assistance Programs</a>
+							<a class="menu-item" href="./Community-Links-ED3.html" >Community Links</a>
+							<a class="menu-item" href="./NEWS-ED3.html" >News</a>	
+						</div>
+						
+						<div onclick="ToggleCategoryList(this)" class="menu-item menu-category">Contact Us</div>
+						<div class="menu-category-list">
+							<a class="menu-item" href="./Contact-Us-ED3.html">Contact ED3</a>
+							<a class="menu-item" href="./Prevent-Power-Theft-ED3.html">Power Theft</a>
+							<a class="menu-item" href="./Questions-ED3.html">Questions</a>
+							<a class="menu-item" href="./Employment-ED3.html">Employment</a>
+							<a class="menu-item" href="./Street-Light-Repair-ED3.html">Street Light Repair</a>
+						</div>
 						
 					</div>
 					

@@ -23,6 +23,30 @@ li{
 }
 
 
+#nav-close-btn{
+	display: none;
+	position: absolute;
+	z-index: 99;
+	right: 0;
+	padding: 0px 5px;
+	border: 1px solid gray;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+.b{
+	font-weight: bold;
+}
+
+.menu-category{
+	font-weight:  bold;
+	background-color: #888888;
+}
+
+.menu-category-list{
+	display: none;
+}
+
 @media (max-width:601px){
 	
 	article{
@@ -36,10 +60,10 @@ li{
 	.mobile-nav{
 		display: block;
 		width: 100%;
-		background-color: blue;
+		background-color: gray;
 		color: white;
 		text-align: center;
 		padding: 3px 0px;
-		
+		cursor: pointer;
 	}
 }
