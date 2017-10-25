@@ -29,7 +29,7 @@ li{
 	z-index: 99;
 	right: 0;
 	padding: 0px 5px;
-	border: 1px solid gray;
+	font-weight: bold;
 	margin-top: 10px;
 	margin-right: 10px;
 }
@@ -60,7 +60,7 @@ li{
 	.mobile-nav{
 		display: block;
 		width: 100%;
-		background-color: gray;
+		background-color: #7087FF;
 		color: white;
 		text-align: center;
 		padding: 3px 0px;
