@@ -1,15 +1,16 @@
 
 .menu{
 	display: none;
-	position: relative;
+	position: absolute;
+	left: 0;
 	z-index: 50;
-	background-color: transparent;
+	background-color: #8888aa;
 	border-bottom: 1px solid gray;
-	width: 80%;
-	margin: auto;
+	width: 100%;
+	margin-top: 2px;
+	padding-bottom: 2px;
 }
 
 .menu .menu-item:first-child{
 	border-top: 1px solid gray;
-	margin-top: 5px;
 }

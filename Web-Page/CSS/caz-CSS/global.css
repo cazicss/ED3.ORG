@@ -10,6 +10,14 @@ h1, h2, h3, h4 ,h5{
 	font-style: italic;
 }
 
+header{
+	
+}
+
+header img{
+	width: 100%;
+}
+
 a {
 	color: #0000ff;
 }
@@ -31,7 +39,7 @@ li{
 	padding: 0px 5px;
 	font-weight: bold;
 	margin-top: 10px;
-	margin-right: 10px;
+	margin-right: 5px;
 }
 
 .b{
@@ -40,11 +48,26 @@ li{
 
 .menu-category{
 	font-weight:  bold;
-	background-color: #888888;
+	background-color: #5555cc;
 }
 
 .menu-category-list{
 	display: none;
+}
+
+.menu-category-list .menu-item{
+	background-color: #8888aa;
+	border: none;
+
+}
+
+button{
+	border: none;
+	padding: 8px 16px;
+}
+
+button:hover {
+
 }
 
 @media (max-width:601px){

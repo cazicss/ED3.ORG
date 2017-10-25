@@ -5,13 +5,14 @@
 	z-index: 50;
 	color: white;
 	font-size: inherit;
-	background-color: #5555cc;
-	margin-top: 1px;
 	padding: 5px 0px 5px 5px;
 	text-decoration: none;
 	border: 1px solid gray;
 	transition: 0.5s;
+	margin: auto;
+	width: 80%;
 }
+
 
 .menu-item:hover {
 	background-color: #0055ff;
