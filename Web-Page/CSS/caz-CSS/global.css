@@ -31,7 +31,7 @@ li{
 	padding: 0px 5px;
 	font-weight: bold;
 	margin-top: 10px;
-	margin-right: 10px;
+	margin-right: 5px;
 }
 
 .b{
@@ -40,11 +40,17 @@ li{
 
 .menu-category{
 	font-weight:  bold;
-	background-color: #888888;
+	background-color: #5555cc;
 }
 
 .menu-category-list{
 	display: none;
+}
+
+.menu-category-list .menu-item{
+	background-color: #8888aa;
+	border: none;
+
 }
 
 @media (max-width:601px){
