@@ -18,6 +18,10 @@ li{
 	padding-top: 5px;
 }
 
+.mobile-nav{
+	display: none;
+}
+
 
 @media (max-width:601px){
 	
@@ -25,4 +29,17 @@ li{
 		display: none;
 	}
 	
+	.w3-bar{
+		display: none;
+	}
+	
+	.mobile-nav{
+		display: block;
+		width: 100%;
+		background-color: blue;
+		color: white;
+		text-align: center;
+		padding: 3px 0px;
+		
+	}
 }
