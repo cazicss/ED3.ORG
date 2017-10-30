@@ -280,3 +280,17 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
   background-color: white;
   color: #0000ff;
 }
+/*
+//Flex-container
+.flex-container{
+	vertical-align:middle;
+	border-left: solid 1px #888888;
+	border-right: solid 1px #888888;
+	margin-top: 15px;
+	margin-bot: 15px;
+	margin:auto;
+	width: 100%;
+	max-width:1200px;
+	min-height:100%;
+}
+*/
