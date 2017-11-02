@@ -145,6 +145,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .w3-transparent,.w3-hover-none:hover{background-color:transparent}
 .w3-hover-none:hover{box-shadow:none}
 /* Colors */
+.w3-vivid-green,.w3-hover-vivid-green:hover{color:#000;background-color:#7bfb51}
 .w3-amber,.w3-hover-amber:hover{color:#000;background-color:#ffc107}
 .w3-aqua,.w3-hover-aqua:hover{color:#000;background-color:#00ffff}
 .w3-blue,.w3-hover-blue:hover{color:#fff;background-color:#2196F3}
@@ -274,12 +275,15 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
   cursor: pointer;
   padding: 15px;
   border-radius: 10px;
+  box-shadow:0 8px 16px 0 rgba(0,0,0,0.25);
 }
 
 #myBtn:hover {
   background-color: white;
   color: #0000ff;
+  box-shadow:0 6px 20px 0 rgba(0,0,0,0.50);
 }
+.flex-container{min-height:100%;}
 /*
 //Flex-container
 .flex-container{
@@ -294,3 +298,74 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 	min-height:100%;
 }
 */
+
+
+
+/*
+Secondary CSS for mobile navigation 
+
+*/
+.mobile-nav{
+	display: none;
+}
+
+
+#nav-close-btn{
+	display: none;
+	position: absolute;
+	z-index: 99;
+	right: 0;
+	padding: 0px 5px;
+	font-weight: bold;
+	margin-top: 10px;
+	margin-right: 5px;
+}
+
+.b{
+	font-weight: bold;
+}
+
+.menu-category{
+	font-weight:  bold;
+	background-color: #5555cc;
+}
+
+.menu-category-list{
+	display: none;
+}
+
+.menu-category-list .menu-item{
+	background-color: #8888aa;
+	border: none;
+
+}
+
+button{
+	border: none;
+	padding: 8px 16px;
+}
+
+button:hover {
+
+}
+
+@media (max-width:601px){
+	
+	article{
+		display: none;
+	}
+	
+	.w3-bar{
+		display: none;
+	}
+	
+	.mobile-nav{
+		display: block;
+		width: 100%;
+		background-color: #7087FF;
+		color: white;
+		text-align: center;
+		padding: 3px 0px;
+		cursor: pointer;
+	}
+}
