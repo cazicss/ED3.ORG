@@ -298,3 +298,74 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 	min-height:100%;
 }
 */
+
+
+
+/*
+Secondary CSS for mobile navigation 
+
+*/
+.mobile-nav{
+	display: none;
+}
+
+
+#nav-close-btn{
+	display: none;
+	position: absolute;
+	z-index: 99;
+	right: 0;
+	padding: 0px 5px;
+	font-weight: bold;
+	margin-top: 10px;
+	margin-right: 5px;
+}
+
+.b{
+	font-weight: bold;
+}
+
+.menu-category{
+	font-weight:  bold;
+	background-color: #5555cc;
+}
+
+.menu-category-list{
+	display: none;
+}
+
+.menu-category-list .menu-item{
+	background-color: #8888aa;
+	border: none;
+
+}
+
+button{
+	border: none;
+	padding: 8px 16px;
+}
+
+button:hover {
+
+}
+
+@media (max-width:601px){
+	
+	article{
+		display: none;
+	}
+	
+	.w3-bar{
+		display: none;
+	}
+	
+	.mobile-nav{
+		display: block;
+		width: 100%;
+		background-color: #7087FF;
+		color: white;
+		text-align: center;
+		padding: 3px 0px;
+		cursor: pointer;
+	}
+}
