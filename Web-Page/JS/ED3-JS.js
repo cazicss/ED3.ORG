@@ -178,3 +178,61 @@ function mail(form){
             document.getElementById('send').href=str;
             }
     }
+	
+	
+	
+// mobile navigation transition 
+
+function ShowEleId(id){
+				var element = document.getElementById(id);
+				element.style.display = "block";
+			}
+			
+			function HideEleId(id){
+				var element = document.getElementById(id);
+				element.style.display = "none";	
+			}
+			
+			function ShowEle(element){
+				element.style.display = "block";
+			}
+			
+			function HideEle(element){
+				element.style.display = "none";
+			}
+			
+			function CloseMobileNav(){
+				var navMenu = document.getElementById("small-nav-menu");
+				var xbtn = document.getElementById("nav-close-btn");
+				var navBarText = document.getElementById("nav-bar-text");
+				
+				navMenu.style.display = "none";
+				xbtn.style.display = "none";
+				navBarText.style.display = "block";
+			}
+			
+			function OpenMobileNav(){
+				var navMenu = document.getElementById("small-nav-menu");
+				var xbtn = document.getElementById("nav-close-btn");
+				var navBarText = document.getElementById("nav-bar-text");
+				navMenu.style.display = "block";
+				xbtn.style.display = "block";
+				navBarText.style.display = "none";				
+			}
+			
+			function ToggleCategoryList(catElement){
+				
+				var list = catElement.nextElementSibling;
+				
+				if(list.style.display === ""){
+					list.style.display ="block";
+					return;
+				}
+				
+				if(list.style.display === "none"){
+					list.style.display = "block";
+				}
+				else{
+					list.style.display = "none";
+				}
+			}
