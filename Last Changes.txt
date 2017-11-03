@@ -1,0 +1,8 @@
+
+-update color themes on main navbar and its menus to match mobile.
+
+-fixed title on "About Online Paying" page.
+
+-update responsiveness on banner
+
+-ripple changes through all pages.
