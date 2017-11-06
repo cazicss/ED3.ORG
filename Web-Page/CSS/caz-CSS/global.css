@@ -91,3 +91,7 @@ button:hover {
 		cursor: pointer;
 	}
 }
+.nav-theme{
+	background-color: #7087FF;
+	color: white;
+}
