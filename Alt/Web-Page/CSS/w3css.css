@@ -371,49 +371,47 @@ button:hover {
 }
 /*Slide show styling for header*/
 .slideshow{
-	display:inline-block;
+	display:inline-flex;
 	width:100%;
-	max-width:1200px;
+	height:100%;
+	min-height:100px;
+	max-height:200px;
 	vertical-align:center;
-	padding-bottom:5px;
 }
 .slideshow-item{
-display:inline-block;
+display:inline-flex;
+width:20%;
+height:100%;
 }
 .SSLL{
 	width:100%;
-	max-width:220px;
 	height:100%;
-	max-height:180px;
+	
 	
 }
 .SSCL{
 	width:100%;
-	max-width:220px;
 	height:100%;
-	max-height:180px;
+
 	
 }
 
 .SSC{
 	width:100%;
-	max-width:220px;
 	height:100%;
-	max-height:180px;
+
 
 }
 
 .SSCR{
 	width:100%;
-	max-width:220px;
 	height:100%;
-	max-height:180px;
+
 	
 	}
 .SSRR{
 	width:100%;
-	max-width:220px;
 	height:100%;
-	max-height:180px;
+
 	
 }
