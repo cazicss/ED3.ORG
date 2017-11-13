@@ -58,6 +58,13 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .w3-dropdown-hover:first-child,.w3-dropdown-click:hover{background-color:#ccc;color:#000}
 .w3-dropdown-hover:hover > .w3-button:first-child,.w3-dropdown-click:hover > .w3-button:first-child{background-color:#ccc;color:#000}
 .w3-dropdown-content{cursor:auto;color:#000;background-color:#fff;display:none;position:absolute;min-width:160px;margin:0;padding:0}
+
+/* submenu to be used within the w3-dropdown-content */
+.w3-dropdown-hover2{ position: relative; }
+.w3-dropdown-hover2:hover > .w3-dropdown-content2 { display: block; }
+.w3-dropdown-content2{display: none; width: 220px; position: absolute; margin-left: 213px; top: 0px;}
+
+
 .w3-check,.w3-radio{width:24px;height:24px;position:relative;top:6px}
 .w3-sidebar{height:100%;width:200px;background-color:#fff;position:fixed;z-index:1;overflow:auto}
 .w3-bar-block .w3-dropdown-hover,.w3-bar-block .w3-dropdown-click{width:100%}
@@ -150,6 +157,12 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .w3-button:hover{color:#000; background-color:#ccc}
 .w3-transparent,.w3-hover-none:hover{background-color:transparent}
 .w3-hover-none:hover{box-shadow:none}
+
+
+
+
+
+
 /* Colors */
 .w3-vivid-green,.w3-hover-vivid-green:hover{color:#000;background-color:#7bfb51}
 .w3-amber,.w3-hover-amber:hover{color:#000;background-color:#ffc107}
