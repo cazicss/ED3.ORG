@@ -24,14 +24,14 @@
 	</head>
 	
 	<!--- Background implemented --->
-	<body class="flex-container" background="./Images/Alt-images/blue-sunrays.jpg">
+	<body class="flex-container w3-content mobile" background="./Images/Alt-images/blue-sunrays.jpg">
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button> 
 	
 	
 		<div >
 		
 			<!--- Start Top of page Set up--->
-			 <header class="w3-themea w3-center w3-round-xlarge"><a href="./Index.html">
+			 <header class="w3-themea w3-center  w3-hide-small w3-round-xlarge"><a href="./Index.html">
 			<div class="slideshow">
 			<div class="slideshow-item">
 				
@@ -84,17 +84,48 @@
 				</div>
 				
 			</div>
+
+			</a></header>
+			<!-- mobile header -->
+			 <header class="w3-themea w3-center  w3-hide-medium w3-hide-large w3-round-xlarge"><a href="./Index.html"> 
+			<div class="mobile-slideshow">
+			<div class="mobile-slideshow-item">
+				<img class="mobile-SSCL" src="./Images/Header/CL01.jpg">
+				<img class="mobile-SSCL" src="./Images/Header/CL02.jpg">
+				<img class="mobile-SSCL" src="./Images/Header/CL03.jpg">
+				<img class="mobile-SSCL" src="./Images/Header/CL04.jpg">
+				<img class="mobile-SSCL" src="./Images/Header/CL05.jpg">
+				<img class="mobile-SSCL" src="./Images/Header/CL06.jpg">
+				<img class="mobile-SSCL" src="./Images/Header/CL07.jpg">
 				
+				</div><!-- 
+			 --><div class="mobile-slideshow-item">
 			
+				<img class="mobile-SSC"  src="./Images/Header/CenterW-Logo.jpg">
+				
+				</div><!-- 
+			 --><div class="mobile-slideshow-item">
 			
+				<img src="./Images/Header/CR01.jpg" class="mobile-SSCR">
+				<img src="./Images/Header/CR02.jpg" class="mobile-SSCR">
+				<img src="./Images/Header/CR03.jpg" class="mobile-SSCR">
+				<img src="./Images/Header/CR04.jpg" class="mobile-SSCR">
+				<img src="./Images/Header/CR05.jpg" class="mobile-SSCR">
+				<img src="./Images/Header/CR06.png" class="mobile-SSCR">
+				<img src="./Images/Header/CR07.jpg" class="mobile-SSCR">
+			
+				</div>
+				</div>
+			</a></header>
+
 			<script>
 			w3.slideshow(".SSLL", 2250);
 			w3.slideshow(".SSCL", 2250);
 			w3.slideshow(".SSCR", 2250);
 			w3.slideshow(".SSRR", 2250);
+			w3.slideshow(".mobile-SSCL", 2250);
+			w3.slideshow(".mobile-SSCR", 2250);
 			</script>
-			</a></header>
-			
 			<!---End Top of page Set up--->
 			<!-- Start mobile Navigation -->
 			<nav id="small-nav" class="mobile-nav">
@@ -161,7 +192,7 @@
 			</nav>
 			<!-- end mobile Navigation -->
 			<!--- Start page navigation --->
-					<div class="w3-bar nav-theme w3-margin w3-margin-rightin w3-round-large">
+					<div class="w3-bar nav-theme w3-margin w3-content w3-right w3-margin-rightin w3-round-large">
 						<div class="w3-dropdown-hover nav-theme">
 							<button class="w3-btn nav-theme w3-hover-themea">Home</button>
 							<div class="w3-dropdown-content w3-bar-block w3-card-4 w3-border-theme nav-theme">
@@ -217,11 +248,11 @@
 			<!--- End page navigation --->
 			<!-- left side of page begin -->
 			<article class="w3-container w3-alt-quarter w3-text-white">
-			<p><b class="w3-large">ACCOUNT</b></p>
+			<p><b class="w3-large">LINKS</b></p>
 			<a href="https://billpay.ed3online.org/oscp/OnlineServices/FeaturesLogin/tabid/131/Default.aspx"
 				 Class="w3-text-themea b w3-hover-themea">Bill Pay / View Login</a>
 				 <br>
-			<p><b class="w3-large">HOT LINKS</b></p>
+			
 			<a href="./Pages/Energy-Saving-Tips-ED3.html#KAW" Class="w3-text-themea b w3-hover-themea">Kill A Watt</a>
 			<br>
 			
@@ -248,7 +279,7 @@
 			<a href="./Files/Programs_Explained.pdf" target="_blank" Class="w3-text-themea b w3-hover-themea">Plans & Programs</a>
 			</article>
 			<!-- left side of page end -->
-			<div class="w3-container w3-rest w3-white w3-center w3-margin w3-round-large w3-padding-64">
+			<div class="w3-container w3-rest w3-white w3-center w3-margin mobile w3-round-large w3-padding-64">
 				<img title="ED3 Logo" alt="ED3 Logo" src="./Images/LOGO.png" align="w3-center" border="0" height="auto" hspace="0"  Style="width:60%;max-width:375px">
 				<div class="w3-xlarge" font="arial">
 					<p class="w3-xxlarge"><strong>Electrical District No. 3<br>Customer Service Office<br></strong></p>
