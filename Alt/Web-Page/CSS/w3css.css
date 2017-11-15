@@ -52,6 +52,11 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .w3-dropdown-hover:first-child,.w3-dropdown-click:hover{background-color:#ccc;color:#000}
 .w3-dropdown-hover:hover > .w3-button:first-child,.w3-dropdown-click:hover > .w3-button:first-child{background-color:#ccc;color:#000}
 .w3-dropdown-content{cursor:auto;color:#000;background-color:#fff;display:none;position:absolute;min-width:160px;margin:0;padding:0}
+/* submenu to be used within the w3-dropdown-content */
+.w3-dropdown-hover2{ position: relative; }
+.w3-dropdown-hover2:hover > .w3-dropdown-content2 { display: block; }
+.w3-dropdown-content2{display: none; width: 220px; position: absolute; margin-left: 213px; top: 0px;}
+
 .w3-check,.w3-radio{width:24px;height:24px;position:relative;top:6px}
 .w3-sidebar{height:100%;width:200px;background-color:#fff;position:fixed;z-index:1;overflow:auto}
 .w3-bar-block .w3-dropdown-hover,.w3-bar-block .w3-dropdown-click{width:100%}
@@ -370,14 +375,17 @@ button:hover {
 	}
 }
 /*Slide show styling for header*/
-.slideshow{
+
+	.slideshow{
 	display:inline-flex;
 	width:100%;
 	height:100%;
-	min-height:100px;
 	max-height:200px;
 	vertical-align:center;
-}
+	}
+
+
+
 .slideshow-item{
 display:inline-flex;
 width:20%;
@@ -386,32 +394,81 @@ height:100%;
 .SSLL{
 	width:100%;
 	height:100%;
-	
-	
 }
 .SSCL{
 	width:100%;
 	height:100%;
-
-	
 }
 
 .SSC{
 	width:100%;
 	height:100%;
-
-
 }
 
 .SSCR{
 	width:100%;
 	height:100%;
-
-	
 	}
 .SSRR{
 	width:100%;
 	height:100%;
+}
 
-	
+@media(min-width:1100px) and (max-width:1200px){
+.slideshow{max-height:200px}
+}
+@media(min-width:950px) and (max-width:1099px){
+.slideshow{max-height:175px}
+}
+@media(min-width:850px) and (max-width:949px){
+.slideshow{max-height:150px}
+}
+@media(min-width:601px) and (max-width:849px){
+.slideshow{max-height:125px}
+}
+@media (max-width:600px){
+.slideshow{max-height:100px}
+.SSRR{display:none}
+.SSLL{display:none}
+}
+/*
+
+
+*/
+.mobile-slideshow{
+	display:inline-flex;
+	width:100%;
+	height:100%;
+	max-height:100px;
+	vertical-align:center;
+	}
+
+
+
+.mobile-slideshow-item{
+	display:inline-flex;
+	width:33.3333%;
+	height:100%;
+	}
+.mobile-SSCL{
+	width:100%;
+	height:100%;
+}
+
+.mobile-SSC{
+	width:100%;
+	height:100%;
+}
+
+.mobile-SSCR{
+	width:100%;
+	height:100%;
+	}
+
+
+@media (max-width:600px){.mobile{display:block;width:100%;margin:0}}
+
+.BGfixed{
+	background-repeat:no-repeat;
+	background-attachment:fixed;
 }
