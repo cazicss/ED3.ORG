@@ -23,15 +23,108 @@
 	</head>
 	
 	<!--- Background implemented --->
-	<body background="../Images/page_bg.gif">
-	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-		<div class="flex-container">
+	<body class="BGfixed flex-container w3-content mobile" background="../Images/Alt-images/blue-sunrays.jpg">
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button> 
+	
+	
+		<div >
 		
 			<!--- Start Top of page Set up--->
-			<header class="w3-themea w3-center" style="padding-bottom: 5px;">
-			 <a href="../Index.html"><img src="../Images/head_left.png" style="width:100%; max-width:1024px;" 
-				height="auto" id="head_left_1" alt="Electrical District #3" title="Electrical District #3" /></a>
-			</header>
+			 <header class="w3-themea w3-center  w3-hide-small w3-round-xlarge"><a href="../Index.html">
+			<div class="slideshow">
+			<div class="slideshow-item">
+				
+				<img class="SSLL" src="../Images/Header/LL01.jpg">
+				<img class="SSLL" src="../Images/Header/LL02.jpg">
+				<img class="SSLL" src="../Images/Header/LL03.jpg">
+				<img class="SSLL" src="../Images/Header/LL04.jpg">
+				<img class="SSLL" src="../Images/Header/LL05.jpg">
+				<img class="SSLL" src="../Images/Header/LL06.jpg">
+				<img class="SSLL" src="../Images/Header/LL07.jpg">
+				
+				</div><!-- 
+			 --><div class="slideshow-item">
+			
+				<img class="SSCL" src="../Images/Header/CL01.jpg">
+				<img class="SSCL" src="../Images/Header/CL02.jpg">
+				<img class="SSCL" src="../Images/Header/CL03.jpg">
+				<img class="SSCL" src="../Images/Header/CL04.jpg">
+				<img class="SSCL" src="../Images/Header/CL05.jpg">
+				<img class="SSCL" src="../Images/Header/CL06.jpg">
+				<img class="SSCL" src="../Images/Header/CL07.jpg">
+				
+				</div><!-- 
+			 --><div class="slideshow-item">
+			
+				<img class="SSC"  src="../Images/Header/CenterW-Logo.jpg">
+				
+				</div><!-- 
+			 --><div class="slideshow-item">
+			
+				<img src="../Images/Header/CR01.jpg" class="SSCR">
+				<img src="../Images/Header/CR02.jpg" class="SSCR">
+				<img src="../Images/Header/CR03.jpg" class="SSCR">
+				<img src="../Images/Header/CR04.jpg" class="SSCR">
+				<img src="../Images/Header/CR05.jpg" class="SSCR">
+				<img src="../Images/Header/CR06.png" class="SSCR">
+				<img src="../Images/Header/CR07.jpg" class="SSCR">
+			
+				</div><!-- 
+			 --><div class="slideshow-item">	
+				
+				<img src="../Images/Header/RR01.jpg" class="SSRR"><!-- 
+				 --><img src="../Images/Header/RR02.jpg" class="SSRR"><!-- 
+				 --><img src="../Images/Header/RR03.jpg" class="SSRR">
+				<img src="../Images/Header/RR04.jpg" class="SSRR"><!-- 
+				 --><img src="../Images/Header/RR05.jpg" class="SSRR">
+				<img src="../Images/Header/RR06.jpg" class="SSRR">
+				<img src="../Images/Header/RR07.jpg" class="SSRR">
+				
+				</div>
+				
+			</div>
+
+			</a></header>
+			<!-- mobile header -->
+			 <header class="w3-themea w3-center  w3-hide-medium w3-hide-large w3-round-xlarge"><a href="../Index.html"> 
+			<div class="mobile-slideshow">
+			<div class="mobile-slideshow-item">
+				<img class="mobile-SSCL" src="../Images/Header/CL01.jpg">
+				<img class="mobile-SSCL" src="../Images/Header/CL02.jpg">
+				<img class="mobile-SSCL" src="../Images/Header/CL03.jpg">
+				<img class="mobile-SSCL" src="../Images/Header/CL04.jpg">
+				<img class="mobile-SSCL" src="../Images/Header/CL05.jpg">
+				<img class="mobile-SSCL" src="../Images/Header/CL06.jpg">
+				<img class="mobile-SSCL" src="../Images/Header/CL07.jpg">
+				
+				</div><!-- 
+			 --><div class="mobile-slideshow-item">
+			
+				<img class="mobile-SSC"  src="../Images/Header/CenterW-Logo.jpg">
+				
+				</div><!-- 
+			 --><div class="mobile-slideshow-item">
+			
+				<img src="../Images/Header/CR01.jpg" class="mobile-SSCR">
+				<img src="../Images/Header/CR02.jpg" class="mobile-SSCR">
+				<img src="../Images/Header/CR03.jpg" class="mobile-SSCR">
+				<img src="../Images/Header/CR04.jpg" class="mobile-SSCR">
+				<img src="../Images/Header/CR05.jpg" class="mobile-SSCR">
+				<img src="../Images/Header/CR06.png" class="mobile-SSCR">
+				<img src="../Images/Header/CR07.jpg" class="mobile-SSCR">
+			
+				</div>
+				</div>
+			</a></header>
+
+			<script>
+			w3.slideshow(".SSLL", 2250);
+			w3.slideshow(".SSCL", 2250);
+			w3.slideshow(".SSCR", 2250);
+			w3.slideshow(".SSRR", 2250);
+			w3.slideshow(".mobile-SSCL", 2250);
+			w3.slideshow(".mobile-SSCR", 2250);
+			</script>
 			<!---End Top of page Set up--->
 			
 			<!-- Start mobile Navigation -->
@@ -96,7 +189,7 @@
 			</nav>
 			<!-- end mobile Navigation -->
 			<!--- Start page navigation --->
-			<div class="w3-bar nav-theme">
+			<div class="w3-bar nav-theme w3-margin w3-content w3-right w3-round-large">
 				<div class="w3-dropdown-hover nav-theme">
 					<button class="w3-btn nav-theme w3-hover-themea">Home</button>
 					<div class="w3-dropdown-content w3-bar-block w3-card-4 w3-border-theme nav-theme">
@@ -177,7 +270,7 @@
 			<a href="../Files/Programs_Explained.pdf" target="_blank" Class="w3-hover-themea">Plans & Programs</a>
 			</article>
 			<!-- left side of page end -->
-			<div class="w3-container w3-rest w3-white w3-text-left">
+			<div class="w3-container w3-rest w3-white w3-margin mobile w3-round-large w3-text-left">
 				<div class="w3-center">
 				<br>
 				<p class="w3-xxlarge w3-serif  w3-text-theme"><b>Employment Opportunities</b></p>
