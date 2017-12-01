@@ -7,8 +7,8 @@
 --->
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		<link rel="stylesheet" href="../css/ED3.css">
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../CSS/ED3.css">
 		<meta name="robots" content="ALL">
 		<meta name="distribution" content="Global">
 		<meta name="rating" content="General">
@@ -20,6 +20,10 @@
 		<meta charset="utf-8">
 		<title>Solar Power Program | Electrical District #3</title>
 		<script type="text/javascript" src="../JS/ED3-JS.js"></script>
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta http-equiv="expires" content="0" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="X-Frame-Options" content="deny">
 	</head>
 	
 	<!--- Background implemented --->
@@ -146,14 +150,15 @@
 							<a class="menu-item" href="./Board-Agenda-ED3.html">Board Agenda</a>
 						</div>
 					
-						<div onclick="ToggleCategoryList(this)" class="menu-item menu-category">Bill Pay</div>
+						<div onclick="ToggleCategoryList(this)" class="menu-item menu-category">Services</div>
 						<div class="menu-category-list">
 							<a class="menu-item" href="./About-Online-Paying-ED3.html">About Paying Online</a>
 							<a class="menu-item" href="./View-Pay-Bill-ED3.html">View/Pay Bill</a>
 							<a class="menu-item" href="./Service-Charges-&-Fees-ED3.html">Service Fees</a>
-							<a class="menu-item" href="./Start-Service-ED3.html">Start Service</a>
+							
 							<a class="menu-item" href="./E-Bill-Sign-Up-ED3.html">E-Bill Sign-Up</a>
 							<a class="menu-item" href="./Plans-N-Programs-ED3.html">Plans & Programs</a>
+							<a class="menu-item" href="./Energy-Audit-ED3.html">Energy Audit</a>
 						</div>
 						
 						<div onclick="ToggleCategoryList(this)" class="menu-item menu-category">Information</div>
@@ -161,7 +166,7 @@
 							<a class="menu-item" href="./Rates-and-Guidelines-ED3.html">Rates & Guide Lines</a>
 							<a class="menu-item" href="./Energy-Saving-Tips-ED3.html">Tips & Information</a>
 							<a class="menu-item" href="./Blue-Staking-ED3.html">Blue Stakes</a>
-							<a class="menu-item" href="./Meter-Read-Dates/Meter-Read-ED3.html">Meter Read Dates</a>
+							<a class="menu-item" href="./Meter-Schedule-ED3.html">Meter Read Dates</a>
 							<a class="menu-item" href="./Solar-Power-Program-ED3.html">Solar Power Program</a>
 							<a class="menu-item" href="./Life-Support-ED3.html">Life Support Information</a>
 							<a class="menu-item" href="./Child-Safety-ED3.html">Child Safety</a>
@@ -182,7 +187,7 @@
 							<a class="menu-item" href="./Prevent-Power-Theft-ED3.html">Power Theft</a>
 							<!-- <a class="menu-item" href="./Questions-ED3.html">Questions</a> -->
 							<a class="menu-item" href="./Employment-ED3.html">Employment</a>
-							<a class="menu-item" href="./Street-Light-Repair-ED3.html">Street Light Repair</a>
+							<!-- <a class="menu-item" href="./Street-Light-Repair-ED3.html">Street Light Repair</a> -->
 						</div>	
 					</div>
 				</div>
@@ -200,24 +205,25 @@
 					</div>
 				</div>
 				<div class="w3-dropdown-hover">
-					<button class="w3-btn nav-theme w3-hover-themea">Bill Pay</button>
+					<button class="w3-btn nav-theme w3-hover-themea">Services</button>
 					<div class="w3-dropdown-content nav-theme w3-bar-block w3-card-4 w3-border-theme">
-					<a href="./About-Online-Paying-ED3.html"class="w3-bar-item w3-button w3-hover-themea">About Paying Online</a>
-					<a href="./View-Pay-Bill-ED3.html"class="w3-bar-item w3-button w3-hover-themea">View/Pay Bill</a>
-					<a href="./Service-Charges-&-Fees-ED3.html"class="w3-bar-item w3-button w3-hover-themea">Service Fees</a>
+					<a href="./About-Online-Paying-ED3.html" class="w3-bar-item w3-button w3-hover-themea">About Paying Online</a>
+					<a href="./View-Pay-Bill-ED3.html" class="w3-bar-item w3-button w3-hover-themea">View/Pay Bill</a>
+					<a href="./Service-Charges-&-Fees-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Service Fees</a>
 
-					<a href="./E-Bill-Sign-Up-ED3.html"class="w3-bar-item w3-button w3-hover-themea">E-Bill Sign-Up</a>
-					<a href="./Plans-N-Programs-ED3.html"class="w3-bar-item w3-button w3-hover-themea">Plans & Programs</a>
+					<a href="./E-Bill-Sign-Up-ED3.html" class="w3-bar-item w3-button w3-hover-themea">E-Bill Sign-Up</a>
+					<a href="./Plans-N-Programs-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Plans & Programs</a>
+					<a href="./Energy-Audit-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Energy Audit</a>
 					</div>
 				</div>
 				<div class="w3-dropdown-hover">
 					<button class="w3-btn nav-theme w3-hover-themea">Information</button>
 					<div class="w3-dropdown-content nav-theme w3-bar-block w3-card-4 w3-border-theme">
-						<a href="./Rates-and-Guidelines-ED3.html"class="w3-bar-item w3-button w3-hover-themea">Rates & Guide Lines</a>
+						<a href="./Rates-and-Guidelines-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Rates & Guide Lines</a>
 						
 						<!-- Submenu for Tips & Information -->
 						<div class="w3-dropdown-hover2">
-							<a href="./Energy-Saving-Tips-ED3.html"class="w3-btn w3-bar-item w3-hover-themea">Tips & Information</a>
+							<a href="./Energy-Saving-Tips-ED3.html" class="w3-btn w3-bar-item w3-hover-themea">Tips & Information</a>
 							
 							<div class="w3-dropdown-content2 nav-theme w3-card-4 w3-border-theme">
 								<a href="./Energy-Saving-Tips-ED3.html#Energy_Tips"  class="w3-bar-item w3-button w3-hover-themea">Energy Saving Tips</a>
@@ -228,18 +234,18 @@
 						</div>
 						<!--End Submenu for Tips & Information -->
 						
-						<a href="./Blue-Staking-ED3.html"class="w3-bar-item w3-button w3-hover-themea">Blue Stakes</a>
-						<a href="./Meter-Schedule-ED3.html"class="w3-bar-item w3-button w3-hover-themea">Meter Read Dates</a>
-						<a href="./Solar-Power-Program-ED3.html"class="w3-bar-item w3-button w3-hover-themea">Solar Power Program</a>
-						<a href="./Life-Support-ED3.html"class="w3-bar-item w3-button w3-hover-themea">Life Support Information</a>
-						<a href="./Child-Safety-ED3.html"class="w3-bar-item w3-button w3-hover-themea">Child Safety</a>
-						<a href="./Electronic-Protection-ED3.html"class="w3-bar-item w3-button w3-hover-themea">Electronic Protection</a>
+						<a href="./Blue-Staking-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Blue Stakes</a>
+						<a href="./Meter-Schedule-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Meter Read Dates</a>
+						<a href="./Solar-Power-Program-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Solar Power Program</a>
+						<a href="./Life-Support-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Life Support Information</a>
+						<a href="./Child-Safety-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Child Safety</a>
+						<a href="./Electronic-Protection-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Electronic Protection</a>
 					</div>
 				</div>
 				<div class="w3-dropdown-hover">
 					<button class="w3-btn nav-theme w3-hover-themea">Community</button>
 					<div class="w3-dropdown-content nav-theme w3-bar-block w3-card-4 w3-border-theme">
-					<a href="./Assistance-Programs-ED3.html"class="w3-bar-item w3-button w3-hover-themea">Assistance Programs</a>
+					<a href="./Assistance-Programs-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Assistance Programs</a>
 					<a href="./Community-Links-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Community Links</a>
 					<a href="./NEWS-ED3.html" class="w3-bar-item w3-button w3-hover-themea">News</a>	
 					</div>
@@ -247,12 +253,12 @@
 				<div class="w3-dropdown-hover">
 					<button class="w3-btn nav-theme w3-hover-themea">Contact Us</button>
 					<div class="w3-dropdown-content w3-bar-block w3-card-4 nav-theme w3-border-theme">
-					<a href="./Contact-Us-ED3.html"class="w3-bar-item w3-button w3-hover-themea">Contact Us</a>
-					<a href="./Outage-Report-ED3.html"class="w3-bar-item w3-button w3-hover-themea">Outages</a>
-					<a href="./Prevent-Power-Theft-ED3.html"class="w3-bar-item w3-button w3-hover-themea">Power Theft</a>
-					<!-- <a href="./Questions-ED3.html"class="w3-bar-item w3-button w3-hover-themea">Questions</a> -->
-					<a href="./Employment-ED3.html"class="w3-bar-item w3-button w3-hover-themea">Employment</a>
-					<a href="./Street-Light-Repair-ED3.html"class="w3-bar-item w3-button w3-hover-themea">Street Light Repair</a>
+					<a href="./Contact-Us-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Contact Us</a>
+					<a href="./Outage-Report-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Outages</a>
+					<a href="./Prevent-Power-Theft-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Power Theft</a>
+					<!-- <a href="./Questions-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Questions</a> -->
+					<a href="./Employment-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Employment</a>
+					<!-- <a href="./Street-Light-Repair-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Street Light Repair</a> -->
 					</div>
 				</div>
 			</div>			
@@ -265,7 +271,7 @@
 			<br>
 			<a href="http://www.ed3online.org/OMSWebMap/" target="_blank" Class="w3-hover-themea">Outage Map</a>
 			<br>
-			<a href="../Files/Svc Req & Specs 082417.pdf"target="_blank" Class="w3-hover-themea">Service Requirements</a>
+			<a href="../Files/Svc Req & Specs 082417.pdf" target="_blank" Class="w3-hover-themea">Service Requirements</a>
 			<br>
 			<a href="../Files/Programs_Explained.pdf" target="_blank" Class="w3-hover-themea">Plans & Programs</a>
 			</article>
@@ -292,13 +298,13 @@
 			<p>Any projections of the economic attributes of your system, regardless of the source, are not approved by or binding on ED3.</p>
 			<p>All customers may be subject to future rate changes in accordance with the terms and policies of ED3’s Electric Service Guidelines – Rules and Regulations.</p>
 			<hr>
-			<i><p class="w3-xlarge w3-text-themea w3-serif"><b>Solar Related Links</i></p></b>
+			<p class="w3-xlarge w3-text-themea w3-serif"><b><i>Solar Related Links</i></b></p>
 			<div class="w3-center w3-large w3-text-theme">
-			<a href="../Files/Solar/ED3 DG Presentation 07-21-15.pdf">Distributed Energy Generation (DG) Policy</a>
+			<a href="../Files/Solar/ED3_DG_Presentation_07-21-15.pdf" target="_blank">Distributed Energy Generation (DG) Policy</a>
 			<br>
-			<a href="../Files/Solar/Solar_Q&A_NOV2016.pdf">ED3 Solar Program FAQ</a>
+			<a href="../Files/Solar/Solar_Q&A_NOV2016.pdf" target="_blank">ED3 Solar Program FAQ</a>
 			<br>
-			<a href="../Files/Solar/SOLAR Packet 11-16-2016 Fillable.pdf">ED3 Solar Power Application</a>
+			<a href="../Files/Solar/SOLAR_Packet_11-16-2016.pdf" target="_blank">ED3 Solar Power Application</a>
 			<br>
 			</div>
 			<hr>
@@ -317,7 +323,7 @@
 			</section>
 			</div>
 			</div>
-		</div>
+		
 		<!-- Copyright Information for all pages-->
 		<div class="w3-container w3-themea w3-small  w3-center">
 				<p>Copyright © Electrical District No.3 of Pinal County 2003-2017, All Rights Reserved.</p>
@@ -328,5 +334,6 @@
 		<p class="w3-third w3-center"><strong>City Office</strong><br>19756 N.John Wayne Pkwy<br>Maricopa, AZ 85139<br>8:30 AM - 5:30 PM, Monday-Friday<br>(520) 424-9021</p>
 		<a href="./Contact-Us-ED3.html"><p class="w3-third w3-center"><strong>Contact Us</strong><br></p></a>
 		</footer>
+		</div>
 	</body>
 </html>

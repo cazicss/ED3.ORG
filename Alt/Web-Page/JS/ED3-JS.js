@@ -252,3 +252,12 @@ function ShowEleId(id){
 					list.style.display = "none";
 				}
 			}
+			
+			
+			
+			w3.slideshow(".SSLL", 2250);
+			w3.slideshow(".SSCL", 2250);
+			w3.slideshow(".SSCR", 2250);
+			w3.slideshow(".SSRR", 2250);
+			w3.slideshow(".mobile-SSCL", 2250);
+			w3.slideshow(".mobile-SSCR", 2250);
