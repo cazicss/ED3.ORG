@@ -360,6 +360,10 @@ button:hover {
 
 @media (max-width:601px){
 	
+	{
+		border-radius: 0px;
+	}
+	
 	article{
 		display: none;
 	}
@@ -473,6 +477,20 @@ height:100%;
 	
 	min-height:1000px;}
 
-@media (max-width:600px){.mobile{display:block;width:100%;margin:0}
-	.minhp100{min-height:500px;}
+@media (max-width:600px){
+	.mobile{
+		display:block;
+		width:100%;
+		margin:0;
+		border-radius: 0px;
 	}
+	
+	footer{
+		border-radius: 0px;
+	}
+	
+	#copyright{
+		border-radius: 0px;
+	}
+	.minhp100{min-height:500px;}
+}
