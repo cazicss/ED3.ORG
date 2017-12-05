@@ -360,7 +360,7 @@ button:hover {
 
 @media (max-width:601px){
 	
-	{
+	*{
 		border-radius: 0px;
 	}
 	
