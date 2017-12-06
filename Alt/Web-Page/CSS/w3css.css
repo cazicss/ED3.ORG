@@ -387,7 +387,7 @@ button:hover {
 	.slideshow{
 	display:inline-flex;
 	width:100%;
-	height:100%;
+	
 	max-height:200px;
 	vertical-align:center;
 	}
@@ -397,32 +397,38 @@ button:hover {
 .slideshow-item{
 display:inline-flex;
 width:20%;
-height:100%;
+
+max-height:200px;
 }
 .SSLL{
 	width:100%;
 	height:100%;
+	max-height:200px;
 }
 .SSCL{
 	width:100%;
 	height:100%;
+	max-height:200px;
 }
 
 .SSC{
 	width:100%;
 	height:100%;
+	max-height:200px;
 }
 
 .SSCR{
 	width:100%;
 	height:100%;
+	max-height:200px;
 	}
 .SSRR{
 	width:100%;
 	height:100%;
+	max-height:200px;
 }
 
-@media(min-width:1100px) and (max-width:1200px){
+@media(min-width:1100px){
 .slideshow{max-height:200px}
 }
 @media(min-width:950px) and (max-width:1099px){
@@ -440,13 +446,11 @@ height:100%;
 .SSLL{display:none}
 }
 /*
-
-
 */
 .mobile-slideshow{
 	display:inline-flex;
 	width:100%;
-	height:100%;
+	
 	max-height:100px;
 	vertical-align:center;
 	}
@@ -456,21 +460,24 @@ height:100%;
 .mobile-slideshow-item{
 	display:inline-flex;
 	width:33.3333%;
-	height:100%;
+	max-height:100px;
 	}
 .mobile-SSCL{
 	width:100%;
 	height:100%;
+	max-height:100px;
 }
 
 .mobile-SSC{
 	width:100%;
 	height:100%;
+	max-height:100px;
 }
 
 .mobile-SSCR{
 	width:100%;
 	height:100%;
+	max-height:100px;
 	}
 
 .minhp100{
