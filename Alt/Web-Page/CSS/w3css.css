@@ -437,10 +437,10 @@ max-height:200px;
 @media(min-width:850px) and (max-width:949px){
 .slideshow{max-height:150px}
 }
-@media(min-width:601px) and (max-width:849px){
+@media(min-width:602px) and (max-width:849px){
 .slideshow{max-height:125px}
 }
-@media (max-width:600px){
+@media (max-width:601px){
 .slideshow{max-height:100px}
 .SSRR{display:none}
 .SSLL{display:none}
@@ -484,7 +484,7 @@ max-height:200px;
 	
 	min-height:1000px;}
 
-@media (max-width:600px){
+@media (max-width:601px){
 	.mobile{
 		display:block;
 		width:100%;
@@ -500,4 +500,56 @@ max-height:200px;
 		border-radius: 0px;
 	}
 	.minhp100{min-height:500px;}
+}
+.apk {
+	font-size:3px;
+}
+/*  
+scroll text for news bulletins
+*/
+.ed3-marquee {
+ height: 4em;	
+ overflow: hidden;
+ position: relative;
+}
+.ed3-marquee h3 {
+ font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+ font-size: 1.3em;
+ color: blue;
+ text-shadow:.04em .04em limegreen; 
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ margin: 0;
+ line-height: 50px;
+ text-align: center;
+ /* Starting position */
+ -moz-transform:translateX(100%);
+ -webkit-transform:translateX(100%);	
+ transform:translateX(100%);
+ /* Apply animation to this element */	
+ -moz-animation: ed3-marquee 15s linear infinite;
+ -webkit-animation: ed3-marquee 15s linear infinite;
+ animation: ed3-marquee 15s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes ed3-marquee {
+ 0%   { -moz-transform: translateX(100%); }
+ 100% { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes ed3-marquee {
+ 0%   { -webkit-transform: translateX(100%); }
+ 100% { -webkit-transform: translateX(-100%); }
+}
+@keyframes ed3-marquee {
+ 0%   { 
+ -moz-transform: translateX(100%); /* Firefox bug fix */
+ -webkit-transform: translateX(100%); /* Firefox bug fix */
+ transform: translateX(100%); 		
+ }
+ 100% { 
+ -moz-transform: translateX(-100%); /* Firefox bug fix */
+ -webkit-transform: translateX(-100%); /* Firefox bug fix */
+ transform: translateX(-100%); 
+ }
 }
