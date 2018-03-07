@@ -1,0 +1,97 @@
+.slider {
+  max-width: 300px;
+  height: 200px;
+  margin: 0;
+  position: relative;
+  z-index: 10;
+}
+.slide1,.slide2,.slide3,.slide4,.slide5 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+}
+.slide1 {
+  background: url(../Images/Header/CL01.jpg)no-repeat center;
+      background-size: cover;
+    animation:fade 10s infinite;
+-webkit-animation:fade 10s infinite;
+z-index: 20;
+} 
+.slide2 {
+  background: url(../Images/Header/CL02.jpg)no-repeat center;
+      background-size: cover;
+    animation:fade2 10s infinite;
+-webkit-animation:fade2 10s infinite;
+z-index: 20;
+}
+.slide3 {
+    background: url(../Images/Header/CL03.jpg)no-repeat center;
+      background-size: cover;
+    animation:fade3 10s infinite;
+-webkit-animation:fade3 10s infinite;
+z-index: 20;
+}
+.slide4 {
+  background: url(../Images/Header/CL04.jpg)no-repeat center;
+      background-size: cover;
+    animation:fade4 10s infinite;
+-webkit-animation:fade4 10s infinite;
+z-index: 20;
+}
+.slide5 {
+    background: url(../Images/Header/CL05.jpg)no-repeat center;
+      background-size: cover;
+    animation:fade5 10s infinite;
+-webkit-animation:fade5 10s infinite;
+z-index: 20;
+}
+
+
+@keyframes fade
+{
+  0%   {opacity:1}
+  20% { opacity: 0}
+  40% { opacity: 0}
+  60% { opacity: 0}
+  80% { opacity: 0}
+  100% { opacity: 1}
+  
+  
+}
+@keyframes fade2
+{
+  0%   {opacity:0}
+   20% { opacity: 1}
+  40% { opacity: 0}
+  60% { opacity: 0}
+  80% { opacity: 0}
+  100% { opacity: 0}
+}
+@keyframes fade3
+{
+  0%   {opacity:0}
+   20% { opacity: 0}
+  40% { opacity: 1}
+  60% { opacity: 0}
+  80% { opacity: 0}
+  100% { opacity: 0}
+}
+@keyframes fade4
+{
+  0%   {opacity:0}
+   20% { opacity: 0}
+  40% { opacity: 0}
+  60% { opacity: 1}
+  80% { opacity: 0}
+  100% { opacity: 0}
+}
+@keyframes fade5
+{
+  0%   {opacity:0}
+   20% { opacity: 0}
+  40% { opacity: 0}
+  60% { opacity: 0}
+  80% { opacity: 1}
+  100% { opacity: 0}
+}
