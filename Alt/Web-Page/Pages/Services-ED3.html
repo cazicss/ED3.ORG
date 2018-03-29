@@ -278,13 +278,181 @@
 			<a href="../Files/Programs_Explained.pdf" target="_blank" Class="w3-hover-themea">Plans & Programs</a>
 			</article>
 			<!-- left side of page end -->
-			<div class="w3-container w3-small w3-rest w3-margin mobile w3-round-large w3-white w3-text-left" style="min-height: 100%">
+			<div class="w3-container w3-small w3-rest w3-margin mobile w3-round-large w3-white w3-text-left minhp100">
 			<br>
-			<p class="w3-xxlarge w3-serif w3-center w3-text-theme"><b>E-Bill Sign Up</b></p>
+			<p class="w3-xxlarge w3-serif w3-center w3-text-theme"><b>New Service & Disconnects</b></p>
 			<hr>
 			<br>
-			<p>If you wish to sign up to receive paperless bills, please email customer service at the below email.  Please include account number, account name,  service address and the designated email address that you would like for billings statements to be sent to.  Thank you.</p>
-			<p>Email: <a href="mailto:customerservice@ed-3.org"class="w3-text-theme">customerservice@ed-3.org</a></p>
+			To get new service please fill out the web form below, call XXX-XXX-XXXX, or come in to one of our locations and fill out a form.
+			<br>
+			<br>
+			<button onclick="document.getElementById('NewService-FORM').style.display='block'" class="w3-btn w3-round w3-hover-blue w3-theme">New Service<br>Web Form</button>
+			
+			<div id="LPP-BPP-FORM" class="w3-modal">
+					<div class="w3-modal-content">
+						<div class="w3-container">
+						<span onclick="document.getElementById('NewService-FORM').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright">&times;</span>
+						<br>
+						<br>
+						<h2 class="w3-center">New Service Connection Form</h2>
+						<h3 class="w3-center">RESIDENTIAL / SMALL GENERAL SERVICE</h3>
+						<div class="w3-margin w3-padding">
+						<h5><b>Instructions</b></h5>
+							<div class="w3-margin w3-padding">
+							
+							</div>
+						
+						<h5><b>REQUIREMENTS</b></h5>
+							<div class="w3-margin w3-padding">
+							
+							</div>
+						</div>
+						<hr>
+						<div class="w3-container w3-margin-bottom w3-border w3-round-large">
+						 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
+							<div class="w3-section w3-padding w3-margin">
+								<div class="w3-col s5 w3-padding-small"
+								<label for="Fname"><b>First Name</b></label>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Fname" type="text" placeholder="First Name" name="first_name" maxlength="24" required>
+								</div>
+								<div class="w3-col s5 w3-padding-small"
+								<label for="Lname"><b>Last Name</b></label>
+								<input class="w3-input w3-padding w3-border w3-round-small w3-margin-bottom" id="Lname" type="text" placeholder="Last Name" name="last_name"  maxlength="24" required>
+								</div>
+								<div class="w3-col s2 w3-padding-small"
+								<label for="Mname"><b>M.I.</b></label>
+								<input class="w3-input w3-padding w3-border w3-round-small w3-margin-bottom" id="Mname" type="text" placeholder=" Middle Initial" name="middle_initinal" maxlength="10">
+								</div>
+								<div class="w3-half w3-padding-small">
+								<label for="SvcAddress"><b>Service Address</b></label>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="SvcAddress" type="text" placeholder="Service Address" name="service_address" maxlength="50" required>
+								</div>
+								<div class="w3-half w3-padding-small">
+								<label for="City"><b>City</b></label>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="City" type="text" placeholder="City" name="city" maxlength="24" required>
+								</div>
+								<div class="w3-quarter w3-padding-small">
+								<label for="State"><b>State</b></label>
+								<select class="w3-select w3-border w3-round-small w3-margin-bottom half" id="State" type="select" placeholder="State" name="state" required>
+									<option selected disabled>Enter State</option>
+									<option required>Alabama</option>
+									<option required>Alaska</option> 
+									<option required>Arizona</option> 
+									<option required>Arkansas</option> 
+									<option>California</option> 
+									<option>Colorado</option> 
+									<option>Connecticut</option> 
+									<option>Delaware</option> 
+									<option>Florida</option> 
+									<option>Georgia</option> 
+									<option>Hawaii</option> 
+									<option>Idaho</option> 
+									<option>Illinois</option> 
+									<option>Indiana</option> 
+									<option>Iowa</option> 
+									<option>Kansas</option>
+									<option>Kentucky</option> 
+									<option>Louisiana</option> 
+									<option>Maine</option> 
+									<option>Maryland</option> 
+									<option>Massachusetts</option> 
+									<option>Michigan</option> 
+									<option>Minnesota</option> 
+									<option>Mississippi</option> 
+									<option>Missouri</option> 
+									<option>Montana</option> 
+									<option>Nebraska</option> 
+									<option>Nevada</option> 
+									<option>New Hampshire</option> 
+									<option>New Jersey</option> 
+									<option>New Mexico</option> 
+									<option>New York</option> 
+									<option>North Carolina</option> 
+									<option>North Dakota</option> 
+									<option>Ohio</option> 
+									<option>Oklahoma</option> 
+									<option>Oregon</option> 
+									<option>Pennsylvania</option> 
+									<option>Rhode Island</option> 
+									<option>South Carolina</option> 
+									<option>South Dakota</option> 
+									<option>Tennessee</option> 
+									<option>Texas</option> 
+									<option>Utah</option> 
+									<option>Vermont</option> 
+									<option>Virginia</option> 
+									<option>Washington</option> 
+									<option>West Virginia</option> 
+									<option>Wisconsin</option> 
+									<option>Wyoming</option>
+								</select>
+								</div> 
+								
+								<div class="w3-quarter w3-padding-small">
+								<label for="Zip"><b>Zip Code</b></label><br>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Zip" type="text" placeholder="Zip Code" name="zip" min="00000" maxlength="9" required>
+								</div>
+								<div class="w3-half w3-padding-small">
+								<label for="EmailAdd"><b>E-Mail Address</b></label><br>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Email" type="email" placeholder="E-Mail" name="email" maxlength="240" required>
+								</div>
+								<div class="w3-third w3-padding-small">
+								<label for="Account"><b>Account #</b></label><br>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Account" type="text" placeholder="Account Number" name="account_number min="6" maxlength="14" required>
+								</div>
+								
+								<div class="w3-third w3-padding-small">
+								<label for="Phone1"><b>Phone # 1</b></label><br>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Phone1" type="text" placeholder="Phone Num. (xxx)xxx-xxxx" name="phone1" maxlength="13" required>
+								</div>
+								<div class="w3-third w3-padding-small">
+								<label for="Phone2"><b>Phone # 2</b></label><br>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Phone2" type="text" placeholder="Phone Num. (xxx)xxx-xxxx" name="phone2" maxlength="13">
+								</div>
+								<br><br>
+								
+								
+								<div class="w3-padding-small">
+								<label for="ProgramChoice"><b>Program Choice</b></label><br>
+									<div class="w3-padding-small">
+									
+										<div class="w3-half">
+										 Level Payment Plan <input class="w3-radio" type="radio" name="program_choice" id="programChoice" value="LPP" required>  
+										</div>
+										<div class="w3-half">
+										 Budget Payment Plan <input class="w3-radio" type="radio" name="program_choice" id="programChoice" value="BPP" required> 
+										</div>
+									<br><br>
+									</div>
+								</div>
+								
+								<br>
+								<div class="w3-padding-small">
+									<div class="w3-input w3-border w3-round-small w3-margin-bottom">
+									<label for="Agreement"><b>Agreement</b></label><br>
+									I agree to the following guidelines as may be amended and all other regulations of the District:
+									<input Class="w3-check" type="checkbox" name="agreement" id="agreement" required>
+									</div>
+								</div>
+								<div class="w3-padding-small">
+								<input class="w3-half w3-large w3-button w3-green w3-padding-small w3-margin-bottom" type="submit" value="Submit">
+								<input class="w3-half w3-large w3-button w3-red w3-padding-small w3-margin-bottom"  type="Reset" value="Reset">
+								</div>
+							</div>
+							
+							</form>
+							</div>
+						 </div>
+					</div>
+					</div>
+			
+			<hr>
+			<br>
+			To get services Disconnected please fill out the web form below, call XXX-XXX-XXXX, or come in to one of our locations and fill out a form.
+			<br>
+			<br>
+			<button onclick="document.getElementById('Disconnect-FORM').style.display='block'" class="w3-btn w3-round w3-hover-blue w3-theme">Service Disconnect<br>Web Form</button>
+			
 			</div>
 		</div>		
 		<!-- Copyright Information for all pages-->
