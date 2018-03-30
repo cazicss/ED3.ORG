@@ -1,0 +1,193 @@
+﻿/* Portrait */
+
+@media screen and (max-width: 320px)
+{
+
+}
+
+/* Landscape */
+
+@media screen and (min-width: 321px) and (max-width: 480px)
+{
+
+}
+
+html, body
+{
+    font-size: 15px !important;
+}
+
+.fontOptions
+{
+	font-weight:normal;
+	font-size: 8px;
+}
+
+.imgOptions
+{
+    height: 24px !important;
+    width: 24px !important;
+}
+
+#divLayerVisibleContainer
+{
+    font-size: 13px !important;
+    position: absolute;
+    top: 90px;
+    right: 10px;
+    width: 200px;
+    z-index: 1000;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(110,110,110,.85)), color-stop(25%, #0A0A0A));
+    background: -moz-linear-gradient(top, rgba(110,110,110,.85), #0A0A0A 25%);
+    background: -o-linear-gradient(rgba(110,110,110,.85), #0A0A0A 25%);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+#divLayerContainer
+{
+    font-size: 13px !important;
+    position: absolute;
+    top: 90px;
+    right: 10px;
+    width: 200px;
+    z-index: 1000;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(110,110,110,.85)), color-stop(25%, #0A0A0A));
+    background: -moz-linear-gradient(top, rgba(110,110,110,.85), #0A0A0A 25%);
+    background: -o-linear-gradient(rgba(110,110,110,.85), #0A0A0A 25%);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#divRequestOptionsContainer
+{
+    right: 10px !important;
+    min-width: 200px;
+}
+
+
+#divServiceRequestContent, #divCreateRequestContainer, #divAddressContent
+{
+    z-index: 1001;
+    background-color: rgba(71, 71, 71,.75);
+    width: 100%;
+    height: 100%;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 0 10px #fff;
+    -moz-box-shadow: 0 0 10px #fff;
+    -o-box-shadow: 0 0 10px #fff;
+    box-shadow: 0 0 10px #fff;
+}
+
+#divAddressContainer
+{
+    z-index: 1000;
+}
+
+#divCreateRequest
+{
+    z-index: 1001;
+}
+
+#divServiceRequestContainer
+{
+    z-index: 1002;
+}
+
+.basemapThumbnail
+{
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    height: 50px !important;
+    margin: 1px;
+    width: 75px !important;
+    cursor: pointer;
+}
+
+.baseMapContainerNode
+{
+    float: left;
+    margin: 10px 10px 10px 10px;
+    width: 75px !important;
+}
+
+#txtSelectedRequest
+{
+    padding: 2px 1px 1px 1px !important;
+}
+
+#txtAddress, #txtSelectedRequest, .txtArea, .txtBox
+{
+    font-size: 14px !important;
+}
+
+.trOptions
+{
+    height: 50px !important;
+}
+
+.txtBox, #txtSelectedRequest, #txtAddress, #txtFileName
+{
+    height: 30px !important;
+}
+
+#imgLocate
+{
+    height: 30px !important;
+    width: 30px !important;
+}
+
+.trRowStyle
+{
+    height: 39px !important;
+}
+
+.trTextAreaRowStyle
+{
+    height: 60px !important;
+}
+
+#imgDropdownCarot
+{
+    height: 31px !important;
+    width: 31px !important;
+}
+
+#divApplicationFooter
+{
+    position: absolute;
+    bottom: 0px;
+    display: block;
+    background-color: rgba(71, 71, 71,.75);
+    height: 25px;
+    color: #fff;
+    text-align: center;
+    z-index: 1000;
+    width: 100%;
+    vertical-align: middle;
+}
+
+.logo-sm
+{
+    bottom: 30px !important;
+}
+
+.customButton
+{
+    font-size: 14px !important;
+}
+
+.trTextAreaRowStyle
+{
+    height: 75px !important;
+}
+
+.customButton
+{
+    height: 35px !important;
+}

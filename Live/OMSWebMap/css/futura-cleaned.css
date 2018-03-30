@@ -1,0 +1,451 @@
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    /*font-family: Tahoma;*/
+    font-size: 14px;
+}
+
+body {
+    overflow: hidden;
+}
+
+:focus {
+    outline: none;
+}
+
+a, li {
+    outline: 0px;
+    outline-width: 0px;
+}
+
+div:active {
+    outline: none;
+}
+
+div:focus {
+    outline: none;
+}
+
+@media (min-width:768px) {
+    .menuLabel {
+        display: none;
+    }
+}
+
+@media (max-width:767px) {
+    #liToolsMenu {
+        display: none;
+    }
+}
+
+#map {
+    padding: 0;
+    overflow: hidden;
+}
+
+#divNavbar img {
+    width: 48px;
+}
+
+.navbar-brand {
+    font-size: 2em;
+    font-weight: lighter;
+    font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+}
+
+#divNavbar .dropdown-toggle {
+    padding: 4px 8px;
+}
+
+.staticButton {
+    width: 48px;
+    height: 48px;
+}
+
+    .staticButton a {
+        margin-top: -12px;
+        height: 60px;
+        outline: 0px;
+        outline-width: 0px;
+    }
+
+    .staticButton img {
+        margin-left: -12px;
+    }
+
+.esriSimpleSlider {
+    border-width: 2px;
+}
+
+#map_zoom_slider {
+    position: fixed;
+    top: 70px;
+}
+
+.esriSimpleSliderVertical .esriSimpleSliderIncrementButton {
+    border-bottom-width: 2px;
+}
+
+#divBasemapsDijitWrapper {
+    position: fixed;
+    top: 70px;
+    z-index: 40;
+}
+
+#divGrowlerDijitWrapper {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    z-index: 40;
+}
+
+#outerBorderContainer {
+    position: absolute;
+    top: 0px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #FFFFFF;
+}
+
+@media (max-width:767px) {
+    #toolsPanel {
+        width: 250px;
+    }
+}
+
+@media (max-width: 767px) {
+    #divGeoLocationDijitWrapper {
+        top: 180px !important;
+    }
+
+    #map_zoom_slider {
+        top: 110px !important;
+    }
+}
+
+@media (max-width: 650px) {
+    #toolsPanel {
+        display: none;
+    }
+}
+
+/*--------------------------
+    layout
+----------------------------    */
+#divNavbar {
+}
+
+#divGeoLocationDijitWrapper {
+    position: fixed;
+    top: 140px;
+    left: 20px;
+    z-index: 40;
+}
+
+.sidebar {
+    position: fixed;
+    top: 57px;
+    bottom: 0;
+    width: 0;
+    z-index: 90;
+}
+
+#divLeftSidebar {
+    left: -330px;
+    width: 330px;
+    /*background-color: rgba(34,34,34, .9);*/
+    background-color: rgba(0, 0, 0, .3);
+    border-right: 1px solid rgba(0, 0, 0, .1);
+}
+
+/*
+    right side
+*/
+#divRightSidebar {
+    right: -330px;
+}
+
+#divBasemapsDijitWrapper {
+    right: 20px;
+}
+
+#toolsPanel {
+    width: 330px;
+    height: 100%;
+    padding: 6px;
+    overflow: auto;
+    overflow-x: hidden;
+    background-color: rgba(0, 0, 0, .3);
+    border-left: 1px solid rgba(0, 0, 0, .1);
+}
+
+.dijitTitlePaneContentInner {
+    background-color: white;
+}
+
+#divDataGridWrapper {
+    position: fixed;
+    height: 325px;
+    bottom: -325px;
+    left: 0;
+    right: 0;
+    z-index: 90;
+    background-color: rgba(0, 0, 0, .3);
+    border-top: 1px solid rgba(0, 0, 0, .1);
+}
+
+.divSearchResultsWrapper {
+    /*overflow: hidden;*/
+    -webkit-overflow-scrolling: touch;   
+    background-color: rgba(0, 0, 0, .3);
+}
+
+.dataTables_wrapper {
+    border-top: 1px solid silver;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+.divDatGridCloseButtonWrapper {
+    float: right;
+     margin-top: -20px;
+    margin-bottom: 6px;
+}
+
+    .divDatGridCloseButtonWrapper a {
+        text-decoration: none !important;
+        margin-right: 3px;
+        padding: 3px 8px 4px 8px;
+        border: 1px solid #999;
+        cursor: pointer;
+        *cursor: hand;
+        font-size: 0.88em;
+        color: black !important;
+        background: #ffffff;
+        font-weight: normal !important;
+        height: 30px;
+    }
+
+        .divDatGridCloseButtonWrapper a:hover {
+            border: 1px solid #666;
+        }
+
+        .divDatGridCloseButtonWrapper a:active {
+            outline: 0;
+            -moz-outline: 0;
+        }
+
+        .divDatGridCloseButtonWrapper a:focus {
+            outline: 0;
+            -moz-outline: 0;
+        }
+
+.divDatGridLegendButtonWrapper {
+    float: right;
+    margin-top: -20px;
+}
+
+    .divDatGridLegendButtonWrapper a {
+        text-decoration: none !important;
+        margin-right: 3px;
+        padding: 3px 8px 4px 8px;
+        border: 1px solid #999;
+        cursor: pointer;
+        *cursor: hand;
+        font-size: 0.88em;
+        color: black !important;
+        background: #ffffff;
+        font-weight: normal !important;
+        height: 30px;
+    }
+
+        .divDatGridLegendButtonWrapper a:hover {
+            border: 1px solid #666;
+        }
+
+        .divDatGridLegendButtonWrapper a:active {
+            outline: 0;
+            -moz-outline: 0;
+        }
+
+        .divDatGridLegendButtonWrapper a:focus {
+            outline: 0;
+            -moz-outline: 0;
+        }
+
+#divLeftSidebarHeader {
+    margin: 4px;
+    background-color: white;
+    padding: 6px;
+}
+
+.divLeftSidebarCloseButtonWrapper {
+    float: right;
+    display: inline-block;
+}
+
+    .divLeftSidebarCloseButtonWrapper a {
+        text-decoration: none !important;
+        padding: 3px 8px 4px 8px;
+        border: 1px solid #999;
+        cursor: pointer;
+        *cursor: hand;
+        color: black !important;
+        background: #ffffff;
+        font-weight: normal !important;
+    }
+
+        .divLeftSidebarCloseButtonWrapper a:hover {
+            border: 1px solid #666;
+        }
+
+        .divLeftSidebarCloseButtonWrapper a:active {
+            outline: 0;
+            -moz-outline: 0;
+        }
+
+        .divLeftSidebarCloseButtonWrapper a:focus {
+            outline: 0;
+            -moz-outline: 0;
+        }
+
+.resultsPaneCollapseButton {
+    position: absolute;
+    z-index: 40;
+    right: 60px;
+    width: 22px;
+    height: 25px;
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-left: 1px solid #808080;
+    background-color: white;
+    border-radius: 5px 5px 0 0;
+    background-position: 2px 4px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    bottom: 0px;
+}
+
+    .resultsPaneCollapseButton.close {
+        background-image: url("images/arrow_down.png");
+        opacity: 1 !important;
+    }
+
+    .resultsPaneCollapseButton.open {
+        background-image: url("images/arrow_up.png");
+        opacity: 1 !important;
+    }
+
+.resultsPaneCloseAllButton {
+    position: absolute;
+    z-index: 40;
+    right: 20px;
+    width: 22px;
+    height: 25px;
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-left: 1px solid #808080;
+    background-color: white;
+    border-radius: 5px 5px 0 0;
+    background-position: 3px 4px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    bottom: 0px;
+    background-image: url("images/close.gif");
+}
+
+#divIdentifyResultsTreeView {
+    margin: 4px;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+#divIdentifyResultDetails {
+    margin: 4px;
+    height: 450px;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+#divWorkingOverlay {
+    position: fixed;
+    /*top: 0;*/
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /*background: #000000;*/
+    /*background-color: #000;*/
+    background-color: rgba(0,0,0,.5);
+    z-index: 10000;
+}
+
+    #divWorkingOverlay h5 {
+        display: inline;
+        font-weight: bold;
+    }
+
+#divLoadingGif {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+#divLightsByCustomerQueryControlsWrapper {
+    margin: 4px;
+}
+
+
+.esriPopupMaximized {
+    margin-top: 80px !important;
+}
+
+.esriPopup .titleButton.maximize {
+    width: 13px !important;
+}
+
+.outerPointer {
+    display: none;
+}
+
+.esriPopupWrapper {
+    margin: 1em;
+}
+
+.no-close .ui-dialog-titlebar-close {
+    display: none;
+}
+
+#divLegendDialog img {
+    width: 28px;
+}
+
+#loginlink {
+    display: inline-block;
+    color: white;
+    font-size: 1.3em;
+    text-decoration: none;
+    float: right;
+    vertical-align: middle;
+    line-height: 50px;
+    margin-top: 4px;
+    margin-right: 1em;
+    font-size: 1em;
+}
+
+#welcomeMessage {
+    display: inline-block;
+    color: white;
+    font-size: 1.3em;
+    text-decoration: none;
+    float: right;
+    vertical-align: middle;
+    line-height: 50px;
+    margin-top: 4px;
+    margin-right: 1em;
+    margin-left: 2em;
+    font-size: 1em;
+}
+

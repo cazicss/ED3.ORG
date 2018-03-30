@@ -1,0 +1,328 @@
+/*
+ * Table styles
+ */
+
+/* Self clearing - http://www.webtoolkit.info/css-clearfix.html */
+.dataTables_wrapper:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.dataTables_info {
+    font-size: 0.8em !important;
+    font-weight: normal !important;
+}
+
+a:link, a:visited, a:active, a:hover {
+    color: black;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/**a.aDrillDown {
+    color: blue;
+    text-decoration: none;
+}
+**/
+/**    a.aDrillDown :hover {
+        font-weight: bold;
+        text-decoration: underline;
+    }
+**/
+table.pretty {
+    width: 100%;
+    clear: both;
+    white-space: nowrap;
+    font-size: .8em;
+}
+
+    table.pretty thead th {
+        padding: 0 4px 4px 8px;
+        font-weight: normal;
+    }
+
+    table.pretty tfoot th {
+        padding: 0 4px 4px 2px;
+        font-weight: normal;
+    }
+
+    table.pretty td {
+        padding: 10px;
+        /*border: 1px solid #C5C5C5;*/
+        font-weight: normal;
+        text-align:center;
+    }
+
+    /*column headers*/
+    table.pretty th {
+        /*padding: 5px;*/
+        /*border-bottom: 1px solid #fff;*/
+        color: black;
+        font-size: small;
+        font-weight: bold;
+        /*padding: 8px 20px 8px 8px;*/
+    }
+
+    table.pretty thead th span /* this gets the sort icons to show beside the header text */ {
+        float: left;
+        display: inline;
+    }
+
+    /* Body cells */
+
+        table.pretty tbody th {
+        text-align: left;
+        background: #F1F1F1;
+        border: 1px solid #fff;
+        color: white;
+        white-space: nowrap;
+    }
+
+    table.pretty tbody td {
+        /*text-align: center;*/
+        /*background: #F8F8F8;*/
+        border-top: 1px solid #dddddd;
+        padding: 2px 2px 2px 6px;
+    }
+
+    table.pretty tbody tr.odd td {
+        /*background: #d3caca;*/
+        background-color:whitesmoke;
+    }
+
+    /* Footer cells */
+    table.pretty tfoot th {
+        /*background: #b0cc7f;*/
+        padding-top: 4px;
+        background-color: whitesmoke;
+        text-align: left;
+        border: none;
+    }
+
+    /**    table.pretty tfoot td {
+        background: #d7e1c5;
+        text-align: center;
+        font-weight: bold;
+    }
+**/
+    table.pretty tr.row_selected td {
+        background-color: #7B7B7B !important;
+    }
+
+
+/*Pagination*/
+
+/**a.paginate_button,
+a.paginate_active {
+    display: inline-block;
+    /*background-color: #6B7D8B;*\/
+    /*padding: 2px;
+    margin-left: 10px;*\/
+    cursor: pointer;
+    *cursor: hand;
+}
+**/
+/**a.paginate_active {
+    background-color: transparent;
+    border: 1px solid #CCCCCC;
+}
+**/
+/**a.paginate_button_disabled {
+    /*color: #3d6672;*\/
+    color: Silver;
+}
+**/
+/**a.current {
+    padding: 0 !important;
+}
+**/
+/**.paging_full_numbers a:active {
+    outline: none;
+}
+**/
+/**.paging_full_numbers a:hover {
+    text-decoration: none;
+}
+**/
+/**div.dataTables_paginate .ui-button {
+    padding: 2px;
+    text-decoration: none !important;
+}
+**/
+/**div.dataTables_paginate span > a {
+    width: 15px;
+    padding: 0 8px;
+    text-align: center;
+    text-decoration: none !important;
+}
+**/
+/**div.dataTables_paginate {
+    padding: 0;
+    float: left;
+    font-weight: bold;
+}
+**/
+/**div.paging_simple_numbers {
+    padding: 0;
+}
+**/
+div.dataTables_info {
+    padding: 4px;
+    margin: 0 0 0 0;
+    font-weight: bold;
+    font-size: 1.15em;
+    color: whitesmoke !important;
+}
+
+/**#tblSearchResults_previous {
+    margin: 4px 8px 6px 0;
+    border: 1px solid #808080;
+    padding: 3px 5px 3px 5px;
+    text-decoration: none !important;
+}
+**/
+/**#tblSearchResults_next {
+    margin: 4px 0 3px 0;
+    border: 1px solid #808080;
+    padding: 3px 5px 3px 5px;
+    text-decoration: none !important;
+}
+**/
+/**#tblSearchResults_previous:hover {
+    /*text-decoration: underline;*\/
+    /*background-color: #d3caca;*\/
+    cursor: pointer;
+}
+**/
+/**#tblSearchResults_next:hover {
+    /*text-decoration: underline;*\/
+    /*background-color: #d3caca;*\/
+    cursor: pointer;
+}
+**/
+/**#tblSalesResults_previous {
+    margin: 4px 8px 6px 0;
+    border: 1px solid #808080;
+    padding: 3px 5px 3px 5px;
+    text-decoration: none !important;
+}
+**/
+/**#tblSalesResults_next {
+    margin: 4px 0 3px 0;
+    border: 1px solid #808080;
+    padding: 3px 5px 3px 5px;
+    text-decoration: none !important;
+}
+**/
+/**#tblSalesResults_previous:hover {
+    /*text-decoration: underline;*\/
+    /*background-color: #d3caca;*\/
+    cursor: pointer;
+}
+**/
+/**#tblSalesResults_next:hover {
+    /*text-decoration: underline;*\/
+    background-color: # /*d3ca*\/ ca;
+    cursor: pointer;
+}
+**/
+/*
+ * Sorting
+ */
+table.pretty thead {
+    /*background-color: #444;*/
+    color: whitesmoke;
+}
+
+    table.pretty thead th.sorting_asc {
+        background: url('../images/sort_asc.png') no-repeat right center;
+    }
+
+    /**    table.pretty thead th.sorting_desc {
+        background:  url('images/sort_desc.png') no-repeat right center;
+    }
+**/
+    /**    table.pretty thead th.sorting_disabled {
+        /*background: #444;*\/
+    }
+**/
+    table.pretty thead th.sorting {
+        background: url('../images/sort_both.png') no-repeat right center;
+    }
+
+        table.pretty thead th.sorting_asc:hover, /**table.pretty thead th.sorting_desc:hover, **/ table.pretty thead th.sorting:hover {
+            cursor: pointer;
+        }
+
+/**.divRegionTableToolBar {
+    position: relative;
+    top: 10px;
+    margin: 0 auto;
+}
+**/
+/**.filter label {
+    color: whitesmoke;
+    font-weight: normal;
+    margin: 4px 4px 0 0;
+}
+**/
+/**.filter input {
+    color: #333;
+}
+**/
+
+/*table.pretty tbody tr.even:hover, tbody tr.even td.highlighted {
+    background-color: silver;
+}
+
+table.pretty tbody tr.odd:hover, tbody tr.odd td.highlighted {
+    background-color: silver;
+}
+
+table.pretty_row tr.even:hover {
+    background-color: silver;
+}
+
+table.pretty_row tr.even:hover td.sorting_1 {
+    background-color: silver;
+}
+
+table.pretty_row tr.even:hover td.sorting_2 {
+    background-color: silver;
+}
+
+table.pretty_row tr.even:hover td.sorting_3 {
+    background-color: silver;
+}
+
+table.pretty_row tr.odd:hover {
+    background-color: silver;
+}
+
+table.pretty_row tr.odd:hover td.sorting_1 {
+    background-color: silver;
+}
+
+table.pretty_row tr.odd:hover td.sorting_2 {
+    background-color: silver;
+}
+
+table.pretty_row tr.odd:hover td.sorting_3 {
+    background-color: silver;
+}*/
+
+#divIdentifyResultDetails thead {
+    /*background-color: rgba(0, 0, 0, .4);*/
+}
+
+#divIdentifyResultDetails.dataTables_scrollHeadInner {
+    background-color: rgba(0, 0, 0, .8);
+}
+
+.dataTables_scrollFoot {
+    border-right: 18px solid #F5F5F5 !important;
+}
