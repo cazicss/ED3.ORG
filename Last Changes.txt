@@ -1,8 +1,7 @@
+updates 
 
--update color themes on main navbar and its menus to match mobile.
 
--fixed title on "About Online Paying" page.
+there is a folder for the building of the irrigation side website.  they have not be forth coming in documentation that they want posted. currently stagnated. will address again after web forms are live and functioning smoothly.
 
--update responsiveness on banner
 
--ripple changes through all pages.
+in last push are the rest of changes most work is currently happening in the alt file will push another live file in near future so what is on the servers matches it, last live file push was 2018/03/08.

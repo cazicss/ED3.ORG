@@ -1,4 +1,7 @@
 <!DOCTYPE HTML>
+<?php	
+	include('ValidateLPPBPP.php');
+	?>
 <html Lang="en">
 	
 <!--- Authors:  Keith Gehrke, Joe Kidd
@@ -24,6 +27,23 @@
 		<meta http-equiv="expires" content="0" />
 		<meta http-equiv="pragma" content="no-cache" />
 		<meta http-equiv="X-Frame-Options" content="deny">
+		<link rel="apple-touch-icon" sizes="57x57" href="../Images/Favicon/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="../Images/Favicon/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="../Images/Favicon/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="../Images/Favicon/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="../Images/Favicon/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="../Images/Favicon/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="../Images/Favicon/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="../Images/Favicon/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="../Images/Favicon/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192"  href="../Images/Favicon/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="../Images/Favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="../Images/Favicon/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="../Images/Favicon/favicon-16x16.png">
+		<link rel="manifest" href="../Images/Favicon/manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="../Images/Favicon/ms-icon-144x144.png">
+		<meta name="theme-color" content="#ffffff">
 	</head>
 	
 	<!--- Background implemented -->
@@ -271,7 +291,7 @@
 			<br>
 			<a href="http://www.ed3online.org/OMSWebMap/" target="_blank" Class="w3-hover-themea">Outage Map</a>
 			<br>
-			<a href="../Files/Svc Req & Specs 082417.pdf" target="_blank" Class="w3-hover-themea">Service Requirements</a>
+			<a href="../Files/SvcReqSpecs010318.pdf" target="_blank" Class="w3-hover-themea">Service Requirements</a>
 			<br>
 			<a href="../Files/Programs_Explained.pdf" target="_blank" Class="w3-hover-themea">Plans & Programs</a>
 			</article>
@@ -282,32 +302,195 @@
 					<br>
 					<p class="w3-xxlarge w3-serif w3-text-theme"><b>ED3 Plans & Programs</b></p>
 					<hr>
-					<!-- <br> -->
-					<!-- <br> -->
-					<!-- <img title="ED3 Logo" alt="ED3 Logo" src="../Images/LOGO.jpg" border="0"  -->
-					<!-- height="auto" Style="width:100%;max-width:375px"></img> -->
-					<!-- <br> -->
-					<!-- <br> -->
-					<!-- <br> -->
-					<!-- <br> -->
+					
 				</div>
 				<div>
 				<p class="w3-xlarge w3-serif W3-center w3-text-themea"><b>Level Payment Plan or
 				<br>Budget Payment Plan</b></p>
 				<p class="w3-small">Electrical District No. 3 is now offering two Programs to help manage your electric bill. The Level Payment Plan and Budget Payment Plan.</p>
-				<i><p class="w3-large w3-text-themea w3-serif">Level Payment Plan (LPP)</i></p>
+				<p class="w3-large w3-text-themea w3-serif"><i>Level Payment Plan (LPP)</i></p>
 				<p class="w3-small"><b>LPP</b> - is a no fee Program that averages the most recent twelve (12) months of account history. Each month your power bill will be a different amount and will vary from month to month.
-				<i><p class="w3-large w3-text-themea w3-serif">Budget Payment Plan (BPP)</i></p>
+				<p class="w3-large w3-text-themea w3-serif"><i>Budget Payment Plan (BPP)</i></p>
 				<p class="w3-small"><b>BPP</b> - is a no fee Program that balances the seasonal highs and lows of your electric bill to make your payment more predictable each month. It can make household budgeting easier. 
 				If your usage remains similar to the past, the amount of your ED3 bill will remain constant each month all year long.
 				<p class="w3-large w3-text-red"><i>To Sign Up</i></p>
 				<a href="../Images/LPP BPP Res Sm Comm APP (Rev 10 072617).pdf"  class="w3-text-theme">LPP or BPP Application</a>
 				<br>
+				<br>
+				<button onclick="document.getElementById('LPP-BPP-FORM').style.display='block'" class="w3-btn w3-round w3-hover-blue w3-theme">LPP/BPP <br>Web Form</button>
 				<p class="w3-small">Please print and complete the above form. You can fax the completed application to us at 520-494-7053 or it can be mailed to 41630 W. Louis Johnson Dr., Maricopa, AZ 85138.  
 				It can also be dropped by either of our locations at 41630 W. Louis Johnson Dr. or 19756 N. John Wayne Pkwy, Suite 101.</p>
 				
 				</div>
 				
+				 <div id="LPP-BPP-FORM" class="w3-modal">
+					<div class="w3-modal-content">
+						<div class="w3-container">
+						<span onclick="document.getElementById('LPP-BPP-FORM').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright">&times;</span>
+						<br>
+						<h2 class="w3-center">Level Or Budget Payment Plan Application</h2>
+						<h3 class="w3-center">RESIDENTIAL / SMALL GENERAL SERVICE</h3>
+						<div class="w3-margin w3-padding">
+						<h5><b>HOW PROGRAMS WORK</b></h5>
+							<div class="w3-margin w3-padding">
+							<p>ED3 uses your annual energy usage for the previous year with the current rate to calculate your monthly payment amount.</p>
+							<p>Any changes in District rates will be reflected in your monthly payment amount.</p>
+							<p>Your account will continue to be charged for the actual amount of energy used and the monthly payment amount will be adjusted quarterly to continue to more evenly spread the costs of your power usage.</p>
+							<p>Quarterly reviews will be done in January, April, July and October.</p>
+							<p>Account reconciliation will take place each year in October and upon closing of the account.</p>
+							<p>Monthly statements will continue to be sent to you so you can monitor your energy usage. </p>
+							<p>You will remain responsible for the costs of your actual usage and this plan will spread these costs throughout the year.</p>
+							</div>
+						
+						<h5><b>ELIGIBILITY REQUIREMENTS</b></h5>
+							<div class="w3-margin w3-padding">
+							<p>Your account must be paid up to date and you can enroll in either Program at any time of year.</p>
+							<p>No delinquent account balances currently on account or returned check payments within the last twelve (12) months.</p>
+							<p>There cannot be any interruptions to your service due to non-payment.</p>
+							<p>Customer cannot be on any current payment plan (i.e., assistance with delinquent amounts).</p>
+							<p>Full payment must be received on time every month. <b>Re-occurring Payment Method Suggested.</b></p>
+							<p>Discontinuation policies will remain the same as other standard residential services, and if late payments become re-occurring, the District may remove the customer from either Payment Plan Program.</p>
+							</div>
+						</div>
+						<hr>
+						<div class="w3-container w3-margin-bottom w3-border w3-round-large">
+						 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
+							<div class="w3-section w3-padding w3-margin">
+								<div class="w3-col s5 w3-padding-small"
+								<label for="Fname"><b>First Name</b></label>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Fname" type="text" placeholder="First Name" name="first_name" maxlength="24" required>
+								</div>
+								<div class="w3-col s5 w3-padding-small"
+								<label for="Lname"><b>Last Name</b></label>
+								<input class="w3-input w3-padding w3-border w3-round-small w3-margin-bottom" id="Lname" type="text" placeholder="Last Name" name="last_name"  maxlength="24" required >
+								</div>
+								<div class="w3-col s2 w3-padding-small"
+								<label for="Mname"><b>M.I.</b></label>
+								<input class="w3-input w3-padding w3-border w3-round-small w3-margin-bottom" id="Mname" type="text" placeholder=" Middle Initial" name="middle_initinal" maxlength="10">
+								</div>
+								<div class="w3-half w3-padding-small">
+								<label for="SvcAddress"><b>Service Address</b></label>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="SvcAddress" type="text" placeholder="Service Address" name="service_address" maxlength="50" required>
+								</div>
+								<div class="w3-half w3-padding-small">
+								<label for="City"><b>City</b></label>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="City" type="text" placeholder="City" name="city" maxlength="24" required>
+								</div>
+								<div class="w3-quarter w3-padding-small">
+								<label for="State"><b>State</b></label>
+								<select class="w3-select w3-border w3-round-small w3-margin-bottom half" id="State" type="select" placeholder="State" name="state" required>
+									<option selected disabled>Enter State</option>
+									<option required>Alabama</option>
+									<option required>Alaska</option> 
+									<option required>Arizona</option> 
+									<option required>Arkansas</option> 
+									<option>California</option> 
+									<option>Colorado</option> 
+									<option>Connecticut</option> 
+									<option>Delaware</option> 
+									<option>Florida</option> 
+									<option>Georgia</option> 
+									<option>Hawaii</option> 
+									<option>Idaho</option> 
+									<option>Illinois</option> 
+									<option>Indiana</option> 
+									<option>Iowa</option> 
+									<option>Kansas</option>
+									<option>Kentucky</option> 
+									<option>Louisiana</option> 
+									<option>Maine</option> 
+									<option>Maryland</option> 
+									<option>Massachusetts</option> 
+									<option>Michigan</option> 
+									<option>Minnesota</option> 
+									<option>Mississippi</option> 
+									<option>Missouri</option> 
+									<option>Montana</option> 
+									<option>Nebraska</option> 
+									<option>Nevada</option> 
+									<option>New Hampshire</option> 
+									<option>New Jersey</option> 
+									<option>New Mexico</option> 
+									<option>New York</option> 
+									<option>North Carolina</option> 
+									<option>North Dakota</option> 
+									<option>Ohio</option> 
+									<option>Oklahoma</option> 
+									<option>Oregon</option> 
+									<option>Pennsylvania</option> 
+									<option>Rhode Island</option> 
+									<option>South Carolina</option> 
+									<option>South Dakota</option> 
+									<option>Tennessee</option> 
+									<option>Texas</option> 
+									<option>Utah</option> 
+									<option>Vermont</option> 
+									<option>Virginia</option> 
+									<option>Washington</option> 
+									<option>West Virginia</option> 
+									<option>Wisconsin</option> 
+									<option>Wyoming</option>
+								</select>
+								</div> 
+								
+								<div class="w3-quarter w3-padding-small">
+								<label for="Zip"><b>Zip Code</b></label><br>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Zip" type="text" placeholder="Zip Code" name="zip" min="00000" maxlength="9" required>
+								</div>
+								<div class="w3-half w3-padding-small">
+								<label for="EmailAdd"><b>E-Mail Address</b></label><br>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Email" type="email" placeholder="E-Mail" name="email" maxlength="240" required>
+								</div>
+								<div class="w3-third w3-padding-small">
+								<label for="Account"><b>Account #</b></label><br>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Account" type="text" placeholder="Account Number" name="account_number min="6" maxlength="14" required>
+								</div>
+								
+								<div class="w3-third w3-padding-small">
+								<label for="Phone1"><b>Phone # 1</b></label><br>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Phone1" type="text" placeholder="Phone Num. xxx-xxx-xxxx" name="phone1" maxlength="13" required>
+								</div>
+								<div class="w3-third w3-padding-small">
+								<label for="Phone2"><b>Phone # 2</b></label><br>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Phone2" type="text" placeholder="Phone Num. xxx-xxx-xxxx" name="phone2" maxlength="13">
+								</div>
+								<br><br>
+								
+								
+								<div class="w3-padding-small">
+								<label for="ProgramChoice"><b>Program Choice</b></label><br>
+									<div class="w3-padding-small">
+									
+										<div class="w3-half">
+										 Level Payment Plan <input class="w3-radio" type="radio" name="program_choice" id="programChoice" value="LPP" required>  
+										</div>
+										<div class="w3-half">
+										 Budget Payment Plan <input class="w3-radio" type="radio" name="program_choice" id="programChoice" value="BPP" required> 
+										</div>
+									<br><br>
+									</div>
+								</div>
+								
+								<br>
+								<div class="w3-padding-small">
+									<div class="w3-input w3-border w3-round-small w3-margin-bottom">
+									<label for="Agreement"><b>Agreement</b></label><br>
+									I agree to the following guidelines as may be amended and all other regulations of the District:
+									<input Class="w3-check" type="checkbox" name="agreement" id="agreement" required>
+									</div>
+								</div>
+								<div class="w3-padding-small">
+								<input class="w3-half w3-large w3-button w3-green w3-padding-small w3-margin-bottom" type="submit" value="Submit">
+								<input class="w3-half w3-large w3-button w3-red w3-padding-small w3-margin-bottom"  type="Reset" value="Reset">
+								</div>
+							</div>
+							
+							</form>
+							</div>
+						 </div>
+					</div>
+					</div>
+
 				<hr>
 				<br>
 				<div>
@@ -319,7 +502,171 @@
 				<br>
 				<a href="../Images/TOU 12-7 Cust Ap (Rev 8 072617).pdf" class="w3-text-theme">TOU Application 12:00 p.m. to 7:00 p.m.</a>
 				<br>
-				
+				<br>
+				<button onclick="document.getElementById('TOU-FORM').style.display='block'" class="w3-btn w3-round w3-hover-blue w3-theme">TOU Web Form</button>
+				 <div id="TOU-FORM" class="w3-modal">
+					<div class="w3-modal-content">
+						<div class="w3-container">
+						<span onclick="document.getElementById('TOU-FORM').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright">&times;</span>
+						<br>
+						<h2 class="w3-center">TIME OF USE (TOU)<br>PROGRAM REVIEW & APPLICATION </h2>
+						
+						<div class="w3-margin w3-padding">
+						<h5><b>TERMS & CONDITIONS</b></h5>
+							<div class="w3-margin w3-padding">
+							<p>Service under this rate schedule will become effective after installation of the Time-of-Use meter. </p>
+							<p>Rates are plus applicable taxes and fees. </p>
+							<p>Customer’s selecting Time-of-Use service under the applicable rate schedule will be required to remain on this schedule for a minimum of twelve (12) months.</p>
+							<p>ED3 may increase or decrease the Power Cost Adjuster based on the actual change in the average cost of purchased power.</p>
+							</div>
+						
+						<h5><b>HOW DO I SAVE WITH THE TOU RATE PROGRAMS?</b></h5>
+							<div class="w3-margin w3-padding">
+							<p>Upgrade or tune up your existing air conditioning system.</p>
+							<p>Seal your air conditioning system's duct work.</p>
+							<p>Shift energy consumption to other times of the day. This includes setting your thermostat to operate at a higher temperature during the day, changing the time clock settings on your pool pump to run during evening and early morning hours, and operating dishwashers, washing machines, and dryers before 12 Noon after 7:00 p.m. for the TOU 12- 7 or before 9:00 a.m. after 9:00 p.m.</p>
+							<p>Continue minimal daytime air conditioner usage. This is especially important to customers who already program their air conditioners to a higher temperature control setting during the day. </p>
+							<p>Minimize or eliminate your usage of all electrical appliances in the summer months if you live in the area for only a portion of the year. </p>
+							</div>
+						</div>
+						<hr>
+						<img class="w3-image" src="../Images/TOURates.png">
+						<hr>
+						 <form class="w3-container w3-margin-bottom w3-border w3-round-large" action="/action_page.php" method="post">
+							<div class="w3-section w3-padding w3-margin">
+								<div class="w3-col s5 w3-padding-small"
+								<label for="Fname"><b>First Name</b></label>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Fname" type="text" placeholder="First Name" name="first_name" maxlength="24" required>
+								</div>
+								<div class="w3-col s5 w3-padding-small"
+								<label for="Lname"><b>Last Name</b></label>
+								<input class="w3-input w3-padding w3-border w3-round-small w3-margin-bottom" id="Lname" type="text" placeholder="Last Name" name="last_name" maxlength="24" required>
+								</div>
+								<div class="w3-col s2 w3-padding-small"
+								<label for="Mname"><b>M.I.</b></label>
+								<input class="w3-input w3-padding w3-border w3-round-small w3-margin-bottom" id="Mname" type="text" placeholder=" Middle Initial" name="middle_initinal" maxlength="10">
+								</div>
+								<div class="w3-half w3-padding-small">
+								<label for="SvcAddress"><b>Service Address</b></label>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="SvcAddress" type="text" placeholder="Service Address" name="service_address" maxlength="50" required>
+								</div>
+								<div class="w3-half w3-padding-small">
+								<label for="City"><b>City</b></label>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="City" type="text" placeholder="City" name="city" maxlength="24" required>
+								</div>
+								<div class="w3-quarter w3-padding-small">
+								<label for="State"><b>State</b></label>
+								<select class="w3-input w3-border w3-round-small w3-margin-bottom half" id="State" type="text" placeholder="State" name="state" required>
+									<option disabled>Enter State</option>
+									<option>Alabama</option>
+									<option>Alaska</option> 
+									<option selected>Arizona</option> 
+									<option>Arkansas</option> 
+									<option>California</option> 
+									<option>Colorado</option> 
+									<option>Connecticut</option> 
+									<option>Delaware</option> 
+									<option>Florida</option> 
+									<option>Georgia</option> 
+									<option>Hawaii</option> 
+									<option>Idaho</option> 
+									<option>Illinois</option> 
+									<option>Indiana</option> 
+									<option>Iowa</option> 
+									<option>Kansas</option>
+									<option>Kentucky</option> 
+									<option>Louisiana</option> 
+									<option>Maine</option> 
+									<option>Maryland</option> 
+									<option>Massachusetts</option> 
+									<option>Michigan</option> 
+									<option>Minnesota</option> 
+									<option>Mississippi</option> 
+									<option>Missouri</option> 
+									<option>Montana</option> 
+									<option>Nebraska</option> 
+									<option>Nevada</option> 
+									<option>New Hampshire</option> 
+									<option>New Jersey</option> 
+									<option>New Mexico</option> 
+									<option>New York</option> 
+									<option>North Carolina</option> 
+									<option>North Dakota</option> 
+									<option>Ohio</option> 
+									<option>Oklahoma</option> 
+									<option>Oregon</option> 
+									<option>Pennsylvania</option> 
+									<option>Rhode Island</option> 
+									<option>South Carolina</option> 
+									<option>South Dakota</option> 
+									<option>Tennessee</option> 
+									<option>Texas</option> 
+									<option>Utah</option> 
+									<option>Vermont</option> 
+									<option>Virginia</option> 
+									<option>Washington</option> 
+									<option>West Virginia</option> 
+									<option>Wisconsin</option> 
+									<option>Wyoming</option>
+								</select>
+								</div> 
+								
+								<div class="w3-quarter w3-padding-small">
+								<label for="Zip"><b>Zip Code</b></label><br>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Zip" type="text" placeholder="Zip Code" name="zip" maxlength="9" required>
+								</div>
+								<div class="w3-half w3-padding-small">
+								<label for="EmailAdd"><b>E-Mail Address</b></label><br>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Email" type="email" placeholder="E-Mail" name="email" maxlength="240" required>
+								</div>
+								<div class="w3-third w3-padding-small">
+								<label for="Account"><b>Account #</b></label><br>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Account" type="text" placeholder="Account Number" name="account_number maxlength="14" required>
+								</div>
+								
+								<div class="w3-third w3-padding-small">
+								<label for="Phone1"><b>Phone # 1</b></label><br>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Phone1" type="text" placeholder="Phone Num. (xxx)xxx-xxxx" name="Phone1" maxlength="13" required>
+								</div>
+								<div class="w3-third w3-padding-small">
+								<label for="Phone2"><b>Phone # 2</b></label><br>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Phone2" type="text" placeholder="Phone Num. (xxx)xxx-xxxx" name="Phone2" maxlength="13">
+								</div>
+								<br><br>
+								
+								<div class="w3-padding-small">
+								<label for="ProgramChoice"><b>Program Choice</b></label><br>
+									<div class="w3-padding-small">
+									<div> 
+										<div class="w3-col s6">
+										 Time Of Use 12 - 7 <input class="w3-radio" type="radio" name="programChoice" id="programChoice" value="TOU12-7" required>  
+										</div>
+										<div class="w3-col s6">
+										 Time Of Use 9 - 9 <input class="w3-radio" type="radio" name="programChoice" id="programChoice" value="TOU9-9" required> 
+										</div>
+									<br><br>
+									</div>
+								</div>
+								
+								<br>
+								<div class="w3-padding-small">
+									<div class="w3-input w3-border w3-round-small w3-margin-bottom">
+									<label for="Agreement"><b>Agreement</b></label><br>
+									I AGREE TO PARTICIPATE ON THE APPLIABLE TIME-OF-USE RATE (12-7 TOU/9-9 TOU) AND UNDERSTAND THAT I MUST REMAIN ON THIS RATE ONCE STARTED FOR A MINIMUM OF TWELVE (12) MONTHS. 
+									<input Class="w3-check" type="checkbox" name="agreement" id="agreement" required>
+									</div>
+								</div>
+								<div class="w3-padding-small">
+								<input class="w3-half w3-large w3-button w3-green w3-padding-small w3-margin-bottom" type="submit" value="Submit">
+								<input class="w3-half w3-large w3-button w3-red w3-padding-small w3-margin-bottom"  type="Reset" value="Reset">
+								</div>
+							</div>
+							
+							</form>
+						 </div>
+					</div>
+					</div>
+				</div>
 				<p>If you would like to sign up, please print and complete the form viewed above labeled "Time of Use Application."  
 				Please feel free to fax this form to us at 520-494-7053 or it can be mailed to 41630 W. Louis Johnson Dr., Maricopa, AZ 85138.  It can also be dropped by either of our locations at 
 				41630 W. Louis Johnson Dr. or 19756 N. John Wayne Pkwy, Suite 101.</p>
@@ -387,6 +734,355 @@
 				<p class="w3-large w3-text-red"><i>To Sign Up</i></p>
 				
 				<a href="../Images/PPM Prog (Rev 3 101017) Fillable.pdf" class="w3-text-theme">PPM Application</a>
+				<BR>
+				<br>
+				<button onclick="document.getElementById('PPM-FORM').style.display='block'" class="w3-btn w3-round w3-hover-blue w3-theme">PPM Web Form</button>
+				 <div id="PPM-FORM" class="w3-modal">
+					<div class="w3-modal-content">
+						<div class="w3-container">
+						<span onclick="document.getElementById('PPM-FORM').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright">&times;</span>
+						<br>
+						<h2 class="w3-center">PRE-PAID METERING PROGRAM<br>PROGRAM REVIEW & APPLICATION</h2>
+						
+						<div class="w3-margin w3-padding">
+						<h5><b>TERMS & CONDITIONS</b></h5>
+							<div class="w3-margin w3-padding">
+							<p>Residential customers may elect to pre-pay for their electricity usage through the PPM Program with the exception of customers who have on-site solar generation.</p>
+							<p>For new customers, the initial Service Establishment Fee for account set up and credit check will apply. Customer must agree to start their PPM account with a minimum balance of fifty dollars ($50.00). A customer who has an existing ED3 account will be expected to satisfy that account to a zero dollar ($0.00) balance and also provide a minimum pre-paid balance of fifty dollars ($50.00) before their PPM account can be set up.</p>
+							<p>It is understood by the customer that once their PPM account reaches a zero dollar ($0.00) balance, the energy provided to the Service Address will be disconnected immediately. It is further understood that for customers to have their PPM account reconnected, a minimum balance of fifty dollars ($50.00) must be pre-paid for future usage. By electing to participate in the PPM Program, customers understand that there will be daily charges for their usage and their PPM account may be subject to a Minimum Bill Charge. </p>
+							</div>
+						
+						<h5><b>SECURITY DEPOSITS</b></h5>
+							<div class="w3-margin w3-padding">
+							<p>Participation in the PPM Program does not require a Security Deposit to be held on the customer’s PPM account. Deposits that are held on active accounts will be applied to the current account balance with any remainder applied as pre-payment on the PPM account. When the customer is no longer participating in the PPM Program, either by customer choice or ED3’s choice, and wants to establish another type of ED3 account, the customer must satisfy all Deposit and credit requirements as per ED3 policies. If the customer had a Deposit on file before going onto the PPM Program, an equal or greater Deposit will be required to establish another type of account. The Deposit requirement and amount will be determined based on the customer’s status and history at the time of exit from the PPM account.</p>
+							</div>
+						</div>
+						<hr>
+						
+						 <form class="w3-container w3-margin-bottom w3-border w3-round-large" id="PPM-FORM" action="/action_page.php" method="post">
+							<div class="w3-section w3-padding w3-margin">
+								<div class="w3-col s5 w3-padding-small"
+								<label for="Fname"><b>First Name</b></label>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Fname" type="text" placeholder="First Name" name="first_name" maxlength="24" required>
+								</div>
+								<div class="w3-col s5 w3-padding-small"
+								<label for="Lname"><b>Last Name</b></label>
+								<input class="w3-input w3-padding w3-border w3-round-small w3-margin-bottom" id="Lname" type="text" placeholder="Last Name" name="last_name" maxlength="24" required>
+								</div>
+								<div class="w3-col s2 w3-padding-small"
+								<label for="Mname"><b>M.I.</b></label>
+								<input class="w3-input w3-padding w3-border w3-round-small w3-margin-bottom" id="Mname" type="text" placeholder=" Middle Initial" name="middle_initinal" maxlength="10">
+								</div>
+								<div class="w3-half w3-padding-small">
+								<label for="SvcAddress"><b>Service Address</b></label>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="SvcAddress" type="text" placeholder="Service Address" name="service_address" maxlength="50" required>
+								</div>
+								<div class="w3-half w3-padding-small">
+								<label for="City"><b>City</b></label>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="City" type="text" placeholder="City" name="city" maxlength="24" required>
+								</div>
+								<div class="w3-quarter w3-padding-small">
+								<label for="State"><b>State</b></label>
+								<select class="w3-input w3-border w3-round-small w3-margin-bottom half" id="State" type="text" placeholder="State" name="state" required>
+									<option disabled>Enter State</option>
+									<option>Alabama</option>
+									<option>Alaska</option> 
+									<option selected>Arizona</option> 
+									<option>Arkansas</option> 
+									<option>California</option> 
+									<option>Colorado</option> 
+									<option>Connecticut</option> 
+									<option>Delaware</option> 
+									<option>Florida</option> 
+									<option>Georgia</option> 
+									<option>Hawaii</option> 
+									<option>Idaho</option> 
+									<option>Illinois</option> 
+									<option>Indiana</option> 
+									<option>Iowa</option> 
+									<option>Kansas</option>
+									<option>Kentucky</option> 
+									<option>Louisiana</option> 
+									<option>Maine</option> 
+									<option>Maryland</option> 
+									<option>Massachusetts</option> 
+									<option>Michigan</option> 
+									<option>Minnesota</option> 
+									<option>Mississippi</option> 
+									<option>Missouri</option> 
+									<option>Montana</option> 
+									<option>Nebraska</option> 
+									<option>Nevada</option> 
+									<option>New Hampshire</option> 
+									<option>New Jersey</option> 
+									<option>New Mexico</option> 
+									<option>New York</option> 
+									<option>North Carolina</option> 
+									<option>North Dakota</option> 
+									<option>Ohio</option> 
+									<option>Oklahoma</option> 
+									<option>Oregon</option> 
+									<option>Pennsylvania</option> 
+									<option>Rhode Island</option> 
+									<option>South Carolina</option> 
+									<option>South Dakota</option> 
+									<option>Tennessee</option> 
+									<option>Texas</option> 
+									<option>Utah</option> 
+									<option>Vermont</option> 
+									<option>Virginia</option> 
+									<option>Washington</option> 
+									<option>West Virginia</option> 
+									<option>Wisconsin</option> 
+									<option>Wyoming</option>
+								</select>
+								</div> 
+								
+								<div class="w3-quarter w3-padding-small">
+								<label for="Zip"><b>Zip Code</b></label><br>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Zip" type="text" placeholder="Zip Code" name="zip" maxlength="9" required>
+								</div>
+								<div class="w3-half w3-padding-small">
+								<label for="EmailAdd"><b>E-Mail Address</b></label><br>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Email" type="email" placeholder="E-Mail" name="email" maxlength="240" required>
+								</div>
+								<div class="w3-quarter w3-padding-small">
+								<label for="Account"><b>Account #</b></label><br>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Account" type="text" placeholder="Account Number" name="account_number maxlength="14" required>
+								</div>
+								<div class="w3-quarter w3-padding-small">
+								<label for="CellProvider"><b>Provider</b></label>
+									<select class="w3-input w3-border w3-round-small w3-margin-bottom half" id="CellProvider" type="text" placeholder="Provider" name="Carrier" required>
+									<option disabled>Provider</option>
+									<option>Alltel</option>
+									<option>AT&amp;T</option>
+									<option>Boost Mobile</option>
+									<option>Cellular One</option>
+									<option>Cingular</option>
+									<option>Cricket Wireless</option>
+									<option>Metro</option>
+									<option>Nextel</option>
+									<option>Qwest Wireless</option>
+									<option>Sasktel</option>
+									<option>Southern Line</option>
+									<option>Sprint</option>
+									<option>Sprint (Nextel)</option>
+									<option>Sprint (PCS)</option>
+									<option>Syringa Wireless</option>
+									<option>T-Mobile US</option>
+									<option>Telus Mobility</option>
+									<option>U.S. Cellular</option>
+									<option>Unicel</option>
+									<option>Verizon Wireless</option>
+									<option>Viaero</option>
+									<option>Virgin Mobile</option>
+									</select>
+								</div>
+								<div class="w3-quarter w3-padding-small">
+								<label for="Phone1"><b>Phone # 1</b></label><br>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Phone1" type="tel" placeholder="Phone Num. (xxx)xxx-xxxx" name="Phone1" maxlength="13" required>
+								</div>
+								<div class="w3-quarter w3-padding-small">
+								<label for="Phone2"><b>Phone # 2</b></label><br>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Phone2" type="tel" placeholder="Phone Num. (xxx)xxx-xxxx" name="Phone2" maxlength="13">
+								</div>
+								<br><br>
+								
+								<div class="w3-padding-small">
+								<label for="ProgramChoice"><b>Notification Preferences <span class="w3-text-red">- Required</span></b></label><br>
+									<div class="w3-margin w3-padding-bottom">
+										<div>
+											<div class="w3-col s3">&nbsp;</div>
+											<div class="w3-col s3 w3-right-align">Both</div>
+											<div class="w3-col s3 w3-right-align">Text</div>
+											<div class="w3-col s3 w3-right-align">Email</div>
+											<div class="w3-col s3 ">
+											 Service Reconnected  
+											</div>
+											<div class="w3-col s3 w3-right">
+												<input class="w3-radio w3-right" type="radio" name="Reconnect" id="Reconnect" value="Both" required>
+											</div>											
+											<div class="w3-col s3 w3-right">
+												<input class="w3-radio w3-right" type="radio" name="Reconnect" id="Reconnect" value="Text" required> 
+											</div>
+											<div class="w3-col s3 w3-right">
+												<input class="w3-radio w3-right" type="radio" name="Reconnect" id="Reconnect" value="Email" required> 
+											</div>
+											<br>
+											<br>
+											<br>
+											<br>
+											<div class="w3-col s3">
+											 Balance &amp; Usage Alert  
+											</div>
+											<div class="w3-col s3">
+												<input class="w3-radio w3-right" type="radio" name="BalUseAlert" id="BalUseAlert" value="Both" required>
+											</div>											
+											<div class="w3-col s3">
+												<input class="w3-radio w3-right" type="radio" name="BalUseAlert" id="BalUseAlert" value="Text" required> 
+											</div>
+											<div class="w3-col s3">
+												<input class="w3-radio w3-right" type="radio" name="BalUseAlert" id="BalUseAlert" value="Email" required> 
+											</div>
+											<br>
+											<br>
+											<br>
+											<div class="w3-col s3">
+											 Pending Auto Disconnect Alert  
+											</div>
+											<div class="w3-col s3">
+												<input class="w3-radio w3-right" type="radio" name="PendDisconect" id="PendDisconect" value="Both" required>
+											</div>											
+											<div class="w3-col s3">
+												<input class="w3-radio w3-right" type="radio" name="PendDisconect" id="PendDisconect" value="Text" required> 
+											</div>
+											<div class="w3-col s3">
+												<input class="w3-radio w3-right" type="radio" name="PendDisconect" id="PendDisconect" value="Email" required> 
+											</div>
+										</div>
+									</div>
+									<br>
+									<hr>
+								
+									<label for="ProgramChoice"><b>Notification Preferences <span class="w3-text-blue">- Optional</span></b></label><br>
+									<div class="w3-margin w3-padding-bottom">
+										<div>
+											<div class="w3-col s3">&nbsp;</div>
+											<div class="w3-col s3 w3-right-align">Both</div>
+											<div class="w3-col s3 w3-right-align">Text</div>
+											<div class="w3-col s3 w3-right-align">Email</div>
+											
+											<div class="w3-col s3">Account Profile Change</div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="ProfileChange" id="ProfileChange" value="Both"></div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="ProfileChange" id="ProfileChange" value="Text"></div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="ProfileChange" id="ProfileChange" value="Email"></div>
+										<br>
+										<br>
+										<br>
+										<br>
+											<div class="w3-col s3">Returned Check Alert</div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="ReturnedCheck" id="ReturnedCheck" value="Both" ></div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="ReturnedCheck" id="ReturnedCheck" value="Text"></div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="ReturnedCheck" id="ReturnedCheck" value="Email" ></div>
+										<br>
+										<br>
+										<br>
+											<div class="w3-col s3">Payment Confirmation</div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="PayConfim" id="PayConfim" value="Both" ></div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="PayConfim" id="PayConfim" value="Text" ></div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="PayConfim" id="PayConfim" value="Email" ></div>
+										<br>
+										<br>
+										<br>
+											<div class="w3-col s3">Service Connected</div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="SvcConnect" id="SvcConnect" value="Both" ></div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="SvcConnect" id="SvcConnect" value="Text" ></div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="SvcConnect" id="SvcConnect" value="Email" ></div>
+										<br>
+										<br>
+										<br>
+											<div class="w3-col s3">Service Disconnected</div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="SvcDisconnect" id="SvcDisconnect" value="Both" ></div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="SvcDisconnect" id="SvcDisconnect" value="Text" ></div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="SvcDisconnect" id="SvcDisconnect" value="Email" ></div>
+										<br>
+										<br>
+										<br>
+										
+										
+											<div class="w3-col s3">Low Balance Threshold Reached</div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="LBTReached" id="LBTReached" value="Both" ></div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="LBTReached" id="LBTReached" value="Text" ></div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="LBTReached" id="LBTReached" value="Email" ></div>
+										 
+
+										
+										<br>
+										<br>
+										<br>
+										<div class="w3-col s2 w3-right-align"> <input class="w3-input w3-border w3-round-small w3-right-align w3-margin-bottom" id="LBTReached" type="text" name="LBTReached" maxlength="3" ></div>
+										<div class="w3-col s1 w3-xlarge"> .00</div>
+										<div class="w3-col s9 w3-padding">(Example: If $30.00 is set, then when account balance hits $30.00 a text or email will be sent to you.)</div>
+										<br>
+										<br>
+										<br>
+										<br>
+										<br>
+										<br>
+											<div class="w3-col s3">High Usage Alert</div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="HighUse" id="HighUse" value="Both"></div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="HighUse" id="HighUse" value="Email"></div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="HighUse" id="HighUse" value="Text"></div>
+										<br>
+										<br>
+										<br>
+										<div class="w3-col s2 w3-right-align"> <input class="w3-input w3-border w3-round-small w3-right-align w3-margin-bottom" id="HighUse" type="text" name="HighUse" maxlength="3" ></div>
+										<div class="w3-col s1 w3-xlarge"> .00</div>
+										<div class="w3-col s9 w3-padding">(Example: If $10.00 is set and the usage for the previous day hits $10.00, a text or email will be sent to you.) </div>
+										<br>
+										<br>
+										<br>
+										<br>
+										<br>
+										</div>
+									</div>
+								<br>
+								</div>
+								<hr>
+								<label for="Agreement"><b>Agreement <span class="w3-text-red">- Required</span></b></label><br>
+								<div class="w3-padding-small w3-margin-bottom ">
+								
+									
+									<div class="w3-margin-bottom">
+									
+									<div class="w3-margin">
+									<div class="w3-col s10">
+									&#8226;&nbsp;&nbsp;I am aware that I will be required to receive PPM Program alerts via mobile phone, email, or both, and I am willing to accept the responsibility to make sure a working mobile phone number and email address is on file.
+									</div>
+									<input Class="w3-col s2 w3-check " type="checkbox" name="agreement" id="agreement" required>
+									</div>
+									<br>
+									<br>
+										<br>
+										<div class="w3-margin">
+									<div class="w3-col s10">&#8226;&nbsp;&nbsp;I am willing to accept the responsibility of monitoring my usage and account balance.
+									</div>
+									<input Class="w3-check w3-col s2" type="checkbox" name="agreement" id="agreement" required>
+										</div>
+									<br>
+									<br>
+									<div class="w3-margin">
+									<div class="w3-col s10">&#8226;&nbsp;&nbsp;I am aware that ED3 personnel must continue to have safe, continuous and unrestricted access to the meter and the meter cannot be behind a locked gate or within a fenced yard with a dog.
+									</div>
+									<input Class="w3-check w3-col s2" type="checkbox" name="agreement" id="agreement" required>
+									</div>
+									<br>
+									<br>
+										
+										
+									<div class="w3-margin">	
+									<div class="w3-col s10">
+									&#8226;&nbsp;&nbsp;I agree to the following PPM Program requirements and guidelines, as may be amended, and all other ED3 policies. 
+									</div>
+									<input Class="w3-check w3-col s2" type="checkbox" name="agreement" id="agreement" required>
+									</div>
+									</div>
+									<br>
+									<br>
+									<br>
+								</div>
+								<div class="w3-padding-small">
+								<br>
+								<input class="w3-half w3-large w3-button w3-green w3-padding-small w3-margin-bottom" type="submit" value="Submit">
+								<input class="w3-half w3-large w3-button w3-red w3-padding-small w3-margin-bottom"  type="Reset" value="Reset">
+								</div>
+							</div>
+							
+							</form>
+						 </div>
+					</div>
+					</div>
+					</div>
 				
 				<p><b>Terms and Conditions:</b></p>
 				<p>Residential customers may elect to pre-pay for their electricity usage through the PPM Program with the exception of customers who 
