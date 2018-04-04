@@ -1,0 +1,1880 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=290, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=7" />
+    <title>OMS Web Map</title>
+    <link id="stylesheet" href='http://serverapi.arcgisonline.com/jsapi/arcgis/2.2/js/dojo/dojox/mobile/themes/iPhone/iPhone.css'
+        rel='stylesheet' />
+    <link href="Styles/ServiceRequest.css" rel="stylesheet" type="text/css" />
+    <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />-->
+    <link rel="Stylesheet" id="dynamicStyleSheet" />
+    <script type="text/javascript">
+        djConfig = {
+            parseOnLoad: true,
+            mblHideAddressBar: false
+        }
+    </script>
+    
+    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+    
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <!--<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>-->
+    <script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.4compact">
+    </script>
+<!--    <script src="Config.js" type="text/javascript"></script>-->
+    <script src="JS/infoWindow.js" type="text/javascript"></script>
+   <!-- <script src="JS/BasemapGallery.js" type="text/javascript"></script>-->
+    <script src="JS/utils.js" type="text/javascript"></script>
+    <script src="JS/Locator.js" type="text/javascript"></script>
+    <script src="JS/jquery.event.swipe.js" type="text/javascript"></script>
+    <!--<script src="JS/picup.js" type="text/javascript"></script>-->
+    <script type="text/javascript">
+
+        //dojo.require(["dojo/parser", "dijit/form/Select"]);
+        //dojo.require("dijit/form/FilteringSelect");
+        dojo.require("esri.map");
+        dojo.require("mobile.InfoWindow");
+        dojo.require("esri.layers.FeatureLayer");
+        dojo.require("esri.tasks.geometry");
+        dojo.require("esri.tasks.query");
+        dojo.require("dojox.mobile.parser");
+        dojo.require("dojox.mobile");
+        dojo.requireIf(!dojo.isWebKit, "dojox.mobile.compat");
+        dojo.require("esri.tasks.locator");
+        dojo.require("dojo.date.locale");
+
+        //dojo.require("esri.arcgis.utils");
+        dojo.require("esri.dijit.Legend");
+
+        dojo.require("esri.dijit.Gallery");
+        dojo.require("esri.dijit.BasemapGallery");
+        //dojo.require("esri.dijit.PopupMobile");
+        dojo.require("esri.geometry");
+        dojo.require("esri.layers.graphics");
+        dojo.require("esri.graphic");
+        
+        var map;
+        var progressIndicator;
+        //        var tempGraphicsLayerId = "tempGraphicsLayerID";
+        //        var geometryService;    //Geometry service used for Geocoding
+        //        var serviceRequestLayerId = "serviceRequestLayerID";
+        //        var serviceRequestCommentsLayerId = "serviceRequestCommentsLayerID";
+        var isMobileDevice = false;
+        var locator;                // Locator service
+        //        var selectedRequestID;
+        //        var selectedRequestStatus;
+        var isiOS = false;
+        //        var selectedMapPoint;
+        //        var serviceRequestSymbol;
+        var locatorMarkupSymbol;
+        var zoomLevel;
+        var isBorwser = false;
+        var isTablet = false;
+        var currentItem;
+        var bingMapsKey;
+        var urlObject;
+        var popup;
+        var loading;
+        var glayer;
+        var outageLyr; var countiesLyr; var regionsLyr; var locationLyr; var hilightSymbol; var defaultRegionsSymbol; var defaultCountiesSymbol;
+        var customerOutagesLyr;
+        //configuration variables
+        var webmapTitle;
+        var webmapType;
+        var webmapMode;
+        var bingToken;
+        var esriLogoVisible;
+        var mapMinResolution;
+        var showOutages; var showRegions; var showCounties; var loaded; var chkRegions; var chkCounties;
+        var regionFillColor; var regionFillOpacity; var regionBoundaryThickness; var regionBoundaryColor; var regionTitle; var regionMaptipHeader;
+        var countyFillColor; var countyFillOpacity; var countyBoundaryThickness; var countyBoundaryColor; var countyTitle; var countyMaptipHeader;
+        var totalCustomers; var totalCustAffected; var oldestOutageTime;
+        var orientation;
+        var defaultExtent;
+        var tempGraphicsLayerId = "tempGraphicsLayerID";
+        var zoomStartLevel; var zoomEndLevel;
+        var detailsCurrentTabIndex = 0;
+        var isOutageDetailsLoaded; var isCountyCustomersLoaded; var isCountyAffectedLoaded; var isCountyOutageLoaded;
+        var isRegionCustomersLoaded; var isRegionAffectedLoaded; var isRegionOutageLoaded;
+        var mobileAutoRefreshInterval;
+        var tokenString;
+        var securityEnabled;
+        var app = {};
+        function init() {
+            //            esri.config.defaults.io.proxyUrl = "proxy.ashx";        //Setting to use proxy file
+            //            esriConfig.defaults.io.alwaysUseProxy = false;
+            //            esriConfig.defaults.io.timeout = 180000;    //esri request timeout value
+
+            if (securityEnabled.toUpperCase() == "YES") {
+                var token = sessionStorage.getItem('tokenValue');
+                //alert("token" + token + "string " + tokenString.toString());
+                if ((token == null) || (token === "") || (token != tokenString.toString())) {
+                    window.location = ".././Map/Error.htm";
+                }
+            }
+
+           // else {
+
+                if (dojo.isIE || dojo.isFF <= 3.5 || dojo.isChrome <= 5 || dojo.isOpera <= 9.5 || dojo.isSafari <= 3.1) {
+                    // alert('Browser not supported.');
+                    //return;
+                }
+
+
+                var userAgent = window.navigator.userAgent;
+                //            dojo.byId('spanAddAttachmentText').innerHTML = photoUploadText;
+                if (userAgent.indexOf("iPhone") >= 0 || userAgent.indexOf("iPad") >= 0) {
+                    isiOS = true;
+                    //dojo.byId('trFileUpload').style.display = "none";
+
+                }
+
+                if (userAgent.indexOf("Android") >= 0 || userAgent.indexOf("iPhone") >= 0) {
+                    isMobileDevice = true;
+                    dojo.byId('dynamicStyleSheet').href = "styles/mobile.css";
+                }
+                else if (userAgent.indexOf("iPad") >= 0) {
+                    isTablet = true;
+                    dojo.byId('dynamicStyleSheet').href = "styles/tablet.css";
+                }
+                else {
+                    isBorwser = true;
+                    dojo.byId('dynamicStyleSheet').href = "styles/browser.css";
+                }
+
+                //alert("test");
+                if (isMobileDevice) {
+                    //dojo.byId('divCreateRequest').style.display = "none";
+                    //dojo.byId('divServiceRequestContainer').style.display = "none";
+                    //dojo.byId('divAddressContainer').style.display = "none";
+                    //dojo.byId('divCreateRequest').className = "";
+                    //dojo.byId('divServiceRequestContainer').className = "";
+                    // dojo.byId('divAddressContainer').className = "";
+                    //dojo.byId('divSplashScreenContent').style.width = "90%";
+                }
+                else {
+                    // dojo.byId('divSplashScreenContent').style.width = "300px";
+                    // dojo.byId('divSplashScreenContent').style.minHeight = "275px";
+                    // dojo.byId('divSplashScreenContent').style.maxHeight = "300px";
+                }
+
+                dojo.byId('Img2').style.display = "none";
+                dojo.byId('countyConsumerList').style.display = "none";
+                dojo.byId('countyAffectedList').style.display = "none";
+                dojo.byId('countyInServiceList').style.display = "none"
+                dojo.byId('regionConsumerList').style.display = "none";
+                dojo.byId('regionAffectedList').style.display = "none";
+                dojo.byId('regionInServiceList').style.display = "none"
+            ;
+                dojo.byId('tdAppTitle').innerHTML = webmapTitle;
+
+                dojo.byId('divSplashContent').innerHTML = "<div><table><tr><td><img src='../images/Futura-Globe.png'/></td><td><div style='color:White'>" +
+                          "OMS Web Map is designed to display power outages on map via web." + "</br>Copyright © 2012 Futura Systems, Inc.</div></td></tr>";
+
+                var infoWindow = new mobile.InfoWindow({
+                    domNode: dojo.create("div", null, dojo.byId("map"))
+                });
+
+
+                // var mapExtent = defaultExtent.split(',');
+                // mapExtent = new esri.geometry.Extent(parseFloat(mapExtent[0]), parseFloat(mapExtent[1]), parseFloat(mapExtent[2]), parseFloat(mapExtent[3]), new esri.SpatialReference({ wkid: 102100 }));
+                var esriLogo = false;
+                if (esriLogoVisible == "true") {
+                    esriLogo = true;
+                } else
+                    esriLogo = false;
+                map = new esri.Map("map", { slider: true, infoWindow: infoWindow, displayGraphicsOnPan: false, logo: esriLogo });
+                app.map = map;
+                //map.setExtent(mapExtent);
+
+                //CreateBaseMapComponent();
+
+                //locator = new esri.tasks.Locator(locatorURL);
+
+                //dojo.byId("txtAddress").value = defaultAddress;
+
+                // geometryService = new esri.tasks.GeometryService(geometryService);
+
+                //CreateRatingWidget(dojo.byId('commentRating'));
+
+                //graphic layers
+                outageLyr = new esri.layers.GraphicsLayer("outageLayer");
+                countiesLyr = new esri.layers.GraphicsLayer("countiesLayer");
+                regionsLyr = new esri.layers.GraphicsLayer("regionsLayer");
+                locationLyr = new esri.layers.GraphicsLayer("locationLayer");
+                customerOutagesLyr = new esri.layers.GraphicsLayer("customerOutagesLyr");
+                //symbols
+                hilightSymbol = new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID, new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([255, 0, 255]), 2), new dojo.Color([255, 0, 0, 0.25]));
+                var regionColor = new dojo.Color(regionFillColor.toLowerCase());
+                regionColor.a = regionFillOpacity / 100;
+                var countyColor = new dojo.Color(countyFillColor.toLowerCase());
+                countyColor.a = countyFillOpacity / 100;
+                var rLineColor = new dojo.Color(regionBoundaryColor.toLowerCase());
+                var cLineColor = new dojo.Color(countyBoundaryColor.toLowerCase());
+                defaultRegionsSymbol = new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID, new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color(rLineColor), regionBoundaryThickness), regionColor);
+                defaultCountiesSymbol = new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID, new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color(cLineColor), countyBoundaryThickness), countyColor);
+                loaded = false;
+
+                if (showOutages.toString().toLowerCase() == "true") {
+                    getOutages();
+                }
+                if (showCounties.toString().toLowerCase() == "true") getCounties();
+                if (showRegions.toString().toLowerCase() == "true") getRegions();
+
+                if (showCounties.toString().toLowerCase() == "true" && showRegions.toString().toLowerCase() == "true")
+                    regionsLyr.hide();
+                if (showCounties.toString().toLowerCase() == "false") {
+                    $("#rCounty").prop('disabled', true);
+                    $("#rRegion").prop('checked', true);
+                } else {
+                    $("#rCounty").prop('disabled', false);
+                }
+                if (showRegions.toString().toLowerCase() == "true") {
+                    $("#rRegion").prop('disabled', false);
+                } else {
+                    $("#rRegion").prop('disabled', true);
+                }
+                dojo.connect(map, "onLoad", MapInitFunction);
+
+                dojo.connect(map, "onClick", function (evt) {
+                    // alert("click");
+                    //selectedMapPoint = null;
+                    //AddServiceRequest(evt.mapPoint);
+                });
+
+                // dojo.connect(locator, "onAddressToLocationsComplete", ShowLocatedAddress);
+
+                // dojo.connect(dojo.byId('imgHelp'), "onclick", function () {
+                // window.open(helpDocument);
+                //});
+
+                var veTileLayer; var veRoadLayer;
+                if (bingToken != null && bingToken != "") {
+                    veTileLayer = new esri.virtualearth.VETiledLayer({
+                        bingMapsKey: bingToken,
+                        mapStyle: esri.virtualearth.VETiledLayer.MAP_STYLE_AERIAL_WITH_LABELS
+                    });
+                    veRoadLayer = new esri.virtualearth.VETiledLayer({
+                        bingMapsKey: bingToken,
+                        mapStyle: esri.virtualearth.VETiledLayer.MAP_STYLE_ROAD
+                    });
+                }
+
+                var tiledMapServiceLayer = new esri.layers.ArcGISTiledMapServiceLayer("http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer");
+                var roadMapServiceLayer = new esri.layers.ArcGISTiledMapServiceLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer");
+
+                if (webmapType != null && webmapType != "" && webmapType.toLowerCase() == "bing") {
+                    if (webmapMode != null && webmapMode != "" && webmapMode.toLowerCase() == "road" && veRoadLayer)
+                        map.addLayer(veRoadLayer);
+                    else
+                        map.addLayer(veTileLayer);
+                }
+                else {
+                    if (webmapMode != null && webmapMode != "" && webmapMode.toLowerCase() == "road" && roadMapServiceLayer)
+                        map.addLayer(roadMapServiceLayer);
+                    else
+                        map.addLayer(tiledMapServiceLayer);
+                }
+
+                if (loaded == false) {
+                    //add graphic layers to map
+                    map.addLayer(countiesLyr);
+                    map.addLayer(regionsLyr);
+                    map.addLayer(outageLyr);
+                    map.addLayer(locationLyr);
+                    map.addLayer(customerOutagesLyr);
+                }
+
+
+                // alert(defaultExtent);
+                if (loaded == false && defaultExtent != null && defaultExtent != "") {
+                    var mapExtent = defaultExtent.split(',');
+                    mapExtent = new esri.geometry.Extent(parseFloat(mapExtent[0]), parseFloat(mapExtent[1]), parseFloat(mapExtent[2]), parseFloat(mapExtent[3]), map.spatialReference);
+                    map.setExtent(mapExtent.expand(1.5));
+                    loaded = true;
+                }
+           // }
+        }
+
+
+        function ReloadOutages() {
+            ShowProgressIndicator('map');
+            loaded = false;
+            // var locations = getQuerystring('locations');
+            //if (locations != null && locations != "")
+            // getOutageCustomerLocations();
+            // if (showOutages.toString().toLowerCase() == "true") getOutages();
+            //if (showCounties.toString().toLowerCase() == "true") getCounties();
+            //if (showRegions.toString().toLowerCase() == "true") getRegions();
+            if (defaultExtent != null && defaultExtent != "") {
+                var mapExtent = defaultExtent.split(',');
+                mapExtent = new esri.geometry.Extent(parseFloat(mapExtent[0]), parseFloat(mapExtent[1]), parseFloat(mapExtent[2]), parseFloat(mapExtent[3]), map.spatialReference);
+                map.setExtent(mapExtent.expand(1.5));
+            }
+            HideProgressIndicator();
+        }
+
+        function showSplashScreen() {
+            dojo.byId('divSplashScreenContent').style.width = "90%";
+            dojo.byId('divSplashScreenContainer').style.display = "block";
+            dojo.byId('divSplashScreenContent').className = "showContainer";
+            //SetHeightSplashScreen();
+        }
+
+        function MapInitFunction() {
+            HideProgressIndicator();
+            // $.mobile.pageLoading(true); //true hides the dialog
+            //dojo.byId('divSplashScreenContainer').style.display = "block";
+            //dojo.byId('divSplashScreenContent').className = "showContainer";
+            //SetHeightSplashScreen();
+            if (isMobileDevice) {
+                // SetHeightAddressResults();
+                //SetHeightCreateRequest();
+                // SetHeightComments();
+                SetHeightViewDetails();
+            }
+            var locations = getQuerystring('locations');
+            
+            if (locations != null && locations != "")
+                getOutageCustomerLocations(locations);
+            app.locations = locations;
+
+            dojo.connect(map, "onClick", function (evt) {
+                dojo.forEach(countiesLyr.graphics, function (graphic) {
+                    graphic.setSymbol(defaultCountiesSymbol);
+                });
+                dojo.forEach(regionsLyr.graphics, function (graphic) {
+                    graphic.setSymbol(defaultRegionsSymbol);
+                });
+            });
+
+            //            dojo.connect(map, "onExtentChange", function () {
+            //               // alert("extent change");
+            //                map.infoWindow.hide();
+            //            });
+
+            dojo.connect(map, "onUpdateStart", function () {
+                ShowProgressIndicator('map');
+            });
+            dojo.connect(map, "onUpdateEnd", function () {
+                HideProgressIndicator();
+            });
+
+            dojo.connect(map, "onZoomStart", function (extent, zoomFactor, anchor, level) {
+                zoomStartLevel = level;
+            });
+            dojo.connect(map, "onZoomEnd", function (extent, zoomFactor, anchor, level) {
+                if (zoomStartLevel == level) {
+                    map.removeLayer(countiesLyr);
+                    map.removeLayer(regionsLyr);
+                    map.removeLayer(outageLyr);
+                    map.removeLayer(customerOutagesLyr);
+                    map.addLayer(countiesLyr);
+                    map.addLayer(regionsLyr);
+                    map.addLayer(outageLyr);
+                    map.addLayer(customerOutagesLyr);
+                }
+
+            });
+            dojo.connect(outageLyr, "onClick", function (evt) {
+                //alert("outage");
+                var gra = evt.graphic.attributes;
+                //var myElement = "<b><i>Outage Details</i></b><br/>----------------------<br/>";
+                var myElement = "<b>Customers Affected: </b>" + gra.CustomersAffected + "<br/><b>Outage Time: </b>" + gra.OutageTime;
+                ShowServiceRequestDetails(evt.graphic.geometry, myElement, "Outage Details");
+                //                popup.setTitle(myElement);
+                //                popup.show(evt.mapPoint);
+            });
+
+            dojo.connect(customerOutagesLyr, "onClick", function (evt) {
+                 var gra = evt.graphic.attributes;
+                var myElement;
+                if (gra.ETOR != "") {
+                    myElement = "<b>Customers Affected: </b>" + gra.CustomersAffected + "<br/><b>Outage Time: </b>" + gra.OutageTime + "<br/><b>ETOR: </b>" + gra.ETOR + "<br/><br/><table width='100%' border='0' style='font-size:10px;'><tr><td rowspan='3' style='font-size:12px;'><b>Weather:</b></td><td>Temp:  " + gra.Temp + "</td><td rowspan='2'><img src='" + gra.Icon + "'width='32' height='32' /></td></tr><tr><td>Wind: " + gra.Wind + "</td></tr><tr><td>Rain: " + gra.Precip + "</td><td>" + gra.Desc + "</td></tr></table>";
+                    ShowOutageDetails(evt.graphic.geometry, myElement, "Outage Info", 160, 285);
+                }
+                else {
+
+
+                    myElement = "<b>Customers Affected: </b>" + gra.CustomersAffected + "<br/><b>Outage Time: </b>" + gra.OutageTime + "<br/><br/><table width='100%' border='0' style='font-size:10px;'><tr><td rowspan='3' style='font-size:12px;'><b>Weather:</b></td><td>Temp:  " + gra.Temp + "</td><td rowspan='2'><img src='" + gra.Icon + "'width='32' height='32' /></td></tr><tr><td>Wind: " + gra.Wind + "</td></tr><tr><td>Rain: " + gra.Precip + "</td><td>" + gra.Desc + "</td></tr></table>";
+                    ShowOutageDetails(evt.graphic.geometry, myElement, "Outage Info", 140, 285);
+                }
+
+            });
+
+            dojo.connect(countiesLyr, "onClick", function (evt) {
+                //alert("county");
+                var gra = evt.graphic.attributes;
+                evt.graphic.setSymbol(hilightSymbol);
+                dojo.forEach(countiesLyr.graphics, function (graphic) {
+                    if (graphic != evt.graphic && graphic.symbol == hilightSymbol) {
+                        graphic.setSymbol(defaultCountiesSymbol);
+                    }
+                });
+
+                //var myElement = "<b><i>County Details</i></b><br/>----------------------<br/>";
+                var myElement = "<div style='font-size:12px;'><b>County Name : </b>" + gra.CountyName + "<br/><b>Customers Served : </b>" + gra.CustomersServed + "<br/><b>Customers Affected : </b>" + gra.CustomersAffected + "<br/><b>Percentage Outage : </b>" + roundNumber(gra.PercentageOutage, 2) + "</div>";
+                ShowServiceRequestDetails(evt.mapPoint, myElement, "County Details");
+                //                popup.setTitle(myElement);
+                //                popup.show(evt.mapPoint);
+            });
+
+            dojo.connect(regionsLyr, "onClick", function (evt) {
+                var gra = evt.graphic.attributes;
+                evt.graphic.setSymbol(hilightSymbol);
+                dojo.forEach(regionsLyr.graphics, function (graphic) {
+                    if (graphic != evt.graphic && graphic.symbol == hilightSymbol) {
+                        graphic.setSymbol(defaultRegionsSymbol);
+                    }
+                    //alert(evt.graphic.attributes("Region Name"));
+                });
+                //var myElement = "<b><i>Region Details</i></b><br/>----------------------<br/>";
+                var myElement = "<b>Name:</b>" + gra.RegionName + "<br/><b>Customers Served:</b>" + gra.CustomersServed + "<br/><b>Customers Affected:</b>" + gra.CustomersAffected + "<br/><b>Percentage Outage:</b>" + gra.PercentageOutage;
+                ShowServiceRequestDetails(evt.mapPoint, myElement, "Region Details");
+                //                popup.setTitle(myElement);
+                //                popup.show(evt.mapPoint);
+            });
+
+            if (map.loaded) {
+                //resizeMap();
+
+            } else {
+                dojo.connect(map, "onLoad", function () {
+                    //resizeMap();
+                });
+            }
+
+            //dojo.place(popup.domNode, map.root);
+            //currentItem = response.itemInfo;
+            dojo.connect(map, "onExtentChange", function (extent) {
+                map.infoWindow.hide();
+                if (mapMinResolution != null && mapMinResolution != "" && map.getLevel() > mapMinResolution) {
+                    map.setLevel(mapMinResolution);
+                }
+            });
+
+            //$('#queryLayers').change(changeLayer);
+            $('#rCounty,#rRegion').change(changeLayer);
+            var myVar = setInterval(function () { myTimer() }, parseInt(mobileAutoRefreshInterval) * 1000);
+            //locator.outSpatialReference = map.spatialReference;
+
+            // var glayer = new esri.layers.GraphicsLayer();
+            // glayer.id = tempGraphicsLayerId;
+            // map.addLayer(glayer);
+
+            //            var serviceRequestLayer = new esri.layers.FeatureLayer(isBorwser ? serviceRequestLayerURL : serviceRequestmobileLayerURL, {
+            //                mode: esri.layers.FeatureLayer.MODE_SNAPSHOT,
+            //                outFields: ["*"],
+            //                id: serviceRequestLayerId,
+            //                displayOnPan: false
+            //            });
+            //            map.addLayer(serviceRequestLayer);
+
+            //            var serviceRequestCommentsLayer = new esri.layers.FeatureLayer(serviceRequestCommentsLayerURL, {
+            //                mode: esri.layers.FeatureLayer.MODE_SELECTION,
+            //                outFields: ["*"],
+            //                id: serviceRequestCommentsLayerId,
+            //                displayOnPan: false
+            //            });
+            //            map.addLayer(serviceRequestCommentsLayer);
+
+            //ShowProgressIndicator('map');
+
+            //            var handle = dojo.connect(serviceRequestLayer, "onUpdateEnd", function (features) {
+            //                serviceRequestSymbol = serviceRequestLayer.renderer.infos[0].symbol;
+            //                var symbolSize = isBorwser ? 25 : 44;
+            //                locatorMarkupSymbol = (locatorMarkupSymbolURL == "") ? serviceRequestLayer.renderer.infos[0].symbol : new esri.symbol.PictureMarkerSymbol(locatorMarkupSymbolURL, Number(symbolSize), Number(symbolSize));
+            //                CreateRequestTypesList(serviceRequestLayer.fields);
+            //                HideProgressIndicator();
+            //                dojo.disconnect(handle);
+            //            });
+
+            //            dojo.connect(serviceRequestLayer, "onClick", function (evt) {
+            //                ShowServiceRequestDetails(evt.graphic.geometry, evt.graphic.attributes);
+            //                //For cancelling event propagation
+            //                evt = (evt) ? evt : event;
+            //                evt.cancelBubble = true;
+            //                if (evt.stopPropagation) {
+            //                    evt.stopPropagation();
+            //                }
+            //            });
+
+            if (!isMobileDevice) {
+                window.onresize = function () {
+                    resizeHandler();
+                }
+            }
+        }
+
+        //get counties
+        function getCounties() {
+            var params = {
+                url: "OMSMobileService.asmx/GetAllCounties",
+                handleAs: "xml",
+                contentType: 'application/xml',
+                load: function (data) {
+                    var xmin; var xmax; var ymin; var ymax;
+                    countiesLyr.clear();
+                    if (data) {
+                        for (var ct = 0; ct < data.childNodes.length; ct++) {
+
+                            for (var i = 0; i < data.childNodes[ct].childNodes.length; i++) {
+
+                                if (data.childNodes[ct].childNodes[i].nodeName == "MobileCounty") {
+
+                                    //got the county objects array
+                                    var countyName; var custServed; var custAffected; var percentageAffected; var polygon;
+                                    for (var j = 0; j < data.childNodes[ct].childNodes[i].childNodes.length; j++) {
+
+                                        //county object
+                                        if (data.childNodes[ct].childNodes[i].childNodes[j].nodeName == "Shape") {
+                                            var ring = dojox.xml.parser.textContent(data.childNodes[ct].childNodes[i].childNodes[j]);
+                                            var pts = ring.split(';');
+                                            var points = new Array();
+                                            for (var a = 0; a < pts.length; a++) {
+                                                points[a] = new esri.geometry.Point(pts[a].split(',')[0], pts[a].split(',')[1]);
+                                                var newPt = esri.geometry.geographicToWebMercator(points[a]);
+                                                if (xmin == null) {
+                                                    xmin = newPt.x;
+                                                    xmax = newPt.x;
+                                                    ymin = newPt.y;
+                                                    ymax = newPt.y;
+                                                }
+                                                else {
+                                                    if (newPt.x > xmax) {
+                                                        xmax = newPt.x;
+                                                    }
+                                                    if (newPt.x < xmin) {
+                                                        xmin = newPt.x;
+                                                    }
+                                                    if (newPt.y > ymax) {
+                                                        ymax = newPt.y;
+                                                    }
+                                                    if (newPt.y < ymin) {
+                                                        ymin = newPt.y;
+                                                    }
+                                                }
+                                            }
+                                            polygon = new esri.geometry.Polygon(map.spatialReference);
+                                            polygon.addRing(points);
+                                        }
+                                        else {
+
+                                            if (data.childNodes[ct].childNodes[i].childNodes[j].nodeName == "CountyName")
+                                                countyName = dojox.xml.parser.textContent(data.childNodes[ct].childNodes[i].childNodes[j]);
+                                            if (data.childNodes[ct].childNodes[i].childNodes[j].nodeName == "CustomersServed")
+                                                custServed = dojox.xml.parser.textContent(data.childNodes[ct].childNodes[i].childNodes[j]);
+                                            if (data.childNodes[ct].childNodes[i].childNodes[j].nodeName == "CustomersAffected")
+                                                custAffected = dojox.xml.parser.textContent(data.childNodes[ct].childNodes[i].childNodes[j]);
+
+                                            percentageAffected = 0;
+                                            if (custAffected > 0 && custServed > 0)
+                                                percentageAffected = (custAffected / custServed) * 100;
+                                        }
+
+                                    }
+                                    var countiestemplate = new esri.InfoTemplate();
+                                    countiestemplate.setTitle("<b>County Details</b>");
+                                    countiestemplate.setContent("<b>County Name:</b> ${CountyName}<br/><b>Customers Served:</b>${CustomersServed}<br/><b>Customers Affected:</b>${CustomersAffected}<br/><b>Percentage Outage:</b>${PercentageOutage}");
+
+                                    var countyGraphic = new esri.Graphic(esri.geometry.geographicToWebMercator(polygon), defaultCountiesSymbol, countiestemplate);
+                                    var attributes = { "CountyName": countyName, "CustomersServed": custServed, "CustomersAffected": custAffected, "PercentageOutage": percentageAffected };
+                                    countyGraphic.setAttributes(attributes);
+
+                                    countiesLyr.add(countyGraphic);
+                                }
+                            }
+                        }
+                    }
+                    if (xmin != null && xmin != 0 && loaded == false) {
+                        var extent = new esri.geometry.Extent(xmin, ymin, xmax, ymax, map.spatialReference);
+                        map.setExtent(extent.expand(1.5));
+                        loaded = true;
+                    }
+
+                    // FillCountyDetails();
+
+
+                },
+                error: function (err) {
+                    alert(err);
+                }
+            };
+            dojo.xhrPost(params);
+        }
+
+        //get regions
+        function getRegions() {
+            var params = {
+                url: "OMSMobileService.asmx/GetAllRegions",
+                dataType: "xml",
+                type: "POST",
+                success: function (data) {
+                    var xmin; var xmax; var ymin; var ymax;
+                    regionsLyr.clear();
+                    if (data) {
+                        for (var ct = 0; ct < data.childNodes.length; ct++) {
+                            
+                            for (var i = 0; i < data.childNodes[ct].childNodes.length; i++) {
+                                if (data.childNodes[ct].childNodes[i].nodeName == "MobileRegion") {
+                                    var regionName; var custServed; var custAffected; var percentageAffected; var polygon;
+
+                                    for (var j = 0; j < data.childNodes[ct].childNodes[i].childNodes.length; j++) {
+
+                                        if (data.childNodes[ct].childNodes[i].childNodes[j].nodeName == "Shape") {
+                                            var ring = dojox.xml.parser.textContent(data.childNodes[ct].childNodes[i].childNodes[j]);
+                                            var pts = ring.split(';');
+                                            var points = new Array();
+                                            for (var a = 0; a < pts.length; a++) {
+                                                points[a] = new esri.geometry.Point(pts[a].split(',')[0], pts[a].split(',')[1]);
+                                                var newPt = esri.geometry.geographicToWebMercator(points[a]);
+                                                if (xmin == null) {
+                                                    xmin = newPt.x;
+                                                    xmax = newPt.x;
+                                                    ymin = newPt.y;
+                                                    ymax = newPt.y;
+                                                }
+                                                else {
+                                                    if (newPt.x > xmax) {
+                                                        xmax = newPt.x;
+                                                    }
+                                                    if (newPt.x < xmin) {
+                                                        xmin = newPt.x;
+                                                    }
+                                                    if (newPt.y > ymax) {
+                                                        ymax = newPt.y;
+                                                    }
+                                                    if (newPt.y < ymin) {
+                                                        ymin = newPt.y;
+                                                    }
+                                                }
+                                            }
+                                            polygon = new esri.geometry.Polygon(map.spatialReference);
+                                            polygon.addRing(points);
+                                        }
+//                                        else if (data.childNodes[ct].childNodes[i].childNodes[j].attributes == null) {
+//                                            regionName = "#text";
+//                                        }
+                                        else {
+                                            if (data.childNodes[ct].childNodes[i].childNodes[j].nodeName == "RegionName")
+                                                regionName = dojox.xml.parser.textContent(data.childNodes[ct].childNodes[i].childNodes[j]);
+                                            if (data.childNodes[ct].childNodes[i].childNodes[j].nodeName == "CustomersServed")
+                                                custServed = dojox.xml.parser.textContent(data.childNodes[ct].childNodes[i].childNodes[j]);
+                                            if (data.childNodes[ct].childNodes[i].childNodes[j].nodeName == "CustomersAffected")
+                                                custAffected = dojox.xml.parser.textContent(data.childNodes[ct].childNodes[i].childNodes[j]);
+
+                                            percentageAffected = 0;
+                                            if (custAffected > 0 && custServed > 0)
+                                                percentageAffected = (custAffected / custServed) * 100;
+                                        }
+
+
+
+                                    }
+                                    var regionstemplate = new esri.InfoTemplate();
+                                    regionstemplate.setTitle("<b>Region Details</b>");
+                                    regionstemplate.setContent("<b>Region Name:</b> ${RegionName}<br/><b>Customers Served:</b>${CustomersServed}<br/><b>Customers Affected:</b>${CustomersAffected}<br/><b>Percentage Outage:</b>${PercentageOutage}");
+
+                                    var regionGraphic = new esri.Graphic(esri.geometry.geographicToWebMercator(polygon), defaultRegionsSymbol);
+                                    var attributes = { "RegionName": regionName, "CustomersServed": custServed, "CustomersAffected": custAffected, "PercentageOutage": percentageAffected };
+                                    regionGraphic.setAttributes(attributes);
+                                    //if (regionName != "#text") {
+                                    regionsLyr.add(regionGraphic);
+                                    //}
+                                }
+                            }
+                        }
+                    }
+                    if (xmin != null && xmin != 0 && loaded == false) {
+                        var extent = new esri.geometry.Extent(xmin, ymin, xmax, ymax, map.spatialReference);
+                        map.setExtent(extent.expand(1.5));
+                        loaded = true;
+                    }
+                    //FillRegionDetails();
+                    FillOutageDetails();
+                },
+                error: function (err) {
+                    alert(err);
+                }
+            };
+            //dojo.xhrPost(params);
+            $.ajax(params);
+        }
+
+        //get Outages
+        function getOutages() {
+            var params = {
+                url: "./OMSMobileService.asmx/GetAllOutages",
+                handleAs: "xml",
+                contentType: 'application/xml',
+                load: function (result) {
+                    outageLyr.clear();
+                    if (result) {
+                        for (var ct = 0; ct < result.childNodes.length; ct++) {
+                            if (result.childNodes[ct].nodeName == "MobileOutageInfo") {
+                                for (var i = 0; i < result.childNodes[ct].childNodes.length; i++) {
+                                    if (result.childNodes[ct].childNodes[i].nodeName == "TotalCustAffected") {
+                                        totalCustAffected = dojox.xml.parser.textContent(result.childNodes[ct].childNodes[i]);
+                                    }
+                                    else if (result.childNodes[ct].childNodes[i].nodeName == "TotalCustomers") {
+                                        totalCustomers = dojox.xml.parser.textContent(result.childNodes[ct].childNodes[i]);
+                                    }
+                                    else if (result.childNodes[ct].childNodes[i].nodeName == "OldestOutageTime") {
+                                        oldestOutageTime = dojox.xml.parser.textContent(result.childNodes[ct].childNodes[i]);
+                                    }
+                                    else if (result.childNodes[ct].childNodes[i].nodeName == "Outages") {
+                                        for (var j = 0; j < result.childNodes[ct].childNodes[i].childNodes.length; j++) {
+                                            if (result.childNodes[ct].childNodes[i].childNodes[j].nodeName == "MobileOutage") {
+                                                var x1;
+                                                var y1;
+                                                var outCustCount; var outageTime;
+                                                for (var k = 0; k < result.childNodes[ct].childNodes[i].childNodes[j].childNodes.length; k++) {
+                                                    if (result.childNodes[ct].childNodes[i].childNodes[j].childNodes[k].nodeName == "X") {
+                                                        x1 = dojox.xml.parser.textContent(result.childNodes[ct].childNodes[i].childNodes[j].childNodes[k]);
+                                                    }
+                                                    else if (result.childNodes[ct].childNodes[i].childNodes[j].childNodes[k].nodeName == "Y") {
+                                                        y1 = dojox.xml.parser.textContent(result.childNodes[ct].childNodes[i].childNodes[j].childNodes[k]);
+                                                    }
+                                                    else if (result.childNodes[ct].childNodes[i].childNodes[j].childNodes[k].nodeName == "CutomersAffected") {
+                                                        outCustCount = dojox.xml.parser.textContent(result.childNodes[ct].childNodes[i].childNodes[j].childNodes[k]);
+                                                    }
+                                                    else if (result.childNodes[ct].childNodes[i].childNodes[j].childNodes[k].nodeName == "OutageTime") {
+                                                        outageTime = dojox.xml.parser.textContent(result.childNodes[ct].childNodes[i].childNodes[j].childNodes[k]);
+                                                    }
+                                                }
+                                                var imgPath = "";
+                                                var symbol;
+                                                if (outCustCount == 1) {
+                                                    imgPath = "../Images/Circle_Blue.png";
+                                                    symbol = new esri.symbol.PictureMarkerSymbol(imgPath, 8, 8);
+                                                }
+                                                else if (outCustCount > 1 && outCustCount < 11) {
+                                                    imgPath = "../Images/Circle_Green.png";
+                                                    symbol = new esri.symbol.PictureMarkerSymbol(imgPath, 10, 10);
+                                                }
+                                                else if (outCustCount > 10 && outCustCount < 101) {
+                                                    imgPath = "../Images/Circle_Yellow.png";
+                                                    symbol = new esri.symbol.PictureMarkerSymbol(imgPath, 12, 12);
+                                                }
+                                                else if (outCustCount > 100 && outCustCount < 501) {
+                                                    imgPath = "../Images/Circle_Orange.png";
+                                                    symbol = new esri.symbol.PictureMarkerSymbol(imgPath, 16, 16);
+                                                }
+                                                else if (outCustCount > 500) {
+                                                    imgPath = "../Images/Circle_Red.png";
+                                                    symbol = new esri.symbol.PictureMarkerSymbol(imgPath, 24, 24);
+                                                }
+                                                //var symbol = new esri.symbol.PictureMarkerSymbol(imgPath, 32, 32);
+                                                if (outCustCount > 0) {
+                                                    var outagetemplate = new esri.InfoTemplate();
+                                                    outagetemplate.setTitle("<b>Outage Details</b>");
+                                                    outagetemplate.setContent("<b>Customers Affected:</b>${CustomersAffected}<br/><b>Outage Time:</b>${OutageTime:DateFormat}");
+
+                                                    var gra = new esri.Graphic(esri.geometry.geographicToWebMercator(new esri.geometry.Point(x1, y1)), symbol, outagetemplate);
+                                                    var attributes = { "CustomersAffected": outCustCount, "OutageTime": outageTime };
+
+                                                    gra.setAttributes(attributes);
+                                                    outageLyr.add(gra);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    FillOutageDetails();
+
+                },
+                error: function (err) {
+                    alert(err);
+                }
+            };
+            dojo.xhrPost(params);
+        }
+
+//        function getOutages() {
+//            var params = {
+//                url: "OMSMobileService.asmx/GetAllOutages",
+//                handleAs: "json",
+//                contentType: 'application/json',
+//                load: function (result) {
+//                    outageLyr.clear();
+//                    if (result) {
+//                        totalCustAffected = result.d.TotalCustAffected;
+//                        totalCustomers = result.d.TotalCustomers;
+//                        oldestOutageTime = result.d.OldestOutageTime;
+//                        if (result.d.Outages) {
+//                            for (var i = 0; i < result.d.Outages.length; i++) {
+
+//                                var x1;
+//                                var y1;
+//                                var outCustCount; var outageTime;
+//                                x1 = result.d.Outages[i].X;
+//                                y1 = result.d.Outages[i].Y;
+//                                outCustCount = result.d.Outages[i].CutomersAffected;
+//                                outageTime = result.d.Outages[i].OutageTime;
+
+//                                var imgPath = "";
+//                                var symbol;
+//                                if (outCustCount == 1) {
+//                                    imgPath = "../Images/Circle_Blue.png";
+//                                    symbol = new esri.symbol.PictureMarkerSymbol(imgPath, 8, 8);
+//                                }
+//                                else if (outCustCount > 1 && outCustCount < 11) {
+//                                    imgPath = "../Images/Circle_Green.png";
+//                                    symbol = new esri.symbol.PictureMarkerSymbol(imgPath, 10, 10);
+//                                }
+//                                else if (outCustCount > 10 && outCustCount < 101) {
+//                                    imgPath = "../Images/Circle_Yellow.png";
+//                                    symbol = new esri.symbol.PictureMarkerSymbol(imgPath, 12, 12);
+//                                }
+//                                else if (outCustCount > 100 && outCustCount < 501) {
+//                                    imgPath = "../Images/Circle_Orange.png";
+//                                    symbol = new esri.symbol.PictureMarkerSymbol(imgPath, 16, 16);
+//                                }
+//                                else if (outCustCount > 500) {
+//                                    imgPath = "../Images/Circle_Red.png";
+//                                    symbol = new esri.symbol.PictureMarkerSymbol(imgPath, 24, 24);
+//                                }
+//                                //var symbol = new esri.symbol.PictureMarkerSymbol(imgPath, 32, 32);
+//                                if (outCustCount > 0) {
+//                                    var outagetemplate = new esri.InfoTemplate();
+//                                    outagetemplate.setTitle("<b>Outage Details</b>");
+//                                    outagetemplate.setContent("<b>Customers Affected:</b>${CustomersAffected}<br/><b>Outage Time:</b>${OutageTime:DateFormat}");
+
+//                                    var gra = new esri.Graphic(esri.geometry.geographicToWebMercator(new esri.geometry.Point(x1, y1)), symbol, outagetemplate);
+//                                    var attributes = { "CustomersAffected": outCustCount, "OutageTime": outageTime };
+
+//                                    gra.setAttributes(attributes);
+//                                    outageLyr.add(gra);
+//                                }
+
+//                            }
+//                        }
+//                    }
+//                    FillOutageDetails();
+
+//                },
+//                error: function (err) {
+//                    alert(err);
+//                }
+//            };
+//            dojo.xhrPost(params);
+//        }
+        function FillOutageDetails() {
+            var perInService = 100;
+            if (totalCustAffected > 0 && totalCustomers > 0) {
+                perInService = ((totalCustomers - totalCustAffected) / totalCustomers) * 100;
+                perInService = roundNumber(perInService, 2);
+            }
+            else if (totalCustomers > 0)
+                perInService = "100";
+            else
+                perInService = "";
+
+            if (!oldestOutageTime || totalCustAffected == 0)
+                oldestOutageTime = "";
+            //alert(perInService);
+            dojo.byId('totalCustomers').innerHTML = totalCustomers;
+            dojo.byId('affectedCustomers').innerHTML = totalCustAffected;
+            dojo.byId('inService').innerHTML = perInService;
+            dojo.byId('oldestOutage').innerHTML = oldestOutageTime;
+            isOutageDetailsLoaded = true;
+        }
+
+        //get Outages
+        function getOutageCustomerLocations(cisloc) {
+            var maprequest = { "locations": cisloc };
+            customerOutagesLyr.clear();
+            var params = {
+                url: "OMSMobileService.asmx/GetLocations",
+                postData: dojo.toJson(maprequest),
+                handleAs: "json",
+                contentType: "application/json; charset=utf-8",
+                load: function (result) {
+                    if (result && result.d) {
+                        var imgPath = "../Images/flag-32.png";
+                        var symbol = new esri.symbol.PictureMarkerSymbol(imgPath, 24, 24);
+                        var xmin; var xmax; var ymin; var ymax;
+                        var firstGraphic;
+                        for (var ct = 0; ct < result.d.length; ct++) {
+                            var locNum = result.d[ct].LocNumber;
+                            var x1;
+                            var y1; ;
+                            x1 = result.d[ct].X;
+                            y1 = result.d[ct].Y;
+                            var custAffected = result.d[ct].CustomersAffected;
+                            var outageTime = result.d[ct].OutageTime;
+                            var etor = result.d[ct].ETOR;
+                            var iconUrl = result.d[ct].IconUrl;
+                            var temp = result.d[ct].Temp;
+                            var wind = result.d[ct].Wind;
+                            var precip = result.d[ct].Precip;
+                            var wDesc = result.d[ct].WeatherDesc;
+                            var newPt = esri.geometry.geographicToWebMercator(new esri.geometry.Point(x1, y1));
+                            if (xmin == null) {
+                                xmin = newPt.x;
+                                xmax = newPt.x;
+                                ymin = newPt.y;
+                                ymax = newPt.y;
+                            }
+                            else {
+                                if (newPt.x > xmax) {
+                                    xmax = newPt.x;
+                                }
+                                if (newPt.x < xmin) {
+                                    xmin = newPt.x;
+                                }
+                                if (newPt.y > ymax) {
+                                    ymax = newPt.y;
+                                }
+                                if (newPt.y < ymin) {
+                                    ymin = newPt.y;
+                                }
+                            }
+                            var gra = new esri.Graphic(newPt, symbol, null);
+                            var attributes = { "CustomersAffected": custAffected, "OutageTime": outageTime, "ETOR": etor, "Temp": temp, "Icon": iconUrl, "Wind": wind, "Precip": precip, "Desc": wDesc };
+
+                            gra.setAttributes(attributes);
+                            customerOutagesLyr.add(gra);
+
+                            if (firstGraphic == null) firstGraphic = gra;
+
+                        }
+
+                        if (xmin != null && xmin != 0) {
+                            if (xmin == xmax) {
+                                map.centerAndZoom(new esri.geometry.Point(xmin, ymin), 13);
+                            }
+                            else {
+                                var extent = new esri.geometry.Extent(xmin, ymin, xmax, ymax, map.spatialReference);
+                                map.setExtent(extent.expand(2));
+                                if (mapMinResolution != null && mapMinResolution != "" && map.getLevel() > mapMinResolution) {
+                                    map.setLevel(mapMinResolution);
+                                }
+                            }
+                            loaded = true;
+
+                            //if(firstGraphic != null)
+                            //{
+                            //alert("first");
+                            //var myElement;
+                            //if(firstGraphic.ETOR != "")
+                            //myElement = "<b>Customers Affected: </b>" + firstGraphic.CustomersAffected + "<br/><b>Outage Time: </b>" + firstGraphic.OutageTime+ "<br/><b>ETOR: </b>" + firstGraphic.ETOR;
+                            //else
+                            //myElement = "<b>Customers Affected: </b>" + firstGraphic.CustomersAffected + "<br/><b>Outage Time: </b>" + firstGraphic.OutageTime;	
+
+                            //ShowServiceRequestDetails(firstGraphic.geometry, myElement, "Outage Details");
+                            //}
+
+                        }
+                    }
+                },
+                error: function (err) {
+                    alert(err);
+                }
+            };
+            dojo.xhrPost(params);
+        }
+
+
+        function readConfigFile() {
+            $.ajax({
+                type: "GET",
+                url: ".././ClientBin/Config.xml",
+                dataType: "xml",
+                success: function (xml) {
+                    $(xml).find('Config').each(function () {
+                        securityEnabled = $(this).find('EnableSecurity').text();
+                        tokenString = $(this).find('TokenString').text();
+
+                    });
+                }
+            });
+
+
+        }
+
+        function getQuerystring(key, default_) {
+            if (default_ == null) default_ = "";
+            key = key.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+            var regex = new RegExp("[\\?&]" + key + "=([^&#]*)");
+            var qs = regex.exec(window.location.href);
+            if (qs == null)
+                return default_;
+            else
+                return qs[1];
+        }
+
+        function jQueryReady() {
+            //$.mobile.pageLoading(false); //true hides the dialog
+            //dojo.parser.parse();
+            ShowProgressIndicator('map');
+            loadConfiguraionFromXml(); //load the configuration
+            app.IsMenuShowed = true;
+            app.MenuHeight = $('.trOptions').height();
+            //ShowHideMenu();
+            //var menu = $('#trOptions');
+            //
+            var menu1 = $('#tdAppTitle');
+//            menu.mousedown(function (e) {
+//                e.preventDefault();
+//            });
+//            menu.mouseleave(function (e) {
+//                //ShowHideMenu();
+//                HideMenu();
+//            });
+//            menu.bind('touchstart', function (e) {
+//                e.preventDefault();
+//            });
+//            menu.bind('touchmove', function (e) {
+//                e.preventDefault();
+//            });
+//            menu.bind('touchend', function (e) {
+//                //ShowHideMenu();
+//                HideMenu();
+            //            });
+
+            menu1.mousedown(function (e) {
+                //e.preventDefault();
+                ShowHideMenu();
+            });
+
+            
+
+//            menu1.mouseleave(function (e) {
+//                //ShowHideMenu();
+//                //ShowMenu();
+//            });
+//            menu1.bind('touchstart', function (e) {
+//                e.preventDefault();
+//            });
+//            menu1.bind('touchmove', function (e) {
+//                e.preventDefault();
+//            });
+//            menu1.bind('touchend', function (e) {
+//                //ShowHideMenu();
+//                //ShowMenu();
+//            });
+            //dojo.require("dojox/gesture/swipe");
+//            menu
+//            .on('swipedown', function (e) {
+//                ShowHideMenu();
+//            })
+//            .on('swipeup', function (e) {
+//                ShowHideMenu();
+//            });
+//            dojo.connect(menu, dojox.gesture.swipe,
+//                function (e) {
+//                    ShowHideMenu();
+//                });
+        }
+        function myTimer() {
+            map.removeLayer(outageLyr);
+            //map.removeLayer(customerOutagesLyr);
+            getOutages();
+//            if (app.locations) {
+//                getOutageCustomerLocations(app.locations);
+//            }
+            map.addLayer(outageLyr);
+            //map.addLayer(customerOutagesLyr);
+        }
+
+        function getLocation() {
+            //alert("gps");
+            if (navigator.geolocation) {
+                //alert("gps1");
+                //$.mobile.pageLoading(false); //true hides the dialog
+                //if you want to track as the user moves setup navigator.geolocation.watchPostion
+                navigator.geolocation.getCurrentPosition(zoomToLocation, locationError);
+
+            }
+        }
+
+        function locationError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    alert("Location not provided");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("Current location not available");
+                    break;
+                case error.TIMEOUT:
+                    alert("Timeout");
+                    break;
+                default:
+                    alert("unknown error");
+                    break;
+            }
+        }
+        function zoomToLocation(location) {
+            //alert("gps");
+            //clear existing graphics
+            map.graphics.clear();
+            // $.mobile.pageLoading(true); //true hides the dialog
+            var pt = esri.geometry.geographicToWebMercator(new esri.geometry.Point(location.coords.longitude, location.coords.latitude));
+            map.centerAndZoom(pt, mapMinResolution);
+            var symbol = new esri.symbol.PictureMarkerSymbol("../images/GPSDestinationAdd32.png", 40, 40);
+            map.graphics.add(new esri.Graphic(pt, symbol));
+        }
+
+        function NextDetailsTab() {
+            var county = "county";
+            if ($('#rRegion').is(':checked')) {
+                county = "region";
+            }
+            if (county)
+            {
+                //alert(detailsCurrentTabIndex);
+                if (detailsCurrentTabIndex == 0) {
+                    dojo.byId('oDetailsTitle').innerHTML = "Total Customers per " + county;
+                    dojo.byId('Img2').style.display = "block";
+                    detailsCurrentTabIndex += 1;
+                    setDetails();
+                }
+                else if (detailsCurrentTabIndex == 2) {
+                    dojo.byId('oDetailsTitle').innerHTML = "% Outage per " + county;
+                    dojo.byId('Img1').style.display = "none";
+                    detailsCurrentTabIndex += 1;
+                    setDetails();
+                    //dojo.byId('Img1').src = "../images/arrow_left_48.png";
+                }
+                else if (detailsCurrentTabIndex == 1) {
+                    dojo.byId('oDetailsTitle').innerHTML = "Affected Customers per " + county;
+                    detailsCurrentTabIndex += 1;
+                    setDetails();
+                }
+                //oDetailsTitle
+            }
+        }
+
+        function PreviousDetailsTab() {
+            var county = "county";
+            if ($('#rRegion').is(':checked')) {
+                county = "region";
+            }
+            if (county) {
+                if (detailsCurrentTabIndex == 1) {
+                    dojo.byId('oDetailsTitle').innerHTML = "Outage Details";
+                    dojo.byId('Img2').style.display = "none";
+                    detailsCurrentTabIndex -= 1;
+                    setDetails();
+                }
+                else if (detailsCurrentTabIndex == 2) {
+                    dojo.byId('oDetailsTitle').innerHTML = "Total Customers per " + county;
+                    detailsCurrentTabIndex -= 1;
+                    setDetails();
+                    //dojo.byId('Img1').src = "../images/arrow_left_48.png";
+                }
+                else if (detailsCurrentTabIndex == 3) {
+                    dojo.byId('oDetailsTitle').innerHTML = "Affected Customers per " + county;
+                    detailsCurrentTabIndex -= 1;
+                    dojo.byId('Img1').style.display = "block";
+                    setDetails();
+                }
+            }
+        }
+
+        function setDetails() {
+            // dojo.byId('oDetails').innerHTML = "";
+            //var demoWidget = new dojox.mobile.EdgeToEdgeList();
+            // dijit.byId('slide2').addChild(demoWidget);
+
+            //var details = "<div><div dojotype='dojox.mobile.EdgeToEdgeList'><div style='overflow: auto;'>";
+            dojo.byId('oDetailsList').style.display = "none";
+            var cConsumerList = dojo.byId('countyConsumerList');
+            var cAffectedList = dojo.byId('countyAffectedList');
+            var cInServiceList = dojo.byId('countyInServiceList');
+            var rConsumerList = dojo.byId('regionConsumerList');
+            var rAffectedList = dojo.byId('regionAffectedList');
+            var rInServiceList = dojo.byId('regionInServiceList');
+            cConsumerList.style.display = "none";
+            //dojo.byId('countyConsumerList').style.display = "none";
+            cAffectedList.style.display = "none";
+            cInServiceList.style.display = "none";
+            rConsumerList.style.display = "none";
+            rAffectedList.style.display = "none";
+            rInServiceList.style.display = "none";
+
+            var height = (isMobileDevice) ? map.height : dojo.coords(dojo.byId('divAddressContent')).h;
+            var listWidget;
+
+            var county = "county";
+            if ($('#rRegion').is(':checked')) {
+                county = "region";
+            }
+
+            if (detailsCurrentTabIndex == 1 && county == "county") {
+                cConsumerList.style.display = "block";
+                cConsumerList.style.overflow = "auto";
+                cConsumerList.style.height = (height - 75) + "px";
+                if (isCountyCustomersLoaded == true) return;
+                listWidget = dijit.byId("countyConsumerList");
+            }
+            else if (detailsCurrentTabIndex == 1 && county == "region") {
+                rConsumerList.style.display = "block";
+                rConsumerList.style.overflow = "auto";
+                rConsumerList.style.height = (height - 75) + "px";
+                if (isRegionCustomersLoaded == true) return;
+                listWidget = dijit.byId("regionConsumerList");
+            }
+            else if (detailsCurrentTabIndex == 2 && county == "county") {
+                cAffectedList.style.display = "block";
+                cAffectedList.style.overflow = "auto";
+                cAffectedList.style.height = (height - 75) + "px";
+                if (isCountyAffectedLoaded == true) return;
+                listWidget = dijit.byId("countyAffectedList");
+            }
+            else if (detailsCurrentTabIndex == 2 && county == "region") {
+                rAffectedList.style.display = "block";
+                rAffectedList.style.overflow = "auto";
+                rAffectedList.style.height = (height - 75) + "px";
+                if (isRegionAffectedLoaded == true) return;
+                listWidget = dijit.byId("regionAffectedList");
+            }
+            else if (detailsCurrentTabIndex == 3 && county == "county") {
+                cInServiceList.style.display = "block";
+                cInServiceList.style.overflow = "auto";
+                cInServiceList.style.height = (height - 75) + "px";
+                if (isCountyOutageLoaded == true) return;
+                listWidget = dijit.byId("countyInServiceList");
+            }
+            else if (detailsCurrentTabIndex == 3 && county == "region") {
+                rInServiceList.style.display = "block";
+                rInServiceList.style.overflow = "auto";
+                rInServiceList.style.height = (height - 75) + "px";
+                if (isRegionOutageLoaded == true) return;
+                listWidget = dijit.byId("regionInServiceList");
+            }
+            else if (detailsCurrentTabIndex == 0) {
+                dojo.byId('oDetailsList').style.display = "block";
+                return;
+            }
+
+            // listWidget.containerNode = null;
+            var gra;
+
+            if (county == "county") {
+                //var listWidget = dijit.byId("countyConsumerList");
+                dojo.forEach(countiesLyr.graphics, function (graphic) {
+                    gra = graphic.attributes;
+                    var obj = "";
+                    if (detailsCurrentTabIndex == 1)
+                        obj = gra.CustomersServed;
+                    else if (detailsCurrentTabIndex == 2)
+                        obj = gra.CustomersAffected;
+                    else if (detailsCurrentTabIndex == 3)
+                        obj = roundNumber(gra.PercentageOutage, 2);
+
+                    var childWidget = new dojox.mobile.ListItem({ label: gra.CountyName, rightText: obj });
+                    //var childWidget = new dojox.mobile.ListItem();
+                    //childWidget.innerHTML = '<div class="c1">Total Customers</div><div class="c2" id="totalCustomers"></div>';
+                    if (listWidget)
+                        listWidget.addChild(childWidget);
+                    //details += "<li dojotype='dojox.mobile.ListItem'><div class='c1'>" + gra.CountyName + "</div><div class='c2'>" + obj +"</div></li>"
+                });
+//                isRegionCustomersLoaded = false;
+//                isRegionAffectedLoaded = false;
+//                isRegionOutageLoaded = false;
+//                isCountyCustomersLoaded = false;
+//                isCountyAffectedLoaded = false;
+//                isCountyOutageLoaded = false;
+
+                if (detailsCurrentTabIndex == 1)
+                    isCountyCustomersLoaded = true;
+                else if (detailsCurrentTabIndex == 2)
+                    isCountyAffectedLoaded = true;
+                else if (detailsCurrentTabIndex == 3)
+                    isCountyOutageLoaded = true;
+            } else if (county == "region") {
+                //listWidget = dijit.byId("countyConsumerList");
+                dojo.forEach(regionsLyr.graphics, function (graphic) {
+                    gra = graphic.attributes;
+                    var obj = "";
+                    if (detailsCurrentTabIndex == 1)
+                        obj = gra.CustomersServed;
+                    else if (detailsCurrentTabIndex == 2)
+                        obj = gra.CustomersAffected;
+                    else if (detailsCurrentTabIndex == 3)
+                        obj = roundNumber(gra.PercentageOutage, 2);
+
+                    var childWidget = new dojox.mobile.ListItem({ label: gra.RegionName, rightText: obj });
+                    //var childWidget = new dojox.mobile.ListItem();
+                    //childWidget.innerHTML = '<div class="c1">Total Customers</div><div class="c2" id="totalCustomers"></div>';
+                    if (listWidget)
+                        listWidget.addChild(childWidget);
+                    //details += "<li dojotype='dojox.mobile.ListItem'><div class='c1'>" + gra.CountyName + "</div><div class='c2'>" + obj +"</div></li>"
+                });
+//                isCountyCustomersLoaded = false;
+//                isCountyAffectedLoaded = false;
+//                isCountyOutageLoaded = false;
+//                isRegionCustomersLoaded = false;
+//                isRegionAffectedLoaded = false;
+//                isRegionOutageLoaded = false;
+
+                if (detailsCurrentTabIndex == 1)
+                    isRegionCustomersLoaded = true;
+                else if (detailsCurrentTabIndex == 2)
+                    isRegionAffectedLoaded = true;
+                else if (detailsCurrentTabIndex == 3)
+                    isRegionOutageLoaded = true;
+            }
+
+
+            //details += "</div></div></div>";
+            //alert(demoWidget);
+            // dojo.byId('oDetails').innetHTML = dojo.byId('slide2').innetHTML;
+        }
+        function validateToken() {
+            //  readConfigFile();
+            var userValidated = false;
+            if (securityEnabled.toUpper() == "YES") {
+                var token = getQuerystring('TokenString');
+                if (token != null && token == tokenString.toString())
+                    userValidated = true;
+                else
+                    userValidated = false;
+            }
+
+            return userValidated;
+        }
+
+        function validateUser() {
+            var valid = validateToken;
+            if (valid == false)
+                window.location = ".././Map/Error.htm";
+
+        }
+
+        function loadConfiguraionFromXml() {
+            dojo.xhrGet({
+                url: ".././ClientBin/Config.xml",
+                handleAs: "xml",
+                contentType: "application/xml; charset=utf-8",
+                load: function (data, args) {
+
+                    for (var i = 0; i < data.childNodes.length; i++) {
+
+                        if (data.childNodes[i].nodeName == "Config") {
+                            for (var j = 0; j < data.childNodes[i].childNodes.length; j++) {
+                                if (data.childNodes[i].childNodes[j].nodeName == "Attributes") {
+
+                                    for (var x = 0; x < data.childNodes[i].childNodes[j].attributes.length; x++) {
+                                        var attr = data.childNodes[i].childNodes[j].attributes[x];
+                                        if (attr != null) {
+                                            if (attr.name == "MobileAutoRefreshInterval")
+                                                mobileAutoRefreshInterval = attr.value;
+                                            else if (attr.name == "MobileMap_Title")
+                                                webmapTitle = attr.value;
+                                            else if (attr.name == "MobileMap_Type")
+                                                webmapType = attr.value;
+                                            else if (attr.name == "MobileMap_Mode")
+                                                webmapMode = attr.value;
+                                            else if (attr.name == "Bing_Token")
+                                                bingToken = attr.value;
+                                            else if (attr.name == "ESRI_LogoVisible")
+                                                esriLogoVisible = attr.value;
+                                            else if (attr.name == "Map_MinResolution")
+                                                mapMinResolution = attr.value;
+                                            else if (attr.name == "ShowOutages")
+                                                showOutages = attr.value;
+                                            else if (attr.name == "ShowRegions")
+                                                showRegions = attr.value;
+                                            else if (attr.name == "ShowCounties")
+                                                showCounties = attr.value;
+                                            else if (attr.name == "RegionsFillColor")
+                                                regionFillColor = attr.value;
+                                            else if (attr.name == "RegionsFillOpacity")
+                                                regionFillOpacity = attr.value;
+                                            else if (attr.name == "RegionsBoundaryThickness")
+                                                regionBoundaryThickness = attr.value;
+                                            else if (attr.name == "RegionsBoundaryColor")
+                                                regionBoundaryColor = attr.value;
+                                            else if (attr.name == "RegionsTitle")
+                                                regionTitle = attr.value;
+                                            else if (attr.name == "RegionMapTipHeader")
+                                                regionMaptipHeader = attr.value;
+                                            else if (attr.name == "CountyFillColor")
+                                                countyFillColor = attr.value;
+                                            else if (attr.name == "CountyFillOpacity")
+                                                countyFillOpacity = attr.value;
+                                            else if (attr.name == "CountyBoundaryThickness")
+                                                countyBoundaryThickness = attr.value;
+                                            else if (attr.name == "CountyBoundaryColor")
+                                                countyBoundaryColor = attr.value;
+                                            else if (attr.name == "CountiesTitle")
+                                                countyTitle = attr.value;
+                                            else if (attr.name == "CountyMaptipHeader")
+                                                countyMaptipHeader = attr.value;
+                                            else if (attr.name == "EnableSecurity")
+                                                securityEnabled = attr.value;
+                                            else if (attr.name == "TokenString")
+                                                tokenString = attr.value;
+                                            else if (attr.name == "DefaultExtent") {
+                                                //alert(attr.value);
+                                                defaultExtent = attr.value;
+                                            }
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    init();
+                    
+                }
+            });
+        }
+
+        dojo.addOnLoad(jQueryReady);
+    
+    </script>
+</head>
+<body onorientationchange="orientationChanged();">
+    <div id="divUploadDialogContainer" align="center" style="display: none;">
+        <table style="width: 100%; height: 100%;">
+            <tr align="center" valign="middle">
+                <td>
+                    <div id="divUploadDialog">
+                        <table style="width: 95%; height: 95%;">
+                            <tr>
+                                <td style="height: 5px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="color: White;">
+                                    <span id="spanAddAttachmentText"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 5px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <button type="button" id="btnAddPhoto" style="width: 100px;" class="customButton">
+                                        Add Photo
+                                    </button>
+                                    &nbsp;
+                                    <button type="button" style="width: 100px;" class="customButton" onclick="CloseUploadDialog();">
+                                        Cancel
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 5px;">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="mapView" style="width: 100%; height: 100%;" dojotype="dojox.mobile.View"
+        selected="true">
+            <div id="map" style="width: 100%; height: 100%;" region="center" > 
+            </div>
+    </div>
+      <div id="divApplicationFooter">
+            <table style="width: 100%; height: 100%;">
+                <tr>
+                    <td>
+                       Click on your location/county to view more info. 
+                    </td>
+                    <!--<td id="copyright">
+                        <span>
+                            <a href="http://www.futuragis.com" ><img src="../images/Futura.png" style="width:15px; height:15px;" alt="Futura Logo" /></a>
+                            Copyright © 2012 Futura Systems, Inc.
+                        </span>
+
+                    </td>-->
+                </tr>
+            </table>
+        </div>
+        <!--<div id="divLayerVisibleContainer" class="hideLayerVisibleHeight">
+            <div id="divLayerVisibleContentHolder">
+                <select id="queryLayers" name="queryLayers">
+                    <option value="County">County</option>
+                    <option value="Region">Region</option>
+                </select>
+            </div>
+        </div>-->
+        <div id="divLayerVisibleContainer" class="hideLayerVisibleHeight">
+            <div id="divLayerVisibleContentHolder">
+                <fieldset data-role="controlgroup" data-type="horizontal" data-role="fieldcontain">
+    	            <legend>Choose visible layer:</legend>
+         	            <input type="radio" name="radio-choice-1" id="rCounty" value="County" checked="checked" />
+         	            <label class="lblRadio" for="radio-choice-1">County</label>
+
+         	            <input type="radio" name="radio-choice-1" id="rRegion" value="Region"  />
+         	            <label class="lblRadio" for="radio-choice-2">Region</label>
+                </fieldset>
+            </div>
+        </div>
+        <div class="esriSimpleSlider" id="divLocateMe">
+            <img src="../images/locate24.png" title="Locate me" id="imgLocateMe" class="esriSimpleSliderIncrementButton" onclick="getLocation();" />
+                        <!--<div class="fontOptions">Locate me</div>-->
+        </div>
+        <!--<div id="tdDropDownMenu" class="tdMenuDropDown">
+            <img src="../images/ListBullets.png" title"Show/Hide Menu" id="imgDropDownMenu" onclick="ShowHideMenu();" />
+        </div>-->
+        <div id="divRequestOptionsContainer">
+            <table cellspacing="1" cellpadding="1" style="width: 100%;">
+                <tr>
+                    <td id="tdAppTitle" align="center" class="tdAppTitle" colspan="6" />
+                </tr>
+                <tr align="center" class="trOptions" id="trOptions">
+                    <!--<td>
+                        <img src="../images/locate.png" title="My Location" class="imgOptions" onclick="getLocation();" />
+                        <div class="fontOptions">Locate me</div>
+                    </td>-->
+                    <td>
+                        <img src="../images/refresh.png" title="Refresh" class="imgOptions" onclick="ReloadOutages();" />
+                        <div class="fontOptions">Refresh</div>
+                    </td>
+                     <td>
+                        <img src="../images/light2.png" title="Outage Details" class="imgOptions" onclick="ShowLocateContainer();" />
+                        <div class="fontOptions">Details</div>
+                    </td>
+                    <td>
+                        <img src="../images/Layers.png" title="Layers" class="imgOptions" onclick="ShowLayerMaps();" />
+                        <div class="fontOptions">Layers</div>
+                    </td>
+                    <td>
+                        <img src="../images/Legend16.png" title="Legend" class="imgOptions" onclick="ShowBaseMaps();" />
+                        <div class="fontOptions">Legend</div>
+                    </td>
+                    <td>
+                        <img id="imgHelp" src="../images/Futura.png" title="About" class="imgOptions" onclick="showSplashScreen();" />
+                        <div class="fontOptions">About</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="divLayerContainer" class="hideContainerHeight">
+            <div id="divLayerContentHolder">
+                 <table>
+                 <tr>
+          <td><img src="../images/Blue1.png"/></td>
+          <td><div style="color:White">1 Customer</div></td>
+                          </tr>
+                <tr>
+          <td><img src="../images/Green1.png"/></td>
+          <td><div style="color:White">2 - 10 Customers</div></td>
+                          </tr>
+                          <tr>
+          <td><img src="../images/Yellow1.png"/></td>
+          <td><div style="color:White">11 - 100 Customers</div></td>
+                          </tr>
+                          <tr>
+          <td><img src="../images/Orange1.png"/></td>
+          <td><div style="color:White">101 - 500 Customers</div></td>
+                          </tr>
+                          <tr>
+          <td><img src="../images/Red1.png"/></td>
+          <td><div style="color:White">500+ Customers</div></td>
+                          </tr>
+                </table>
+            </div>
+        </div>
+        <div id="divAddressContainer" align="center" class="opacityHideAnimation">
+            <table style="width: 100%; height: 100%;">
+                <tr align="center" valign="middle">
+                    <td>
+                        <div id="divAddressContent" class="hideContainer">
+                            <table class="tblHeader" style="width: 100%;">
+                                <tr style="height: 30px;" align="center" valign="top">
+                                    <td style="width: 5px;">
+                                    </td>
+                                    <td class="tdHeader" align="left" valign="middle">
+                                            <div id="oDetailsTitle">Outage Details</div>
+                                    </td>
+                                    <td style="width: 40px;">
+                                        <img id="Img2" src="../images/arrow_left_48.png" class="imgOptions1" style="cursor: pointer;margin-right:5px;margin-bottom:5px;margin-top:3px;" onclick="PreviousDetailsTab();" />
+                                    </td>
+                                     <td style="width: 40px;">
+                                        <img id="Img1" src="../images/arrow_right_48.png" class="imgOptions1" style="cursor: pointer;margin-right:5px;margin-bottom:5px;margin-top:3px;" onclick="NextDetailsTab();" />
+                                    </td>
+                                    <td style="width: 32px;margin-right:20px;">
+                                        <img src="../images/cancel.png" class="imgOptions" style="cursor: pointer;margin-top:5px;" onclick="HideAddressContainer();" />
+                                    </td>
+                                </tr>
+                            </table>
+                            <div dojotype="dojox.mobile.View" selected="true" id="oDetails">
+                                <!--<h1 dojoType="dojox.mobile.Heading">Outage Details</h1>-->
+                                                           
+                                <ul dojotype="dojox.mobile.RoundRectList" class="list1" stateful="true" id="oDetailsList" align="left">
+                                    <li dojotype="dojox.mobile.ListItem">
+                                        <div class="c1">
+                                            Total Customers</div>
+                                        <div class="c2" id="totalCustomers">
+                                        </div>
+                                    </li>
+                                    <li dojotype="dojox.mobile.ListItem">
+                                        <div class="c1">
+                                            Affected</div>
+                                        <div class="c2" id="affectedCustomers">
+                                        </div>
+                                    </li>
+                                    <li dojotype="dojox.mobile.ListItem">
+                                        <div class="c1">
+                                            % In-Service</div>
+                                        <div class="c2" id="inService">
+                                        </div>
+                                    </li>
+                                    <li dojotype="dojox.mobile.ListItem">
+                                        <div class="c1">
+                                            Oldest Outage</div>
+                                        <div class="c2" id="oldestOutage">
+                                        </div>
+                                    </li>
+                                </ul>
+                                 <ul dojotype="dojox.mobile.RoundRectList" id="countyConsumerList" class="list1"  align="left"></ul>
+                                  <ul dojotype="dojox.mobile.RoundRectList" id="countyAffectedList" class="list1"  align="left"></ul>
+                                   <ul dojotype="dojox.mobile.RoundRectList" id="countyInServiceList" class="list1"  align="left"></ul>
+                                   <ul dojotype="dojox.mobile.RoundRectList" id="regionConsumerList" class="list1"  align="left"></ul>
+                                  <ul dojotype="dojox.mobile.RoundRectList" id="regionAffectedList" class="list1"  align="left"></ul>
+                                   <ul dojotype="dojox.mobile.RoundRectList" id="regionInServiceList" class="list1"  align="left"></ul>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        
+        <div id="divCreateRequest" align="center" class="opacityHideAnimation">
+            <table style="width: 100%; height: 100%;">
+                <tr align="center" valign="middle">
+                    <td>
+                        <div id="divCreateRequestContainer" class="hideContainer">
+                            <table class="tblHeader" style="width: 100%;">
+                                <tr style="height: 30px;" align="center" valign="top">
+                                    <td style="width: 5px;">
+                                    </td>
+                                    <td class="tdHeader" align="left" valign="middle">
+                                        Service Request Details
+                                    </td>
+                                    <td style="width: 25px;">
+                                        <img src="../images/close.png" class="imgOptions" style="cursor: pointer;" onclick="HideCreateRequestContainer();" />
+                                    </td>
+                                </tr>
+                            </table>
+                            <div align="center" id="divCreateRequestContent">
+                                <div id="divCreateRequestScrollContent">
+                                    <table cellpadding="0" style="color: #fff;">
+                                        <tr class="trRowStyle">
+                                            <td style="padding-top: 4px;" valign="top">
+                                                Type:
+                                            </td>
+                                            <td valign="middle">
+                                                <div id="divDropDownContainer">
+                                                    <input type="text" id="txtSelectedRequest" readonly="readonly" onclick="ToggleRequestTypesList();" />
+                                                    <img src="../images/DropDown.png" id="imgDropdownCarot" onclick="ToggleRequestTypesList();" />
+                                                </div>
+                                                <div id="divRequestTypes" class="divRequestTypes">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="trTextAreaRowStyle">
+                                            <td style="padding-top: 4px;" valign="top">
+                                                Comment:
+                                            </td>
+                                            <td>
+                                                <textarea placeholder="Enter comment" id="txtDescription" class="txtArea"></textarea>
+                                            </td>
+                                        </tr>
+                                        <tr class="trRowStyle">
+                                            <td style="padding-top: 4px;" valign="top">
+                                                Name:
+                                            </td>
+                                            <td>
+                                                <input placeholder="Enter name" maxlength="150" type="text" id="txtName" class="txtBox" />
+                                            </td>
+                                        </tr>
+                                        <tr class="trRowStyle">
+                                            <td style="padding-top: 4px;" valign="top">
+                                                Phone:
+                                            </td>
+                                            <td>
+                                                <input placeholder="Enter phone number" type="tel" id="txtPhone" class="txtBox" />
+                                            </td>
+                                        </tr>
+                                        <tr class="trRowStyle">
+                                            <td style="padding-top: 4px;" valign="top">
+                                                Email:
+                                            </td>
+                                            <td>
+                                                <input placeholder="Enter email address" type="email" id="txtMail" class="txtBox" />
+                                            </td>
+                                        </tr>
+                                        <tr id="trFileUpload" class="trRowStyle">
+                                            <td style="padding-top: 6px;" valign="top">
+                                                Attach:
+                                            </td>
+                                            <td>
+                                                <div id="divFileSelectComponent" class="fileinputs">
+                                                    <form id="formFileUplaod" enctype="multipart/form-data" method="POST">
+                                                    <input style="width: 200px" id="fileUploadControl" class="filehidden" onchange="SetFileName(this);"
+                                                        size="22" type="file" name="fileUpload" />
+                                                    </form>
+                                                    <div class="fileUploadContainer">
+                                                        <input type="text" id="txtFileName" />
+                                                        <button style="width: 55px" class="customButton">
+                                                            Select</button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="20" align="center" colspan="2">
+                                                <span id="spanServiceErrorMessage" style="color: Yellow; display: none;"></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" height="40" align="center">
+                                                <button id="btnSubmit" style="width: 75px" class="customButton" onclick="SubmitIssueDetails();">
+                                                    Submit</button>&nbsp;
+                                                <button id="btnCancel" style="width: 75px" class="customButton" onclick="HideCreateRequestContainer();">
+                                                    Cancel</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="divServiceRequestContainer" align="center" class="opacityHideAnimation">
+            <table style="width: 100%; height: 100%;">
+                <tr align="center" valign="middle">
+                    <td>
+                        <div align="left" id="divServiceRequestContent" class="hideContainer">
+                            <table class="tblHeader" style="width: 100%;">
+                                <tr style="height: 30px;" align="center" valign="top">
+                                    <td style="width: 5px;">
+                                        &nbsp;
+                                    </td>
+                                    <td id="tdInfoHeader" align="left" valign="middle" class="tdHeader">
+                                    </td>
+                                    <td style="width: 25px;">
+                                        <img src="images/details.png" class="imgOptions" style="cursor: pointer;" onclick="ShowServiceDetailsView();" />
+                                    </td>
+                                    <td style="width: 25px;">
+                                        <img src="images/comments.png" class="imgOptions" style="cursor: pointer;" onclick="ShowCommetsView();" />
+                                    </td>
+                                    <td style="width: 25px;">
+                                        <img src="images/close.png" class="imgOptions" style="cursor: pointer;" onclick="HideServiceRequestContainer();" />
+                                    </td>
+                                </tr>
+                            </table>
+                            <div id="divServiceDetailsDetails" style="color: #fff;">
+                                <div id="divServiceRequestDetailsScroll">
+                                    <table id="tbServiceRequestDetails" cellpadding="2" style="width: 95%;">
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="divServiceRequestComments" style="color: #fff; display: none;">
+                                <div align="left" id="divCommentsView">
+                                    <table style="height: 35px; cursor: pointer;" onclick="ShowAddCommentsView();">
+                                        <tr align="left">
+                                            <td style="width: 37px;">
+                                                <img title="" src="images/addcomment.png" class="imgOptions">
+                                            </td>
+                                            <td>
+                                                Add Comment
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div id="divCommentsList">
+                                    <div id="divCommentsContainer">
+                                        <div id="divCommentsContent">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="divAddComment" style="display: none; margin: 5px;">
+                                    <table cellpadding="2" style="width: 100%;">
+                                        <tr>
+                                            <td valign="top">
+                                                Rating:
+                                            </td>
+                                            <td align="left">
+                                                <ul readonly="false" id="commentRating" value="0" numstars="5" style="padding=0px;
+                                                    width: 150px; margin: 0px 0px 0px -35px;" />
+                                            </td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td>
+                                                Comment:
+                                            </td>
+                                            <td>
+                                                <textarea placeholder="Enter comment" class="txtArea" style="width: 275px;" id="txtComments"></textarea>
+                                            </td>
+                                        </tr>
+                                        <tr style="height: 25px;">
+                                            <td colspan="2" align="center">
+                                                <span id="spanCommentError" style="color: Yellow; display: none;"></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center" colspan="2">
+                                                <table>
+                                                    <tr>
+                                                        <td align="right">
+                                                            <button class="customButton" id="btnAddComments" onclick="AddRequestComment();" style="width: 75px">
+                                                                Submit</button>
+                                                        </td>
+                                                        <td align="left">
+                                                            <button class="customButton" style="width: 75px" onclick="ResetCommentValues();">
+                                                                Cancel</button>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="divSplashScreenContainer" style="display: none;">
+            <table style="width: 100%; height: 100%;">
+                <tr align="center" valign="middle">
+                    <td>
+                        <div id="divSplashScreenContent" class="hideContainer">
+                            <table style="width: 100%; height: 100%;">
+                                <tr>
+                                    <td>
+                                        <div id="divSplashContainer">
+                                            <div id="divSplashContent">
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <button type="button" style="width: 75px;" class="customButton" onclick="HideSplashScreenMessage();">
+                                            OK
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

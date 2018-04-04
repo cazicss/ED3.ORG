@@ -1,0 +1,207 @@
+﻿  /* Tab Navigation */
+  .tab-pane{
+  display: none;
+}
+
+.active
+{
+ /*display: block !important;*/
+}
+.nav-tabs {
+    margin: 0;
+    padding: 0;
+    border: 0;    
+}
+.nav-tabs > li > a {
+    background: #DADADA;
+    border-radius: 0;
+    box-shadow: inset 0 -8px 7px -9px rgba(0,0,0,.4),-2px -2px 5px -2px rgba(0,0,0,.4);
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover {
+    background: #F5F5F5;
+    box-shadow: inset 0 0 0 0 rgba(0,0,0,.4),-2px -3px 5px -2px rgba(0,0,0,.4);
+}
+
+/* Tab Content */
+.tab-pane {
+    background: #F5F5F5;
+    box-shadow: 0 0 4px rgba(0,0,0,.4);
+    border-radius: 0;
+    text-align: center;
+    padding: 10px;
+}
+.map
+{
+    border-right: 0px solid #F2F7F9;
+    padding-right: 0px;
+}
+.mapmode
+{
+   right:10px;
+  Opacity:0.7;
+   background-color:#4060A0;
+   color:white;
+}
+
+#LocateButton {
+      position: absolute;
+      top: 95px;
+      left: 20px;
+      z-index: 50;
+    }
+   /* .pretty1 th {
+	padding: 5px;
+	border-bottom: 1px solid #fff;
+	background-color:#98AFC7;
+	color:White;
+	font-size: small;
+	padding:8px 20px 8px 8px;
+}*/
+
+/***************************
+**CSS For Bootstrap Modals**
+****************************/
+#customModal{
+  margin-top:80px;
+}
+.modal-backdrop.in {
+  z-index: auto;
+}
+.modal-header{
+  text-align: right;
+  height: 10px;
+  padding-top: 0px;
+  padding-bottom: 20px;
+}
+#modal-close{
+  float:right;
+}
+#modal-close:hover{
+  cursor:pointer;
+}
+.modal-content{
+  width:350px;
+  color: #FFF;
+}
+.modal-icon{
+  font-size: 30px;
+  padding-right: 30px;
+}
+.modal-info-color{
+  background-color: rgba(51,122,183,.95);
+}
+.modal-success-color{
+  background-color: rgba(39,130,39,.95);
+}
+.modal-warning-color{
+  background-color: rgba(239, 158, 9, .95);
+}
+.modal-error-color{
+  background-color: rgba(150, 2, 2, .95);
+}
+#modalMessage{
+  text-align: center;
+  text-decoration: underline;
+  color: rgb(255, 255, 255);
+  height: 30px;
+  padding-top: 5px;
+}
+#modalMessage:hover{
+  cursor:pointer;
+  text-decoration:none;
+}
+/*#modalMessage:hover:after {
+  content: " ";
+  z-index: 10;
+  display: block;
+  position: absolute;
+  height: 30px;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.25);
+}*/
+.modalMessageIcon{
+  margin-right:10px;
+}
+
+/********************************
+/*CSS For Outage Reporting Modal*
+*********************************/
+#outage-reporting-button:hover{
+  cursor:pointer;
+  text-decoration:none;
+}
+#outage-reporting-button{
+  text-align:center;
+  text-decoration:underline;
+  height:30px;
+  background-color:darkgreen;
+  color:#FFF;
+  padding-top:3px;
+  margin-bottom:5px;
+}
+.modalOutageReportingIcon{
+  margin-right:10px;
+
+}
+#outage-reporting-modal{
+  margin-top:80px;
+}
+.outage-modal-header{
+  text-align: right;
+  height: 10px;
+  padding-top: 0px;
+  padding-bottom: 20px;
+}
+.outage-modal-content{
+  background: #EEE;
+  width: 50%;
+  margin-right:auto;
+  margin-left:auto;
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+#outage-modal-close{
+  margin-right: 5px;
+  float:right;
+}
+#outage-modal-close:hover{
+  cursor:pointer;
+}
+#outage-popup-form input{
+  width:100%;
+}
+.form-error{
+  font-size: 12px;
+  padding-bottom: 10px;
+  color: red;
+}
+#status-response-popup{
+    margin-left:20px;
+    margin-right:20px;
+    margin-top:5px;
+}
+#status-values-container{
+    padding:5px;
+    line-height:1.5;
+}
+.outage-modal-button{
+  color:#FFF;
+  background-color:#3D71A2;
+  width:84%;
+  border-radius:25px;
+  margin-left:18px;
+  margin-right:18px;
+  text-align:center;
+  margin-bottom:10px;
+}
+#outage-popup-form.hr{
+  color:darkgray;
+  border:2;
+  border-top: 2px solid #EEE;
+  margin-left:18px;
+  margin-right:18px;
+}

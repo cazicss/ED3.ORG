@@ -1,0 +1,131 @@
+﻿html, body
+{
+    font-size: 12px !important;
+}
+
+.fontOptions
+{
+	font-weight:normal;
+	font-size: 12px;
+}
+
+
+#divLayerContainer
+{
+    position: absolute;
+    top: 75px;
+    right: 20px;
+    width: 200px;
+    z-index: 1000;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(110,110,110,.85)), color-stop(25%, #0A0A0A));
+    background: -moz-linear-gradient(top, rgba(110,110,110,.85), #0A0A0A 25%);
+    background: -o-linear-gradient(rgba(110,110,110,.85), #0A0A0A 25%);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#divRequestOptionsContainer
+{
+    min-width: 300px;
+}
+
+#divAddressContent
+{
+    z-index: 1000;
+    background-color: rgba(71, 71, 71,0.75);
+    width: 400px;
+    height: 250px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 0 10px #fff;
+    -moz-box-shadow: 0 0 10px #fff;
+    -o-box-shadow: 0 0 10px #fff;
+    box-shadow: 0 0 10px #fff;
+}
+
+#divServiceRequestContent, #divCreateRequestContainer
+{
+    z-index: 1000;
+    background-color: transparent;
+    width: 300px;
+    height: 300px;
+}
+
+#divCreateRequestContainer
+{
+    height: 340px !important;
+}
+
+.basemapThumbnail
+{
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    height: 65px;
+    margin: 1px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.baseMapContainerNode
+{
+    float: left;
+    margin: 10px 10px 10px 10px;
+    width: 100px;
+}
+
+#divApplicationFooter
+{
+    /*display: none;*/
+    position: absolute;
+    bottom: 0px;
+    display: block;
+    background-color: rgba(71, 71, 71,0.75);
+    height: 25px;
+    color: #fff;
+    text-align: center;
+    z-index: 1000;
+    width: 100%;
+    vertical-align: middle;
+}
+
+.divInfoWindowContainer .content
+{
+    padding: 0px !important;
+    overflow: hidden;
+}
+
+.spanContentText
+{
+    margin: 4px 2px 2px 8px !important;
+}
+
+.trRowStyle
+{
+    height: 29px;
+}
+
+.txtBox, #txtSelectedRequest
+{
+    height: 20px !important;
+}
+
+#imgLocate
+{
+    height: 20px !important;
+    width: 20px !important;
+}
+
+#imgDropdownCarot
+{
+    height: 21px !important;
+    width: 21px !important;
+}
+
+.customButton
+{
+    height: 25px !important;
+}

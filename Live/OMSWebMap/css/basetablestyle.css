@@ -1,0 +1,245 @@
+﻿/*
+ * Table styles
+ */
+
+/* Self clearing - http://www.webtoolkit.info/css-clearfix.html */
+.dataTables_wrapper:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
+
+a:link, a:visited, a:active, a:hover { 
+	color: blue; 
+	/*text-decoration:underline*/
+
+}
+
+table.pretty {
+	width: 100%;
+	clear: both;
+	white-space: nowrap;
+	font-size: .8em;
+}
+
+table.pretty td {
+	padding: 5px;
+	/*border: 1px solid #C5C5C5;*/
+	font-weight: normal;
+	
+}
+
+/*column headers*/
+table.pretty th {
+	padding: 5px;
+	border-bottom: 1px solid #fff;
+	/*color: white;*/
+	font-size: small;
+	padding:8px 20px 8px 8px;
+}
+
+table.pretty thead th span /* this gets the sort icons to show beside the header text */
+{
+	float: left;
+	display: inline;
+	
+	
+}
+
+/* Body cells */
+
+table.pretty tbody th {
+	text-align: left;
+	background: #F1F1F1;
+	border: 1px solid #fff;
+	color: white;
+	white-space: nowrap;
+   
+}
+	
+table.pretty tbody td {
+	/*text-align: center*/;
+	background: #F8F8F8;
+	
+}
+		
+table.pretty tbody tr.odd td { 
+	background: #d3caca;
+}
+
+/* Footer cells */	
+table.pretty tfoot th {
+	background: #b0cc7f;
+	/*text-align: left;*/    
+}
+	
+table.pretty tfoot td {
+	background: #d7e1c5;
+	text-align: center;
+	font-weight: bold;
+}
+
+
+/*
+ * Pagination
+ */
+a.paginate_button,
+a.paginate_active {
+	display: inline-block;
+	/*background-color: #6B7D8B;*/
+	padding: 2px 6px;
+	margin-left: 10px;
+	cursor: pointer;
+	*cursor: hand;
+}
+
+a.paginate_active {
+	background-color: transparent;
+	border: 1px solid #CCCCCC;
+}
+
+a.paginate_button_disabled {
+	/*color: #3d6672;*/
+	color: Silver;
+}
+.paging_full_numbers a:active {
+	outline: none
+}
+.paging_full_numbers a:hover {
+	text-decoration: none;
+}
+
+div.dataTables_paginate .ui-button
+{
+	padding: 2px;
+	text-decoration: none !important;
+}
+
+div.dataTables_paginate span>a {
+	width: 15px;
+	padding: 0 8px;
+	text-align: center;
+	text-decoration: none !important;
+	
+}
+
+div.dataTables_paginate
+{
+	padding-top: 10px;
+	width: 150px;
+	margin: 0 0 0 10px;
+	float: left;
+	font-weight: bold;
+	
+}
+
+div.dataTables_info {
+	padding: 9px 6px 6px 6px;
+	margin: 0 0 0 0;
+	font-weight: bold;
+	font-size: 1.15em;
+	
+}
+
+#tblSearchResults_previous
+{
+	margin:4px 8px 6px 0;
+	border: 1px solid #808080;
+	padding: 3px 5px 3px 5px;
+	text-decoration: none !important;
+}
+
+#tblSearchResults_next
+{
+	margin: 4px 0 3px 0;
+	border: 1px solid #808080;
+	padding: 3px 5px 3px 5px;
+	text-decoration: none !important;
+
+}
+
+#tblSearchResults_previous:hover
+{
+	/*text-decoration: underline;*/
+	background-color: #d3caca;
+	cursor:pointer;
+}
+
+#tblSearchResults_next:hover
+{
+	/*text-decoration: underline;*/
+	background-color: #d3caca;
+	cursor:pointer;
+}
+
+#tblSalesResults_previous
+{
+	margin:4px 8px 6px 0;
+	border: 1px solid #808080;
+	padding: 3px 5px 3px 5px;
+	text-decoration: none !important;
+}
+
+#tblSalesResults_next
+{
+	margin: 4px 0 3px 0;
+	border: 1px solid #808080;
+	padding: 3px 5px 3px 5px;
+	text-decoration: none !important;
+
+}
+
+#tblSalesResults_previous:hover
+{
+	/*text-decoration: underline;*/
+	background-color: #d3caca;
+	cursor:pointer;
+}
+
+#tblSalesResults_next:hover
+{
+	/*text-decoration: underline;*/
+	background-color: #d3caca;
+	cursor:pointer;
+}
+
+/*
+ * Sorting
+ */
+table.pretty thead {
+	background-color: #333;
+	color: whitesmoke;
+}
+table.pretty thead th.sorting_asc {
+	background: #333333 url('images/sort_asc.png') no-repeat right center;
+}
+
+table.pretty thead th.sorting_desc {
+	background: #333333 url('images/sort_desc.png') no-repeat right center;
+}
+
+table.pretty thead th.sorting_disabled {
+	background: #333333;
+}
+
+table.pretty thead th.sorting {
+	background: #333333 url('images/sort_both.png') no-repeat right center;
+}
+
+table.pretty thead th.sorting_asc:hover, table.pretty thead th.sorting_desc:hover, table.pretty thead th.sorting:hover {
+	cursor: pointer;
+}
+
+.divRegionTableToolBar {
+	position: relative;
+	top: 10px;
+	margin: 0 auto;
+}
+
+
+
+

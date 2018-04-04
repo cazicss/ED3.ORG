@@ -1,0 +1,567 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>OMSWebMap Config</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="Stylesheet" href="../css/futura.css" />
+    <style>
+        /********************************
+**********ConfigXML CSS**********
+*********************************/
+        #configxml-body-container {
+            width: 75% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        #configxml-header {
+            width: 50% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        #configxml-header-title {
+            float: left !important;
+            margin-left: 82px !important;
+            margin-top: 25px !important;
+            color: #084281 !important;
+            margin-bottom: 30px !important;
+        }
+
+        #configxml-header-img {
+            float: left !important;
+        }
+
+        #configxml-table {
+            clear: both !important;
+            width: 75% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            border-collapse: collapse !important;
+            margin-bottom: 100px !important;
+        }
+        /*border-tops for distinct groupings*/
+        tr:nth-child(6) {
+            border-top: solid thick;
+        }
+
+        tr:nth-child(24) {
+            border-top: solid thick;
+        }
+
+        tr:nth-child(31) {
+            border-top: solid thick;
+        }
+
+        tr:nth-child(34) {
+            border-top: solid thick;
+        }
+
+        tr:nth-child(37) {
+            border-top: solid thick;
+        }
+
+        tr:nth-child(39) {
+            border-top: solid thick;
+        }
+
+        tr:nth-child(47) {
+            border-top: solid thick;
+        }
+
+        tr:nth-child(53) {
+            border-top: solid thick;
+        }
+
+        tr:nth-child(59) {
+            border-top: solid thick;
+        }
+
+        tr:nth-child(65) {
+            border-top: solid thick;
+        }
+
+        tr:nth-child(88) {
+            border-top: solid thick;
+        }
+
+        #configxml-button {
+            text-align: center !important;
+        }
+
+        #config-controls {
+            position: fixed;
+            bottom: 0px;
+            margin-bottom: 0px;
+            background: #FFFFFF;
+            width: 100%;
+            border-top: 3px solid #A7A7A7;
+        }
+    </style>
+</head>
+<body>
+    <div id="configxml-body-container">
+        <table id="configxml-header">
+            <tr>
+                <td><img id="configxml-header-img" src="../images/futura_logo.png" /></td>
+                <td><h1 id="configxml-header-title">../OMSWebMap/config/</h1></td>
+            </tr>
+        </table>
+        <table id="configxml-table" border="1"><tr><th>Property</th><th>Value</th></tr></table>
+    </div>
+    <div id="config-controls">
+        <p id="configxml-button">
+            <button onclick="HandleXMLDoc()">Get Config.xml</button>
+            <button id="updateXML">Update Config.xml</button>
+        </p>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript" src="../js/jquery/2.1.3/jquery.min.js"></script>
+<script>
+    //Internet Explorer Parses XML backwards.  Firefox has authentication pop-up asking for user/pass. So, Send Alert.
+    //Disable buttons so XML not written to file in reverse order and users are not confronted with a user/pass box.
+    navigator.isBrowser = (function () {
+        var ua = navigator.userAgent, tem,
+        M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+        if (/trident/i.test(M[1])) {
+            tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
+            return 'IE ' + (tem[1] || '');
+        }
+        if (M[1] === 'Chrome') {
+            tem = ua.match(/\b(OPR|Edge)\/(\d+)/);
+            if (tem != null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
+        }
+        M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
+        if ((tem = ua.match(/version\/(\d+)/i)) != null) M.splice(1, 1, tem[1]);
+        return M.join(' ');
+    })();
+
+    var browser = navigator.isBrowser;
+    var isInternetExplorer = browser.search("IE");
+    var isFirefox = browser.search("Firefox");
+
+    //DISABLE BUTTON SHOW ALERT IF USING IE / FIREFOX
+    if (isInternetExplorer != -1 || isFirefox != -1) {
+        jQuery('button').prop("disabled", true);
+        alert("Please use Chrome to configure your Webmap.");
+    }
+
+    //THIS STARTS IT ALL OFF, and JQUERY HAS LOADED
+    jQuery(document).ready(function () {
+        HandleXMLDoc();
+    });
+
+    //Call for XML File
+    function HandleXMLDoc() {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                loadXMLDoc(xmlhttp);
+            }
+        }
+        xmlhttp.open("GET", "../ClientBin/Config.xml", true);
+        xmlhttp.send();
+    }
+
+    //Parse XML into Table
+    function loadXMLDoc(xml) {
+        var x, i, xmlDoc, table;
+        xmlDoc = xml.responseXML;
+        table = "<tr style='background-color: #084281;color: #FFFFFF;'><th>Property</th><th>Value</th><th>Update Value</th></tr>";
+        x = xmlDoc.getElementsByTagName("Config");
+        for (i = 0; i < x.length; i++) {
+
+            console.log("Loaded Config.xml")
+            //console.log(x[i].getElementsByTagName("Attributes")[0].attributes)
+
+            var allprop = x[i].getElementsByTagName("Attributes")[0].attributes
+            for (n = 0; n < allprop.length; n++) {
+                //Setting the type of form elements for each attribute
+                switch (allprop[n].nodeName) {
+
+                    //text input
+                    case "WebMap_Title":
+                    case "MobileMap_Title":
+                    default:
+                        inputstring = "<input type='text' id=" + allprop[n].nodeName + " style='width:97.5%;' />";
+                        break;
+
+                        //text area
+                    case "WebMap_ModalMessage":
+                        inputstring = "<textarea id=" + allprop[n].nodeName + " /></textarea>";
+                        break;
+
+                        //Setting SELECT element OPTIONS
+                        //true/false dropdown
+                    case "ShowOutages":
+                    case "ShowRegions":
+                    case "ShowCounties":
+                    case "ShowCallBundles":
+                    case "ShowChart":
+                    case "ShowPastOutage":
+                    case "Region_County_ShowPercentage":
+                    case "EnableAutoRefresh":
+                    case "DisableDuration_oldestOutage":
+                    case "Disable_PercentageInService":
+                    case "EnablePulse":
+                    case "MapTipVisible":
+                    case "OutageMapTipVisible":
+                    case "PercentageOutageVisible":
+                    case "Est_Resto_DateTimeLabelVisible":
+                    case "PoleNumberLabelVisible":
+                    case "OutageStatusLabelVisible":
+                    case "CauseLabelVisible":
+                    case "CaseNoLabelVisible":
+                    case "CustomersAffectedLabelVisible":
+                    case "OutageTimeLabelVisible":
+                    case "CustomersServedVisible":
+                    case "CustomersAffectedVisible":
+                    case "ElementNameLabelVisible":
+                    case "WebMap_ModalTimeout":
+                    case "WebMap_ModalShow":
+                    case "ESRI_LogoVisible":
+                    case "Bing_LogoVisible":
+                    case "OutageReporting":
+                    case "OutageCallbacks":
+                    case "OutageShowTruckCrewDetails":
+                    case "GoogleAnalyticsEnabled":
+                        inputstring = "<select id=" + allprop[n].nodeName + " style='width:100%;' /><option value=''></option><option value='True'>True</option><option value='False'>False</option></select>";
+                        break;
+
+                        //yes/no dropdown
+                    case "EnableSecurity":
+                    case "EnableSSL":
+                        inputstring = "<select id=" + allprop[n].nodeName + " style='width:100%;' /><option value=''></option><option value='Yes'>Yes</option><option value='No'>No</option></select>";
+                        break;
+
+                        //WebMapModalType
+                    case "WebMap_ModalType":
+                        inputstring = "<select id=" + allprop[n].nodeName + " style='width:100%;' /><option value=''></option><option value='None'>None</option><option value='Info'>Info</option><option value='Success'>Success</option><option value='Warning'>Warning</option><option value='Error'>Error</option></select>";
+                        break;
+
+                        //WebMapType
+                    case "WebMap_Type":
+                    case "MobileMap_Type":
+                        inputstring = "<select id=" + allprop[n].nodeName + " style='width:100%;' /><option value=''></option><option value='ESRI'>ESRI</option><option value='Bing'>Bing</option></select>";
+                        break;
+
+                        //WebMapZoomExtents
+                    case "WebMap_MaxZoom":
+                    case "WebMap_MinZoom":
+                        inputstring = "<select id=" + allprop[n].nodeName + " style='width:100%;' /><option value=''></option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option><option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option><option value='13'>13</option><option value='14'>14</option><option value='15'>15</option><option value='16'>16</option><option value='17'>17</option><option value='18'>18</option><option value='19'>19</option></select>";
+                        break;
+
+                        //WebMap_Mode
+                    case "WebMap_Mode":
+                    case "MobileMap_Mode":
+                        inputstring = "<select id=" + allprop[n].nodeName + " style='width:100%' /><option value=''></option><option value='Road'>Road</option><option value='Aerial'>Aerial</option></select>";
+                        break;
+
+                        //MobileMap_OutageEventTime
+                    case "OutageEventTime":
+                        inputstring = "<select id=" + allprop[n].nodeName + " style='width:100%;' /><option value=''></option><option value='UTC'>UTC</option><option value='LOCALTIME'>LOCALTIME</option></select>";
+                        break;
+                }
+
+                table += "<tr><td>" +
+                allprop[n].nodeName +
+                "</td><td>" +
+                allprop[n].value +
+                "</td><td>" +
+                inputstring +
+                "</td></tr>";
+            }
+        }
+
+        document.getElementById("configxml-table").innerHTML = table;
+
+        //Setting Tooltips For Table Display Per Attribute
+        var tooltips = [{
+            "WebMap_Title": "Set the title of the webmap.",
+            "MobileMap_Title": "Set the title of the WebMap for mobile device.",
+            "WebMap_TitleColor": "Set the color of the Title text in WebMap.",
+            "WebMap_LogoImage": "Set the logo image to display at the top left of the WebMap. (URL or 'Default')",
+            "WebMap_BannerImage": "Set the URL for the WebMap Banner Image.  (URL, 'Default' or 'None')",
+            "WebMap_BackgroundColor": "Set the default background color of webmap.  If Banner Image set to 'None', this will be color of header and footer.",
+            "WebMap_ModalType": "Set the type of Pop-Up message you would like to show.",
+            "WebMap_ModalMessage": "Set the content of the Pop-Up message.",
+            "WebMap_ModalTimeout": "Set if the pop-up stays visible until clicked or fades out after timeout.",
+            "WebMap_ModalTimeoutDuration": "Set the duration of time the Pop-Up message shows before fading out.",
+            "WebMapUrl": "Set the webmap URL.",
+            "WebMap_Type": "Select the Webmap Type. Esri or Bing.",
+            "MobileMap_Type": "Select the Mobile Webmap Type.  Esri or Bing.",
+            "WebMap_Mode": "Select default WebMap Basemap Type.  Aerial or Road.",
+            "MobileMap_Mode": "Select default Mobile Basemap Type. Aerial or Road.",
+            "WebMap_MaxZoom": "Set the Maximum Zoom level for the webmap. This is how close the map can zoom in.",
+            "WebMap_MinZoom": "Set the Minimum Zoom level for the webmap.  This is how wide the map can zoom out.",
+            "ESRI_LogoVisible": "Select whether to show or hide ESRI logo.",
+            "Bing_LogoVisible": "Select whether to show or hide BING logo.",
+            "Bing_Token": "Set the Bing token if using Bing webmap",
+            "NavigatorPosition": "Set the default location for navigational tools.",
+            "DefaultExtent": "Set the default extent of the webmap.",
+            "ShowOutages": "Select whether to show Outages on the webmap.",
+            "ShowRegions": "Select whether to show Regions on the webmap.",
+            "ShowCounties": "Select whether to show Counties on the webmap.",
+            "ShowCallBundles": "Select whether to show call bundles on the webmap.",
+            "ShowChart": "Select whether to show chart on the webmap.",
+            "ShowPastOutage": "Select whether to show Past Outages on the webmap.",
+            "Region_County_ShowPercentage": "Select whether to show Percentage of Affected Customers on the webmap.",
+            "RegionsFillColor": "Set the Fill Color for the Regions layer on the webmap.",
+            "RegionsFillOpacity": "Set the Fill Opacity for the Regions layer on the webmap.",
+            "RegionsBoundaryColor": "Set the Color for the Regions Boundary.",
+            "RegionsBoundaryThickness": "Set the Regions Boundary thickness.",
+            "RegionsTitle": "Set the Regions Title.",
+            "RegionMapTipHeader": "Set the Region Map Tip Header.",
+            "CountyFillColor": "Set the Fill Color for the Counties Layer on the webmap.",
+            "CountyFillOpacity": "Set the Fill Opacity for the Counties Layer on the webmap.",
+            "CountyBoundaryColor": "Set the Color for the County Boundary.",
+            "CountyBoundaryThickness": "Set the County Boundary thickness.",
+            "CountiesTitle": "Set the Counties Title.",
+            "CountyMaptipHeader": "Set the County Map Tip Header.",
+            "AutoRefreshInterval": "Set the Auto Refresh Interval for the webmap.",
+            "MobileAutoRefreshInterval": "Set the Auto Refresh Interval for the Mobile Map.",
+            "EnableAutoRefresh": "Select whether to enable Auto Refresh of the webmap.",
+            "EnableSecurity": "Select whether to enable webmap Security.",
+            "TokenString": "Set the token string for security enabled webmap.",
+            "DisableDuration_oldestOutage": "Select whether to Disable Duration of Oldest Outage.",
+            "Disable_PercentageInService": "Select whether to display Percentage in Service.",
+            "EnablePulse": "Select whether to enable pulse on the webmap.",
+            "MapTipVisible": "Select whether or not to display Map Tips.",
+            "OutageMapTipVisible": "Select whether to display Outage Map Tips.",
+            "PercentageOutageVisible": "Select whether to display Outage Percentage.",
+            "PastOutageOptions": "Set Past Outage Options.",
+            "PastOutageButtonLabel": "Set Past Outage Button Label.",
+            "OutageStatusFieldLabel": "Set Outage Status Field Label.",
+            "PoleNumberFieldLabel": "Set Pole Number Field Label.",
+            "CauseFieldLabel": "Set Cause Field Label.",
+            "CaseNoFieldLabel": "Set Case No. Field Label.",
+            "CustomersAffectedFieldLabel": "Set Customers Affected Field Label.",
+            "AffectedRegionsLabel": "Set Regions Affected Label.",
+            "AffectedCountiesLabel": "Set Counties Affected Label.",
+            "ElementNameLabel": "Set Element Name Label.",
+            "RegionNameFieldLabel": "Set Region Name Field Label.",
+            "CustomersServedFieldLabel": "Set Customers Served Field Label.",
+            "CountyNameFieldLabel": "Set County Name Field Label.",
+            "PercentageOutageFieldLabel": "Set Outage Percentage Field Label.",
+            "Est_Restoration_DateTimeFieldLabel": "Set Estimated Restoration Date/Time Field Label.",
+            "Est_Resto_DateTimeLabelVisible": "Select whether to show Estimated Restoration Date/Time Label.",
+            "PoleNumberLabelVisible ": "Select whether to show Pole Number Label.",
+            "OutageStatusLabelVisible": "Select whether to show Outage Status Label.",
+            "CauseLabelVisible": "Select whether to show Cause Label.",
+            "CaseNoLabelVisible": "Select whether to show Case No. Label.",
+            "CustomersAffectedLabelVisible": "Select whether to show Customers Affected Label.",
+            "OutageTimeLabelVisible": "Select whether to show Outage Time Label.",
+            "CustomersServedVisible": "Select whether to show Customers Served.",
+            "CustomersAffectedVisible": "Select whether to show Affected Customers.",
+            "ElementNameLabelVisible": "Select whether to show Element Name Label.",
+            "OutageTimeLabel": "Set Outage Time Label.",
+            "PastOutageStartTimeLabel": "Set Past Outage Time Label.",
+            "PastOutageEndTimeLabel": "Set Past Outage End Time Label.",
+            "OutageTotalCustomersLabel": "Set Outage Total Customers Label.",
+            "OutageAffectedCustomersLabel": "Set Outage Affected Customers Label.",
+            "OutagePercentageInServiceLabel": "Set Outage Percentage in Service Label.",
+            "OutageDurationOldestOutageLabel": "Set Duration of Oldest Outage Label.",
+            "NameLabel": "Set Name Label.",
+            "LegendLabel": "Set Legend Label.",
+            "OutageReporting": "Set to enable/disable outage reporting on Mobile WebMap.",
+            "OutageURL": "Set to IVR url to post outages into OMS.",
+            "OutageCallbacks": "Set to enable/disable outage callbacks from Mobile WebMap.",
+            "OutageURL_User": "Set to Multispeak UserName for IVR WebService",
+            "OutageURL_Pass": "Set to Password for IVR WebService",
+            "OutageEventTime": "Set to UTC or LOCALTIME for reporting events",
+            "OutageShowTruckCrewDetails": "Select whether to show Truck and Crew Details on Outage Report Status Check.",
+            "EnableSSL": "Select whether SSL is enabled for secure connection to webmap via HTTPS.",
+            "GoogleAnalyticsEnabled": "Select whether to enable Google Analytics after you have registered your site and received an ID.",
+            "GoogleAnalyticsID": "Set the Google Analytics ID for your page."
+        }];
+        //for each key and value, set the title of element id(key) to value.
+        for (key in tooltips[0]) {
+            $('#' + key).attr('title', tooltips[0][key]);
+        }
+
+
+        //DISABLE Elements if IE or Firefox
+        if (isInternetExplorer != -1 || isFirefox != -1) {
+            $('input').prop("disabled", true);
+            $('select').prop("disabled", true);
+            $('textarea').prop("disabled", true);
+        }
+
+
+        //INPUT Element listener
+        $('input').change(function () {
+            $(this).parents('tr').attr("style", "background-color: #5EF15E;");
+        });
+        //SELECT Element listener
+        $('select').change(function () {
+            $(this).parents('tr').attr("style", "background-color: #5EF15E;");
+        });
+        //TEXTAREA Element listener
+        $('textarea').change(function () {
+            $(this).parents('tr').attr("style", "background-color: #5EF15E;");
+        });
+
+        //Clear on focus out if input NULL
+        $('input').focusout(function () {
+            var inputVal = $(this).val();
+            if (inputVal == null || inputVal == '') {
+                $(this).parents('tr').attr("style", "background-color:#FFF;");
+            }
+        });
+        $('select').focusout(function () {
+            var selectVal = $(this).val();
+            if (selectVal == null || selectVal == '') {
+                $(this).parents('tr').attr("style", "background-color:#FFF;");
+            }
+        });
+        $('textarea').focusout(function () {
+            var textareaVal = $(this).val();
+            if (textareaVal == null || textareaVal == '') {
+                $(this).parents('tr').attr("style", "background-color:#FFF;");
+            }
+        });
+
+        //HIGHLIGHT RELATED FIELDS ON ELEMENT FOCUS
+        $('#WebMap_ModalType')
+          .focus(function () {
+              $('#WebMap_ModalMessage, #WebMap_ModalTimeout, #WebMap_ModalTimeoutDuration').parents('tr').attr("style", "background-color: #FBFBC6;");
+          })
+          .focusout(function () {
+              //clears highlight if trigger input goes back to null.
+              var modaltypeVal = $('#WebMap_ModalType').val();
+              if (modaltypeVal == null || modaltypeVal == '') {
+                  $('#WebMap_ModalMessage, #WebMap_ModalTimeout, #WebMap_ModalTimeoutDuration').parents('tr').attr("style", "background-color: #FFF;");
+              }
+          });
+        $('#WebMap_Title')
+          .focus(function () {
+              $('#WebMap_TitleColor, #WebMap_BannerImage, #WebMap_LogoImage, #WebMap_BackgroundColor, #WebMapUrl, #WebMap_Type, #WebMap_Mode, #WebMap_MaxZoom, #WebMap_MinZoom, #DefaultExtent, #ESRI_LogoVisible, #Bing_LogoVisible, #Bing_Token, #NavigatorPosition').parents('tr').attr("style", "background-color:#FBFBC6;");
+          })
+          .focusout(function () {
+              //clears highlight if trigger input goes back to null.
+              var maptitleVal = $('#WebMap_Title').val();
+              if (maptitleVal == null || maptitleVal == '') {
+                  $('#WebMap_TitleColor, #WebMap_BannerImage, #WebMap_LogoImage, #WebMap_BackgroundColor, #WebMapUrl, #WebMap_Type, #WebMap_Mode, #WebMap_MaxZoom, #WebMap_MinZoom, #DefaultExtent, #ESRI_LogoVisible, #Bing_LogoVisible, #Bing_Token, #NavigatorPosition').parents('tr').attr("style", "background-color:#FFF;");
+              }
+          });
+        $('#MobileMap_Title')
+          .focus(function () {
+              $('#MobileMap_Mode, #MobileMap_Type, #MobileAutoRefreshInterval').parents('tr').attr("style", "background-color:#FBFBC6;");
+          })
+          .focusout(function () {
+              var mobilemaptypeVal = $('#MobileMap_Title').val();
+              if (mobilemaptypeVal == null || mobilemaptypeVal == '') {
+                  $('#MobileMap_Mode, #MobileMap_Type, #MobileAutoRefreshInterval').parents('tr').attr("style", "background-color:#FFF;");
+              }
+          });
+
+        $('#OutageReporting')
+        .focus(function () {
+            $('#OutageURL, #OutageCallbacks, #OutageURL_User, #OutageURL_Pass, #OutageEventTime, #OutageShowTruckCrewDetails').parents('tr').attr("style", "background-color:#FBFBC6;");
+        })
+        .focusout(function () {
+            var mobilemapoutagereportingVal = $('#OutageReporting').val();
+            if (mobilemapoutagereportingVal == null || mobilemapoutagereportingVal == '') {
+                $('#OutageURL, #OutageCallbacks, #OutageURL_User, #OutageURL_Pass, #OutageEventTime, #OutageShowTruckCrewDetails').parents('tr').attr("style", "background-color:#FFF;");
+            }
+        });
+
+        $('#GoogleAnalyticsEnabled')
+        .focus(function () {
+            $('#GoogleAnalyticsID').parents('tr').attr("style", "background-color:#FBFBC6;");
+        })
+        .focusout(function () {
+            var googleenabledVal = $('#GoogleAnalyticsEnabled').val();
+            if (googleenabledVal == null || googleenabledVal == '') {
+                $('#GoogleAnalyticsID').parents('tr').attr("style", "background-color:#FFF;");
+            }
+        });
+    }
+
+    //Update XML Function
+    function updateXMLDoc(xml) {
+
+        console.log("Updating Config.xml");
+
+        //set array of non null inputs.
+        var updates = [];
+        var table = document.getElementById('configxml-table');
+        var input = table.getElementsByTagName('input');
+        for (var z = 0; z < input.length; z++) {
+            if (input[z].value != "") {
+                updates.push({ id: input[z].id, value: input[z].value }); //key value
+            }
+        }
+        var select = table.getElementsByTagName('select');
+        for (var w = 0; w < select.length; w++) {
+            if (select[w].value != "") {
+                updates.push({ id: select[w].id, value: select[w].value }); //key value
+            }
+        }
+
+        var textarea = table.getElementsByTagName('textarea');
+        for (var v = 0; v < textarea.length; v++) {
+            if (textarea[v].value != "") {
+                updates.push({ id: textarea[v].id, value: textarea[v].value });
+            }
+        }
+
+        //console.log(updates);
+
+        xmlUpdate = xml.responseXML;
+        xmlConfig = xmlUpdate.getElementsByTagName("Config");
+
+
+        //Update Node values for each Key=>Value Pair
+        for (var y in updates) {
+            //console.log("Key is " + updates[y].id + ", value is " + updates[y].value);
+            var attrs = xmlUpdate.getElementsByTagName("Attributes")[0].attributes;
+            attrs[updates[y].id].nodeValue = updates[y].value;
+        }
+
+        if (updates.length > 0) {
+            var allGood = confirm('Are you sure you want to update ' + updates.length + ' attribute(s)?');
+            if (allGood) {
+                xmldata = new XMLSerializer().serializeToString(xmlUpdate);
+                //console.log(xmldata);
+
+                //Write Update Object
+                $.ajax({
+                    type: "PUT",
+                    url: "../ClientBin/Config.xml",
+                    data: xmldata,
+                    contentType: "text/xml",
+                    dataType: "xml",
+                    cache: false,
+                    error: function () { alert("There was an error processing your request."); },
+                    success: function (xml) {
+                        console.log("Updating " + updates.length + " attributes.");
+                        alert("Futura OMSWebMap Configuration Updated!\r\n" + updates.length + " attribute(s) Changed.");
+                        HandleXMLDoc();
+                    }
+                });
+            } else {
+                //Do Nothing
+            }
+        }
+        else {
+            alert("No Changes Made.  All inputs null.");
+        }
+    }
+
+    //Click Listener on Update Button
+    $('#updateXML').click(function () {
+        var xmlload = new XMLHttpRequest();
+        xmlload.onreadystatechange = function () {
+            if (xmlload.readyState == 4 && xmlload.status == 200) {
+                updateXMLDoc(xmlload);
+            }
+        }
+        xmlload.open("GET", "../ClientBin/Config.xml", true);
+        xmlload.send();
+    });
+
+</script>
