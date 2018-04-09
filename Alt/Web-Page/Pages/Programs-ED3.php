@@ -1,7 +1,4 @@
 <!DOCTYPE HTML>
-<?php	
-	include('ValidateLPPBPP.php');
-	?>
 <html Lang="en">
 	
 <!--- Authors:  Keith Gehrke, Joe Kidd
@@ -21,7 +18,7 @@
 			(ED3) at 520-424-9021, or come into our offices at 19756 N John Wayne Pkwy, Maricopa, AZ.">
 		<!--- <base href="http://www.ed3online.org/"> -->
 		
-		<title>ED3 Plans & Programs | Electrical District #3</title>
+		<title>ED3 Programs | Electrical District #3</title>
 		<script type="text/javascript" src="../JS/ED3-JS.js"></script>
 		<meta http-equiv="cache-control" content="no-cache" />
 		<meta http-equiv="expires" content="0" />
@@ -177,7 +174,7 @@
 							<a class="menu-item" href="./Service-Charges-&-Fees-ED3.html">Service Fees</a>
 							
 							<a class="menu-item" href="./E-Bill-Sign-Up-ED3.html">E-Bill Sign-Up</a>
-							<a class="menu-item" href="./Plans-N-Programs-ED3.html">Plans & Programs</a>
+							<a class="menu-item" href="./Programs-ED3.php">Programs</a>
 							<a class="menu-item" href="./Energy-Audit-ED3.html">Energy Audit</a>
 						</div>
 						
@@ -207,7 +204,7 @@
 							<a class="menu-item" href="./Prevent-Power-Theft-ED3.html">Power Theft</a>
 							<!-- <a class="menu-item" href="./Questions-ED3.html">Questions</a> -->
 							<a class="menu-item" href="./Employment-ED3.html">Employment</a>
-							<!-- <a class="menu-item" href="./Street-Light-Repair-ED3.html">Street Light Repair</a> -->
+							<a class="menu-item" href="./SLR-ED3.php">Street Light Repair</a>
 						</div>	
 					</div>
 				</div>
@@ -232,7 +229,7 @@
 					<a href="./Service-Charges-&-Fees-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Service Fees</a>
 
 					<a href="./E-Bill-Sign-Up-ED3.html" class="w3-bar-item w3-button w3-hover-themea">E-Bill Sign-Up</a>
-					<a href="./Plans-N-Programs-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Plans & Programs</a>
+					<a href="./Programs-ED3.php" class="w3-bar-item w3-button w3-hover-themea">Programs</a>
 					<a href="./Energy-Audit-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Energy Audit</a>
 					</div>
 				</div>
@@ -278,7 +275,7 @@
 					<a href="./Prevent-Power-Theft-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Power Theft</a>
 					<!-- <a href="./Questions-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Questions</a> -->
 					<a href="./Employment-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Employment</a>
-					<!-- <a href="./Street-Light-Repair-ED3.html" class="w3-bar-item w3-button w3-hover-themea">Street Light Repair</a> -->
+					<a href="./SLR-ED3.php" class="w3-bar-item w3-button w3-hover-themea">Street Light Repair</a>
 					</div>
 				</div>
 			</div>			
@@ -293,7 +290,9 @@
 			<br>
 			<a href="../Files/SvcReqSpecs010318.pdf" target="_blank" Class="w3-hover-themea">Service Requirements</a>
 			<br>
-			<a href="../Files/Programs_Explained.pdf" target="_blank" Class="w3-hover-themea">Plans & Programs</a>
+			<a href="../Files/Programs_Explained.pdf" target="_blank" Class="w3-hover-themea">Plans & Programs<br>Explained</a>
+			<br>
+			<a href="../Files/Newsletters/Archive-ED3.html" Class="w3-hover-themea">Newsletters</a>
 			</article>
 			<!-- left side of page end -->
 			<div class="w3-container w3-rest w3-small w3-margin mobile w3-round-large w3-white w3-text-left">
@@ -302,7 +301,8 @@
 					<br>
 					<p class="w3-xxlarge w3-serif w3-text-theme"><b>ED3 Plans & Programs</b></p>
 					<hr>
-					
+				
+				
 				</div>
 				<div>
 				<p class="w3-xlarge w3-serif W3-center w3-text-themea"><b>Level Payment Plan or
@@ -317,18 +317,21 @@
 				<a href="../Images/LPP BPP Res Sm Comm APP (Rev 10 072617).pdf"  class="w3-text-theme">LPP or BPP Application</a>
 				<br>
 				<br>
+				
 				<button onclick="document.getElementById('LPP-BPP-FORM').style.display='block'" class="w3-btn w3-round w3-hover-blue w3-theme">LPP/BPP <br>Web Form</button>
+				 
+					
 				<p class="w3-small">Please print and complete the above form. You can fax the completed application to us at 520-494-7053 or it can be mailed to 41630 W. Louis Johnson Dr., Maricopa, AZ 85138.  
 				It can also be dropped by either of our locations at 41630 W. Louis Johnson Dr. or 19756 N. John Wayne Pkwy, Suite 101.</p>
 				
 				</div>
-				
-				 <div id="LPP-BPP-FORM" class="w3-modal">
+				<div id="LPP-BPP-FORM" class="w3-modal">
 					<div class="w3-modal-content">
 						<div class="w3-container">
 						<span onclick="document.getElementById('LPP-BPP-FORM').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright">&times;</span>
 						<br>
-						<h2 class="w3-center">Level Or Budget Payment Plan Application</h2>
+						<br>
+						<h1 class="w3-center">Level Or Budget Payment Plan Application</h1>
 						<h3 class="w3-center">RESIDENTIAL / SMALL GENERAL SERVICE</h3>
 						<div class="w3-margin w3-padding">
 						<h5><b>HOW PROGRAMS WORK</b></h5>
@@ -353,21 +356,28 @@
 							</div>
 						</div>
 						<hr>
-						<div class="w3-container w3-margin-bottom w3-border w3-round-large">
-						 <form method="post" action="ValidateLPPBPP.php"> 
+
+						
+						 </div>
+							<div class="w3-container">
+							<form class="w3-border w3-round-large w3-margin-bottom " name="LPP-BPP-FORM" method="post" action="Programs-ED3.php"> 
 							<div class="w3-section w3-padding w3-margin">
-								<div class="w3-col s5 w3-padding-small"
+								<div class="w3-container">
+								<div class="w3-col s5 w3-padding-small">
+								<input name="form" hidden value="LPP-BPP-FORM">
 								<label for="Fname"><b>First Name</b></label>
-								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Fname" type="text" placeholder="First Name" name="first_name" maxlength="24" value="<?php echo $_POST['first_name']; ?>" required>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" type="text" name="first_name"  maxlength="24"required>
 								</div>
-								<div class="w3-col s5 w3-padding-small"
+								<div class="w3-col s5 w3-padding-small">
 								<label for="Lname"><b>Last Name</b></label>
 								<input class="w3-input w3-padding w3-border w3-round-small w3-margin-bottom" id="Lname" type="text" placeholder="Last Name" name="last_name"  maxlength="24" required >
 								</div>
-								<div class="w3-col s2 w3-padding-small"
+								<div class="w3-col s2 w3-padding-small">
 								<label for="Mname"><b>M.I.</b></label>
-								<input class="w3-input w3-padding w3-border w3-round-small w3-margin-bottom" id="Mname" type="text" placeholder=" Middle Initial" name="middle_initinal" maxlength="10">
+								<input class="w3-input w3-padding w3-border w3-round-small w3-margin-bottom" id="Mname" type="text" placeholder=" Middle Initial" name="middle_initial" maxlength="10">
 								</div>
+								</div>
+								<div class="w3-container">
 								<div class="w3-half w3-padding-small">
 								<label for="SvcAddress"><b>Service Address</b></label>
 								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="SvcAddress" type="text" placeholder="Service Address" name="service_address" maxlength="50" required>
@@ -376,14 +386,16 @@
 								<label for="City"><b>City</b></label>
 								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="City" type="text" placeholder="City" name="city" maxlength="24" required>
 								</div>
+								</div>
+								<div class="w3-container">
 								<div class="w3-quarter w3-padding-small">
 								<label for="State"><b>State</b></label>
-								<select class="w3-select w3-border w3-round-small w3-margin-bottom half" id="State" type="select" placeholder="State" name="state" required>
-									<option selected disabled>Enter State</option>
-									<option required>Alabama</option>
-									<option required>Alaska</option> 
-									<option required>Arizona</option> 
-									<option required>Arkansas</option> 
+								<select class="w3-select w3-border w3-round-small w3-margin-bottom half" id="State" type="select" name="state">
+									<option value="" selected disabled>Enter State</option>
+									<option>Alabama</option>
+									<option>Alaska</option> 
+									<option>Arizona</option> 
+									<option>Arkansas</option> 
 									<option>California</option> 
 									<option>Colorado</option> 
 									<option>Connecticut</option> 
@@ -432,20 +444,20 @@
 									<option>Wyoming</option>
 								</select>
 								</div> 
-								
 								<div class="w3-quarter w3-padding-small">
 								<label for="Zip"><b>Zip Code</b></label><br>
 								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Zip" type="text" placeholder="Zip Code" name="zip" min="00000" maxlength="9" required>
 								</div>
 								<div class="w3-half w3-padding-small">
-								<label for="EmailAdd"><b>E-Mail Address</b></label><br>
+								<label for="Email"><b>E-Mail Address</b></label><br>
 								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Email" type="email" placeholder="E-Mail" name="email" maxlength="240" required>
 								</div>
+								</div>
+								<div class="w3-container">
 								<div class="w3-third w3-padding-small">
 								<label for="Account"><b>Account #</b></label><br>
-								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Account" type="text" placeholder="Account Number" name="account_number min="6" maxlength="14" required>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Account" type="text" placeholder="Account Number" name="account_number" maxlength="14" required>
 								</div>
-								
 								<div class="w3-third w3-padding-small">
 								<label for="Phone1"><b>Phone # 1</b></label><br>
 								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Phone1" type="text" placeholder="Phone Num. xxx-xxx-xxxx" name="phone1" maxlength="13" required>
@@ -454,18 +466,17 @@
 								<label for="Phone2"><b>Phone # 2</b></label><br>
 								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Phone2" type="text" placeholder="Phone Num. xxx-xxx-xxxx" name="phone2" maxlength="13">
 								</div>
-								<br><br>
-								
-								
-								<div class="w3-padding-small">
+								</div>
+								<br>
+								<div class="w3-container w3-padding-small">
 								<label for="ProgramChoice"><b>Program Choice</b></label><br>
 									<div class="w3-padding-small">
 									
 										<div class="w3-half">
-										 Level Payment Plan <input class="w3-radio" type="radio" name="program_choice" id="programChoice" value="LPP" required>  
+										 Level Payment Plan <input class="w3-radio" type="radio" name="program_choice" value="LPP" required>  
 										</div>
 										<div class="w3-half">
-										 Budget Payment Plan <input class="w3-radio" type="radio" name="program_choice" id="programChoice" value="BPP" required> 
+										 Budget Payment Plan <input class="w3-radio" type="radio" name="program_choice" value="BPP" required> 
 										</div>
 									<br><br>
 									</div>
@@ -476,21 +487,21 @@
 									<div class="w3-input w3-border w3-round-small w3-margin-bottom">
 									<label for="Agreement"><b>Agreement</b></label><br>
 									I agree to the following guidelines as may be amended and all other regulations of the District:
-									<input Class="w3-check" type="checkbox" name="agreement" id="agreement" required>
+									<input Class="w3-check" type="checkbox" name="agreement" required>
 									</div>
 								</div>
-								<div class="w3-padding-small">
-								<input class="w3-half w3-large w3-button w3-green w3-padding-small w3-margin-bottom" type="submit" value="Submit">
-								<input class="w3-half w3-large w3-button w3-red w3-padding-small w3-margin-bottom"  type="Reset" value="Reset">
+									<div class="w3-container">
+										<div class="w3-padding-small">
+										<input class="w3-half w3-large w3-button w3-green w3-padding-small w3-margin-bottom" type="submit" value="Submit">
+										<input class="w3-half w3-large w3-button w3-red w3-padding-small w3-margin-bottom"  type="Reset" value="Reset">
+										</div>
+									</div>
 								</div>
-							</div>
-							
 							</form>
 							</div>
-						 </div>
-					</div>
-					</div>
-
+							</div>
+							</div>
+							
 				<hr>
 				<br>
 				<div>
@@ -503,13 +514,13 @@
 				<a href="../Images/TOU 12-7 Cust Ap (Rev 8 072617).pdf" class="w3-text-theme">TOU Application 12:00 p.m. to 7:00 p.m.</a>
 				<br>
 				<br>
-				<button onclick="document.getElementById('TOU-FORM').style.display='block'" class="w3-btn w3-round w3-hover-blue w3-theme">TOU Web Form</button>
+				<button onclick="document.getElementById('TOU-FORM').style.display='block'" class="w3-btn w3-round w3-hover-blue w3-theme">TOU<br>Web Form</button>
 				 <div id="TOU-FORM" class="w3-modal">
 					<div class="w3-modal-content">
 						<div class="w3-container">
 						<span onclick="document.getElementById('TOU-FORM').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright">&times;</span>
 						<br>
-						<h2 class="w3-center">TIME OF USE (TOU)<br>PROGRAM REVIEW & APPLICATION </h2>
+						<h3 class="w3-center">TIME OF USE (TOU)<br>PROGRAM REVIEW & APPLICATION </h3>
 						
 						<div class="w3-margin w3-padding">
 						<h5><b>TERMS & CONDITIONS</b></h5>
@@ -530,19 +541,20 @@
 							</div>
 						</div>
 						<hr>
-						<img class="w3-image" src="../Images/TOURates.png">
+						<img class="w3-image" alt="Table showing rates for all TOU options" src="../Images/TOURates.png">
 						<hr>
-						 <form class="w3-container w3-margin-bottom w3-border w3-round-large" action="/action_page.php" method="post">
+						 <form class="w3-container w3-margin-bottom w3-border w3-round-large" action="Programs-ED3.php" method="post">
 							<div class="w3-section w3-padding w3-margin">
-								<div class="w3-col s5 w3-padding-small"
+								<div class="w3-col s5 w3-padding-small">
+								<input name="form" hidden value="TOU-FORM">
 								<label for="Fname"><b>First Name</b></label>
 								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Fname" type="text" placeholder="First Name" name="first_name" maxlength="24" required>
 								</div>
-								<div class="w3-col s5 w3-padding-small"
+								<div class="w3-col s5 w3-padding-small">
 								<label for="Lname"><b>Last Name</b></label>
 								<input class="w3-input w3-padding w3-border w3-round-small w3-margin-bottom" id="Lname" type="text" placeholder="Last Name" name="last_name" maxlength="24" required>
 								</div>
-								<div class="w3-col s2 w3-padding-small"
+								<div class="w3-col s2 w3-padding-small">
 								<label for="Mname"><b>M.I.</b></label>
 								<input class="w3-input w3-padding w3-border w3-round-small w3-margin-bottom" id="Mname" type="text" placeholder=" Middle Initial" name="middle_initinal" maxlength="10">
 								</div>
@@ -557,10 +569,10 @@
 								<div class="w3-quarter w3-padding-small">
 								<label for="State"><b>State</b></label>
 								<select class="w3-input w3-border w3-round-small w3-margin-bottom half" id="State" type="text" placeholder="State" name="state" required>
-									<option disabled>Enter State</option>
+									<option value="" selected disabled>Enter State</option>
 									<option>Alabama</option>
 									<option>Alaska</option> 
-									<option selected>Arizona</option> 
+									<option>Arizona</option> 
 									<option>Arkansas</option> 
 									<option>California</option> 
 									<option>Colorado</option> 
@@ -621,52 +633,56 @@
 								</div>
 								<div class="w3-third w3-padding-small">
 								<label for="Account"><b>Account #</b></label><br>
-								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Account" type="text" placeholder="Account Number" name="account_number maxlength="14" required>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Account" type="text" placeholder="Account Number" name="account_number" maxlength="14" required>
 								</div>
 								
 								<div class="w3-third w3-padding-small">
 								<label for="Phone1"><b>Phone # 1</b></label><br>
-								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Phone1" type="text" placeholder="Phone Num. (xxx)xxx-xxxx" name="Phone1" maxlength="13" required>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="phone1" type="text" placeholder="Phone Num. (xxx)xxx-xxxx" name="phone1" maxlength="13" required>
 								</div>
 								<div class="w3-third w3-padding-small">
 								<label for="Phone2"><b>Phone # 2</b></label><br>
-								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Phone2" type="text" placeholder="Phone Num. (xxx)xxx-xxxx" name="Phone2" maxlength="13">
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="phone2" type="text" placeholder="Phone Num. (xxx)xxx-xxxx" name="phone2" maxlength="13">
 								</div>
 								<br><br>
-								
+								<div class="w3-container">
 								<div class="w3-padding-small">
 								<label for="ProgramChoice"><b>Program Choice</b></label><br>
 									<div class="w3-padding-small">
-									<div> 
+									
 										<div class="w3-col s6">
-										 Time Of Use 12 - 7 <input class="w3-radio" type="radio" name="programChoice" id="programChoice" value="TOU12-7" required>  
+										 Time Of Use 12 - 7 <input class="w3-radio" type="radio" name="program_choice" id="programChoice" value="TOU12-7" required>  
 										</div>
 										<div class="w3-col s6">
-										 Time Of Use 9 - 9 <input class="w3-radio" type="radio" name="programChoice" id="programChoice" value="TOU9-9" required> 
+										 Time Of Use 9 - 9 <input class="w3-radio" type="radio" name="program_choice" id="programChoice" value="TOU9-9" required> 
 										</div>
-									<br><br>
 									</div>
 								</div>
-								
+								</div>
 								<br>
 								<div class="w3-padding-small">
 									<div class="w3-input w3-border w3-round-small w3-margin-bottom">
 									<label for="Agreement"><b>Agreement</b></label><br>
 									I AGREE TO PARTICIPATE ON THE APPLIABLE TIME-OF-USE RATE (12-7 TOU/9-9 TOU) AND UNDERSTAND THAT I MUST REMAIN ON THIS RATE ONCE STARTED FOR A MINIMUM OF TWELVE (12) MONTHS. 
-									<input Class="w3-check" type="checkbox" name="agreement" id="agreement" required>
+									<input Class="w3-check" type="checkbox" name="agreement" value="true" id="agreement" required>
 									</div>
 								</div>
 								<div class="w3-padding-small">
 								<input class="w3-half w3-large w3-button w3-green w3-padding-small w3-margin-bottom" type="submit" value="Submit">
 								<input class="w3-half w3-large w3-button w3-red w3-padding-small w3-margin-bottom"  type="Reset" value="Reset">
 								</div>
-							</div>
 							
+								</div>
 							</form>
+							
+						
+						
 						 </div>
-					</div>
+						 
+					
 					</div>
 				</div>
+				
 				<p>If you would like to sign up, please print and complete the form viewed above labeled "Time of Use Application."  
 				Please feel free to fax this form to us at 520-494-7053 or it can be mailed to 41630 W. Louis Johnson Dr., Maricopa, AZ 85138.  It can also be dropped by either of our locations at 
 				41630 W. Louis Johnson Dr. or 19756 N. John Wayne Pkwy, Suite 101.</p>
@@ -742,7 +758,7 @@
 						<div class="w3-container">
 						<span onclick="document.getElementById('PPM-FORM').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright">&times;</span>
 						<br>
-						<h2 class="w3-center">PRE-PAID METERING PROGRAM<br>PROGRAM REVIEW & APPLICATION</h2>
+						<h1 class="w3-center">PRE-PAID METERING PROGRAM<br>PROGRAM REVIEW & APPLICATION</h1>
 						
 						<div class="w3-margin w3-padding">
 						<h5><b>TERMS & CONDITIONS</b></h5>
@@ -759,9 +775,10 @@
 						</div>
 						<hr>
 						
-						 <form class="w3-container w3-margin-bottom w3-border w3-round-large" id="PPM-FORM" action="/action_page.php" method="post">
+						 <form class="w3-container w3-margin-bottom w3-border w3-round-large" id="PPM-FORM" action="Programs-ED3.php" method="post">
 							<div class="w3-section w3-padding w3-margin">
-								<div class="w3-col s5 w3-padding-small"
+								<div class="w3-col s5 w3-padding-small">
+								<input name="form" hidden value="PPM-FORM">
 								<label for="Fname"><b>First Name</b></label>
 								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Fname" type="text" placeholder="First Name" name="first_name" maxlength="24" required>
 								</div>
@@ -784,10 +801,10 @@
 								<div class="w3-quarter w3-padding-small">
 								<label for="State"><b>State</b></label>
 								<select class="w3-input w3-border w3-round-small w3-margin-bottom half" id="State" type="text" placeholder="State" name="state" required>
-									<option disabled>Enter State</option>
+									<option value="" disabled>Enter State</option>
 									<option>Alabama</option>
 									<option>Alaska</option> 
-									<option selected>Arizona</option> 
+									<option>Arizona</option> 
 									<option>Arkansas</option> 
 									<option>California</option> 
 									<option>Colorado</option> 
@@ -848,12 +865,12 @@
 								</div>
 								<div class="w3-quarter w3-padding-small">
 								<label for="Account"><b>Account #</b></label><br>
-								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Account" type="text" placeholder="Account Number" name="account_number maxlength="14" required>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Account" type="text" placeholder="Account Number" name="account_number"  maxlength="14" required>
 								</div>
 								<div class="w3-quarter w3-padding-small">
 								<label for="CellProvider"><b>Provider</b></label>
-									<select class="w3-input w3-border w3-round-small w3-margin-bottom half" id="CellProvider" type="text" placeholder="Provider" name="Carrier" required>
-									<option disabled>Provider</option>
+									<select class="w3-input w3-border w3-round-small w3-margin-bottom half" id="CellProvider" type="text" placeholder="Provider" name="carrier" required>
+									<option selected value="" disabled>Provider</option>
 									<option>Alltel</option>
 									<option>AT&amp;T</option>
 									<option>Boost Mobile</option>
@@ -880,11 +897,11 @@
 								</div>
 								<div class="w3-quarter w3-padding-small">
 								<label for="Phone1"><b>Phone # 1</b></label><br>
-								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Phone1" type="tel" placeholder="Phone Num. (xxx)xxx-xxxx" name="Phone1" maxlength="13" required>
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Phone1" type="text" placeholder="Phone Num. (xxx)xxx-xxxx" name="phone1" maxlength="13" required>
 								</div>
 								<div class="w3-quarter w3-padding-small">
 								<label for="Phone2"><b>Phone # 2</b></label><br>
-								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Phone2" type="tel" placeholder="Phone Num. (xxx)xxx-xxxx" name="Phone2" maxlength="13">
+								<input class="w3-input w3-border w3-round-small w3-margin-bottom" id="Phone2" type="text" placeholder="Phone Num. (xxx)xxx-xxxx" name="phone2" maxlength="13">
 								</div>
 								<br><br>
 								
@@ -900,13 +917,13 @@
 											 Service Reconnected  
 											</div>
 											<div class="w3-col s3 w3-right">
-												<input class="w3-radio w3-right" type="radio" name="Reconnect" id="Reconnect" value="Both" required>
+												<input class="w3-radio w3-right" type="radio" name="reconnect" id="Reconnect" value="Both" required>
 											</div>											
 											<div class="w3-col s3 w3-right">
-												<input class="w3-radio w3-right" type="radio" name="Reconnect" id="Reconnect" value="Text" required> 
+												<input class="w3-radio w3-right" type="radio" name="reconnect" id="Reconnect" value="Text" required> 
 											</div>
 											<div class="w3-col s3 w3-right">
-												<input class="w3-radio w3-right" type="radio" name="Reconnect" id="Reconnect" value="Email" required> 
+												<input class="w3-radio w3-right" type="radio" name="reconnect" id="Reconnect" value="Email" required> 
 											</div>
 											<br>
 											<br>
@@ -916,13 +933,13 @@
 											 Balance &amp; Usage Alert  
 											</div>
 											<div class="w3-col s3">
-												<input class="w3-radio w3-right" type="radio" name="BalUseAlert" id="BalUseAlert" value="Both" required>
+												<input class="w3-radio w3-right" type="radio" name="baluse_alert" id="BalUseAlert" value="Both" required>
 											</div>											
 											<div class="w3-col s3">
-												<input class="w3-radio w3-right" type="radio" name="BalUseAlert" id="BalUseAlert" value="Text" required> 
+												<input class="w3-radio w3-right" type="radio" name="baluse_alert" id="BalUseAlert" value="Text" required> 
 											</div>
 											<div class="w3-col s3">
-												<input class="w3-radio w3-right" type="radio" name="BalUseAlert" id="BalUseAlert" value="Email" required> 
+												<input class="w3-radio w3-right" type="radio" name="baluse_alert" id="BalUseAlert" value="Email" required> 
 											</div>
 											<br>
 											<br>
@@ -931,13 +948,13 @@
 											 Pending Auto Disconnect Alert  
 											</div>
 											<div class="w3-col s3">
-												<input class="w3-radio w3-right" type="radio" name="PendDisconect" id="PendDisconect" value="Both" required>
+												<input class="w3-radio w3-right" type="radio" name="pend_disconect" id="PendDisconect" value="Both" required>
 											</div>											
 											<div class="w3-col s3">
-												<input class="w3-radio w3-right" type="radio" name="PendDisconect" id="PendDisconect" value="Text" required> 
+												<input class="w3-radio w3-right" type="radio" name="pend_disconect" id="PendDisconect" value="Text" required> 
 											</div>
 											<div class="w3-col s3">
-												<input class="w3-radio w3-right" type="radio" name="PendDisconect" id="PendDisconect" value="Email" required> 
+												<input class="w3-radio w3-right" type="radio" name="pend_disconect" id="PendDisconect" value="Email" required> 
 											</div>
 										</div>
 									</div>
@@ -1000,7 +1017,7 @@
 										<br>
 										<br>
 										<br>
-										<div class="w3-col s2 w3-right-align"> <input class="w3-input w3-border w3-round-small w3-right-align w3-margin-bottom" id="LBTReached" type="text" name="LBTReached" maxlength="3" ></div>
+										<div class="w3-col s2 w3-right-align"> <input class="w3-input w3-border w3-round-small w3-right-align w3-margin-bottom" id="LBTReached" type="text" name="LBTamount" maxlength="3" ></div>
 										<div class="w3-col s1 w3-xlarge"> .00</div>
 										<div class="w3-col s9 w3-padding">(Example: If $30.00 is set, then when account balance hits $30.00 a text or email will be sent to you.)</div>
 										<br>
@@ -1016,7 +1033,7 @@
 										<br>
 										<br>
 										<br>
-										<div class="w3-col s2 w3-right-align"> <input class="w3-input w3-border w3-round-small w3-right-align w3-margin-bottom" id="HighUse" type="text" name="HighUse" maxlength="3" ></div>
+										<div class="w3-col s2 w3-right-align"> <input class="w3-input w3-border w3-round-small w3-right-align w3-margin-bottom" id="HighUse" type="text" name="HighUseamount" maxlength="3" ></div>
 										<div class="w3-col s1 w3-xlarge"> .00</div>
 										<div class="w3-col s9 w3-padding">(Example: If $10.00 is set and the usage for the previous day hits $10.00, a text or email will be sent to you.) </div>
 										<br>
@@ -1039,7 +1056,7 @@
 									<div class="w3-col s10">
 									&#8226;&nbsp;&nbsp;I am aware that I will be required to receive PPM Program alerts via mobile phone, email, or both, and I am willing to accept the responsibility to make sure a working mobile phone number and email address is on file.
 									</div>
-									<input Class="w3-col s2 w3-check " type="checkbox" name="agreement" id="agreement" required>
+									<input Class="w3-col s2 w3-check " type="checkbox" name="agreementpt1" id="agreement" value="true" required>
 									</div>
 									<br>
 									<br>
@@ -1047,14 +1064,14 @@
 										<div class="w3-margin">
 									<div class="w3-col s10">&#8226;&nbsp;&nbsp;I am willing to accept the responsibility of monitoring my usage and account balance.
 									</div>
-									<input Class="w3-check w3-col s2" type="checkbox" name="agreement" id="agreement" required>
+									<input Class="w3-check w3-col s2" type="checkbox" name="agreementpt2" id="agreement" value="1" required>
 										</div>
 									<br>
 									<br>
 									<div class="w3-margin">
 									<div class="w3-col s10">&#8226;&nbsp;&nbsp;I am aware that ED3 personnel must continue to have safe, continuous and unrestricted access to the meter and the meter cannot be behind a locked gate or within a fenced yard with a dog.
 									</div>
-									<input Class="w3-check w3-col s2" type="checkbox" name="agreement" id="agreement" required>
+									<input Class="w3-check w3-col s2" type="checkbox" name="agreementpt3" id="agreement" value="yes" required>
 									</div>
 									<br>
 									<br>
@@ -1064,7 +1081,7 @@
 									<div class="w3-col s10">
 									&#8226;&nbsp;&nbsp;I agree to the following PPM Program requirements and guidelines, as may be amended, and all other ED3 policies. 
 									</div>
-									<input Class="w3-check w3-col s2" type="checkbox" name="agreement" id="agreement" required>
+									<input Class="w3-check w3-col s2" type="checkbox" name="agreement" id="agreement" value="yes" required>
 									</div>
 									</div>
 									<br>
@@ -1073,7 +1090,7 @@
 								</div>
 								<div class="w3-padding-small">
 								<br>
-								<input class="w3-half w3-large w3-button w3-green w3-padding-small w3-margin-bottom" type="submit" value="Submit">
+								<input class="w3-half w3-large w3-button w3-green w3-padding-small w3-margin-bottom" type="Submit" value="Submit">
 								<input class="w3-half w3-large w3-button w3-red w3-padding-small w3-margin-bottom"  type="Reset" value="Reset">
 								</div>
 							</div>
@@ -1113,7 +1130,7 @@
 		
 		<!-- Copyright Information for all pages-->
 		<div id="copyright" class="w3-container w3-themea w3-small  w3-center">
-			<p>Copyright © Electrical District No.3 of Pinal County 2003-2017, All Rights Reserved.</p>
+			<p>Copyright © Electrical District No.3 of Pinal County 2003-2018, All Rights Reserved.</p>
 			<a href="http://usa.visa.com"><img src="../Images/visa1_37x23_a.gif"></a> 
 			<img src="../Images/MasterCard.jpg">
 			<img src="../Images/amex.gif"> 
@@ -1129,3 +1146,203 @@
 	</body>
 		
 </html>
+<?php			
+	
+	$first_name = "";
+	$last_name = ""; 
+	$middle_initial = "";  
+	$service_address = "";
+	$city = ""; 
+	$state = ""; 
+	$zip = ""; 
+	$email = ""; 
+	$account_number = ""; 
+	$phone1 = ""; 
+	$phone2 = "";  
+	$program_choice = ""; 
+	$agreement = ""; 
+		
+	if ($_SERVER["REQUEST_METHOD"] == "POST") 
+	{
+		$form = $_POST['form'];
+		
+		
+		if($form == "LPP-BPP-FORM")
+		{
+		
+		
+		$first_name = filter_var($_POST['first_name'], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$last_name = filter_var($_POST["last_name"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$middle_initial = filter_var($_POST["middle_initial"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$service_address = filter_var($_POST["service_address"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$city = filter_var($_POST["city"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$state = $_POST["state"];
+		$zip = $_POST["zip"];
+		$email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+		$email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
+		$account_number = filter_var($_POST["account_number"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$phone1 = $_POST["phone1"];
+		$phone2 = $_POST["phone2"];
+		$program_choice = $_POST["program_choice"];
+		$agreement = filter_var($_POST["agreement"], FILTER_VALIDATE_BOOLEAN);	
+			
+			
+		
+		$myemail = "customerservice@ed-3.org, keith.gehrke@ed-3.org";
+		$subject = "ED3 Application";
+		$message = "			$form
+		this is a test message
+		First Name:			$first_name, 
+		Last Name:			$last_name 
+		Initial:			$middle_initial
+		Service Address:  		$service_address
+		City:				$city
+		State:				$state
+		Zip Code:			$zip
+		E-Mail:				$email
+		Account Number:		$account_number
+		Primary Phone:			$phone1
+		Secondary Phone:		$phone2
+		Program Choice:		$program_choice
+		Agreement:			$agreement
+		
+			End of message
+			";
+		/* Send the message using mail() function */
+		mail($myemail, $subject, $message);
+		}
+		elseif($form == "TOU-FORM")
+		{
+			$first_name = filter_var($_POST['first_name'], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$last_name = filter_var($_POST["last_name"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$middle_initial = filter_var($_POST["middle_initial"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$service_address = filter_var($_POST["service_address"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$city = filter_var($_POST["city"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$state = $_POST["state"];
+		$zip = $_POST["zip"];
+		$email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+		$email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
+		$account_number = filter_var($_POST["account_number"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$phone1 = $_POST["phone1"];
+		$phone2 = $_POST["phone2"];
+		$program_choice = $_POST["program_choice"];
+		$agreement = filter_var($_POST["agreement"], FILTER_VALIDATE_BOOLEAN);	
+			
+			
+		
+		$myemail = "customerservice@ed-3.org, keith.gehrke@ed-3.org";
+		$subject = "ED3 Application";
+		$message = "			$form
+		
+		
+		First Name:			$first_name, 
+		Last Name:			$last_name 
+		Initial:			$middle_initial
+		Service Address:  		$service_address
+		City:				$city
+		State:				$state
+		Zip Code:			$zip
+		E-Mail:				$email
+		Account Number:		$account_number
+		Primary Phone:			$phone1
+		Secondary Phone:		$phone2
+		Program Choice:		$program_choice
+		Agreement:			$agreement
+			
+			End of message
+			";
+		/* Send the message using mail() function */
+		mail($myemail, $subject, $message);
+		}
+		elseif($form == "PPM-FORM"){				
+		
+		$first_name = filter_var($_POST['first_name'], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$last_name = filter_var($_POST["last_name"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$middle_initial = filter_var($_POST["middle_initial"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$service_address = filter_var($_POST["service_address"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$city = filter_var($_POST["city"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$state = $_POST["state"];
+		$zip = $_POST["zip"];
+		$email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+		$email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
+		$account_number = filter_var($_POST["account_number"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$carrier= $_POST["carrier"];
+		$phone1 = $_POST["phone1"];
+		$phone2 = $_POST["phone2"];
+		$reconnect = $_POST["reconnect"];
+		$baluse_alert = $_POST["baluse_alert"];
+		$pend_disconect = $_POST["pend_disconect"];
+		$ProfileChange = $_POST["ProfileChange"];
+		$ReturnedCheck = $_POST["ReturnedCheck"];
+		$PayConfim = $_POST["PayConfim"];
+		$SvcConnect = $_POST["SvcConnect"];
+		$SvcDisconnect = $_POST["SvcDisconnect"];
+		$LBTReached = $_POST["LBTReached"];
+		$LBTamount = $_POST["LBTamount"];
+		$HighUse = $_POST["HighUse"];
+		$HighUseamount = $_POST["HighUseamount"];
+		$agreementpt1 = filter_var($_POST["agreementpt1"], FILTER_VALIDATE_BOOLEAN);
+		$agreementpt2 = filter_var($_POST["agreementpt2"], FILTER_VALIDATE_BOOLEAN);
+		$agreementpt3 = filter_var($_POST["agreementpt3"], FILTER_VALIDATE_BOOLEAN);
+		$agreement = filter_var($_POST["agreement"], FILTER_VALIDATE_BOOLEAN);	
+			
+			
+		
+		$myemail = "customerservice@ed-3.org, keith.gehrke@ed-3.org";
+		$subject = "ED3 Application";
+		$message = "			$form
+		
+		
+		
+		First Name:			$first_name, 
+		Last Name:			$last_name 
+		Initial:			$middle_initial
+		Service Address:  		$service_address
+		City:				$city
+		State:				$state
+		Zip Code:			$zip
+		E-Mail:				$email
+		Account Number:		$account_number
+		Phone Provider:		$carrier
+		Primary Phone:			$phone1
+		Secondary Phone:		$phone2
+		
+		Notification Preferences - Required
+		Service 
+		Reconnected:			$reconnect
+		Balance & 
+		Usage Alert:			$baluse_alert
+		Pending Auto		 
+		Disconnect Alert:		$pend_disconect
+		
+		Notification Preferences - Optional
+		Account Profile 
+		Change:			$ProfileChange
+		Returned 
+		Check Alert:			$ReturnedCheck
+		Payment 
+		Confirmation:			$PayConfim
+		Service Connected:		$SvcConnect
+		Service 
+		Disconnected:			$SvcDisconnect
+		Low Balance 
+		Threshold Reached:		$LBTamount 00 	$LBTReached
+		High Usage Alert:		$HighUseamount 00 	$HighUse
+		Agreement:			( $agreement )
+		
+		
+		( $agreementpt1 )I am aware that I will be required to receive PPM Program alerts via mobile phone, email, or both, and I am willing to accept the responsibility to make sure a working mobile phone number and email address is on file.
+		
+		( $agreementpt2 )I am willing to accept the responsibility of monitoring my usage and account balance.
+		
+		( $agreementpt3 )I am aware that ED3 personnel must continue to have safe, continuous and unrestricted access to the meter and the meter cannot be behind a locked gate or within a fenced yard with a dog. 
+			
+			End of message
+			";
+		/* Send the message using mail() function */
+		mail($myemail, $subject, $message);
+
+		}
+		exit(0);
+	}
+		?>
