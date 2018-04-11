@@ -19,11 +19,10 @@
 	{
 		$form = $_POST['form'];
 		
-		
+		$myemail = "customerservice@ed-3.org";
+		$subject = "ED3 Application";
 		if($form == "LPP-BPP-FORM")
 		{
-		
-		
 		$first_name = filter_var($_POST['first_name'], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
 		$last_name = filter_var($_POST["last_name"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
 		$middle_initial = filter_var($_POST["middle_initial"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
@@ -39,10 +38,6 @@
 		$program_choice = $_POST["program_choice"];
 		$agreement = filter_var($_POST["agreement"], FILTER_VALIDATE_BOOLEAN);	
 			
-			
-		
-		$myemail = "CustomerServiceEmployees@ed-3.org";
-		$subject = "ED3 Application";
 		$message = "			$form
 		this is a test message
 		First Name:			$first_name
@@ -62,8 +57,7 @@
 			End of message
 			";
 		/* Send the message using mail() function */
-		$mail_confim = mail($myemail, $subject, $message);
-		mail($email, $subject, $message);
+		
 		}
 		elseif($form == "TOU-FORM")
 		{
@@ -81,11 +75,7 @@
 		$phone2 = $_POST["phone2"];
 		$program_choice = $_POST["program_choice"];
 		$agreement = filter_var($_POST["agreement"], FILTER_VALIDATE_BOOLEAN);	
-			
-			
-		
-		$myemail = "CustomerServiceEmployees@ed-3.org";
-		$subject = "ED3 Application";
+
 		$message = "			$form
 		
 		
@@ -106,10 +96,8 @@
 			End of message
 			";
 		/* Send the message using mail() function */
-		$mail_confim = mail($myemail, $subject, $message);
-		mail($email, $subject, $message);
-		}
 		
+		}
 		elseif($form == "PPM-FORM"){				
 		
 		$first_name = filter_var($_POST['first_name'], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
@@ -126,8 +114,7 @@
 		
 		$phone1 = preg_replace('/[^0-9+-]/', '',$_POST['phone1']);
 		$phone2 = preg_replace('/[^0-9+-]/', '',$_POST['phone2']);
-		
-			  
+  
 		$reconnect = $_POST["reconnect"];
 		$baluse_alert = $_POST["baluse_alert"];
 		$pend_disconect = $_POST["pend_disconect"];
@@ -144,15 +131,11 @@
 		$agreementpt2 = filter_var($_POST["agreementpt2"], FILTER_VALIDATE_BOOLEAN);
 		$agreementpt3 = filter_var($_POST["agreementpt3"], FILTER_VALIDATE_BOOLEAN);
 		$agreement = filter_var($_POST["agreement"], FILTER_VALIDATE_BOOLEAN);	
-			
-			
-		
-		$myemail = "CustomerServiceEmployees@ed-3.org";
-		$subject = "ED3 Application";
+
+
 		$message = "			$form
 		
-		
-		
+
 		First Name:			$first_name 
 		Last Name:			$last_name 
 		Initial:			$middle_initial
@@ -199,9 +182,10 @@
 			End of message
 			";
 		/* Send the message using mail() function */
+		
+		}
 		$mail_confim = mail($myemail, $subject, $message);
 		mail($email, $subject, $message);
-		}
 		if($mail_confim == "TRUE"){
 		
 		header("Location: HTTPS://www.ed3online.org/Pages/Confirm-ED3.html"); 
