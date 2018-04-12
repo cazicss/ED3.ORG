@@ -1,4 +1,201 @@
 <!DOCTYPE HTML>
+<?php			
+	
+	$first_name = "";
+	$last_name = ""; 
+	$middle_initial = "";  
+	$service_address = "";
+	$city = ""; 
+	$state = ""; 
+	$zip = ""; 
+	$email = ""; 
+	$account_number = ""; 
+	$phone1 = ""; 
+	$phone2 = "";  
+	$program_choice = ""; 
+	$agreement = ""; 
+		
+	if ($_SERVER["REQUEST_METHOD"] == "POST") 
+	{
+		$form = $_POST['form'];
+		
+		$myemail = "customerservice@ed-3.org";
+		$subject = "ED3 Application";
+		if($form == "LPP-BPP-FORM")
+		{
+		$first_name = filter_var($_POST['first_name'], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$last_name = filter_var($_POST["last_name"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$middle_initial = filter_var($_POST["middle_initial"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$service_address = filter_var($_POST["service_address"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$city = filter_var($_POST["city"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$state = $_POST["state"];
+		$zip = $_POST["zip"];
+		$email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+		$email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
+		$account_number = filter_var($_POST["account_number"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$phone1 = $_POST["phone1"];
+		$phone2 = $_POST["phone2"];
+		$program_choice = $_POST["program_choice"];
+		$agreement = filter_var($_POST["agreement"], FILTER_VALIDATE_BOOLEAN);	
+			
+		$message = "			$form
+		this is a test message
+		First Name:			$first_name
+		Last Name:			$last_name 
+		Initial:			$middle_initial
+		Service Address:  		$service_address
+		City:				$city
+		State:				$state
+		Zip Code:			$zip
+		E-Mail:				$email
+		Account Number:		$account_number
+		Primary Phone:			$phone1
+		Secondary Phone:		$phone2
+		Program Choice:		$program_choice
+		Agreement:			$agreement
+		
+			End of message
+			";
+		/* Send the message using mail() function */
+		
+		}
+		elseif($form == "TOU-FORM")
+		{
+			$first_name = filter_var($_POST['first_name'], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$last_name = filter_var($_POST["last_name"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$middle_initial = filter_var($_POST["middle_initial"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$service_address = filter_var($_POST["service_address"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$city = filter_var($_POST["city"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$state = $_POST["state"];
+		$zip = $_POST["zip"];
+		$email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+		$email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
+		$account_number = filter_var($_POST["account_number"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$phone1 = $_POST["phone1"];
+		$phone2 = $_POST["phone2"];
+		$program_choice = $_POST["program_choice"];
+		$agreement = filter_var($_POST["agreement"], FILTER_VALIDATE_BOOLEAN);	
+
+		$message = "			$form
+		
+		
+		First Name:			$first_name
+		Last Name:			$last_name 
+		Initial:			$middle_initial
+		Service Address:  		$service_address
+		City:				$city
+		State:				$state
+		Zip Code:			$zip
+		E-Mail:				$email
+		Account Number:		$account_number
+		Primary Phone:			$phone1
+		Secondary Phone:		$phone2
+		Program Choice:		$program_choice
+		Agreement:			$agreement
+			
+			End of message
+			";
+		/* Send the message using mail() function */
+		
+		}
+		elseif($form == "PPM-FORM"){				
+		
+		$first_name = filter_var($_POST['first_name'], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$last_name = filter_var($_POST["last_name"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$middle_initial = filter_var($_POST["middle_initial"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$service_address = filter_var($_POST["service_address"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$city = filter_var($_POST["city"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$state = $_POST["state"];
+		$zip = $_POST["zip"];
+		$email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+		$email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
+		$account_number = filter_var($_POST["account_number"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
+		$carrier= $_POST["carrier"];
+		
+		$phone1 = preg_replace('/[^0-9+-]/', '',$_POST['phone1']);
+		$phone2 = preg_replace('/[^0-9+-]/', '',$_POST['phone2']);
+  
+		$reconnect = $_POST["reconnect"];
+		$baluse_alert = $_POST["baluse_alert"];
+		$pend_disconect = $_POST["pend_disconect"];
+		$ProfileChange = $_POST["ProfileChange"];
+		$ReturnedCheck = $_POST["ReturnedCheck"];
+		$PayConfim = $_POST["PayConfim"];
+		$SvcConnect = $_POST["SvcConnect"];
+		$SvcDisconnect = $_POST["SvcDisconnect"];
+		$LBTReached = $_POST["LBTReached"];
+		$LBTamount = $_POST["LBTamount"];
+		$HighUse = $_POST["HighUse"];
+		$HighUseamount = $_POST["HighUseamount"];
+		$agreementpt1 = filter_var($_POST["agreementpt1"], FILTER_VALIDATE_BOOLEAN);
+		$agreementpt2 = filter_var($_POST["agreementpt2"], FILTER_VALIDATE_BOOLEAN);
+		$agreementpt3 = filter_var($_POST["agreementpt3"], FILTER_VALIDATE_BOOLEAN);
+		$agreement = filter_var($_POST["agreement"], FILTER_VALIDATE_BOOLEAN);	
+
+
+		$message = "			$form
+		
+
+		First Name:			$first_name 
+		Last Name:			$last_name 
+		Initial:			$middle_initial
+		Service Address:  		$service_address
+		City:				$city
+		State:				$state
+		Zip Code:			$zip
+		E-Mail:				$email
+		Account Number:		$account_number
+		Phone Provider:		$carrier
+		Primary Phone:			$phone1
+		Secondary Phone:		$phone2
+		
+		Notification Preferences - Required
+		Service 
+		Reconnected:			$reconnect
+		Balance & 
+		Usage Alert:			$baluse_alert
+		Pending Auto		 
+		Disconnect Alert:		$pend_disconect
+		
+		Notification Preferences - Optional
+		Account Profile 
+		Change:			$ProfileChange
+		Returned 
+		Check Alert:			$ReturnedCheck
+		Payment 
+		Confirmation:			$PayConfim
+		Service Connected:		$SvcConnect
+		Service 
+		Disconnected:			$SvcDisconnect
+		Low Balance 
+		Threshold Reached:		$LBTamount 00 	$LBTReached
+		High Usage Alert:		$HighUseamount 00 	$HighUse
+		Agreement:			( $agreement )
+		
+		
+		( $agreementpt1 )I am aware that I will be required to receive PPM Program alerts via mobile phone, email, or both, and I am willing to accept the responsibility to make sure a working mobile phone number and email address is on file.
+		
+		( $agreementpt2 )I am willing to accept the responsibility of monitoring my usage and account balance.
+		
+		( $agreementpt3 )I am aware that ED3 personnel must continue to have safe, continuous and unrestricted access to the meter and the meter cannot be behind a locked gate or within a fenced yard with a dog. 
+			
+			End of message
+			";
+		/* Send the message using mail() function */
+		
+		}
+		$mail_confim = mail($myemail, $subject, $message);
+		mail($email, $subject, $message);
+		if($mail_confim == "TRUE"){
+		
+		header("Location: HTTPS://www.ed3online.org/Pages/Confirm-ED3.html"); 
+		}
+		else{
+		header("Location: HTTPS://www.ed3online.org/Pages/Failed-ED3.html");
+		}
+		exit(0);
+	}
+		?>
 <html Lang="en">
 	
 <!--- Authors:  Keith Gehrke, Joe Kidd
@@ -299,7 +496,7 @@
 				
 				<div class="w3-center w3-padding-large">
 					<br>
-					<p class="w3-xxlarge w3-serif w3-text-theme"><b>ED3 Plans & Programs</b></p>
+					<p class="w3-xxlarge w3-serif w3-text-theme"><b>ED3 Programs</b></p>
 					<hr>
 				
 				
@@ -307,7 +504,7 @@
 				<div>
 				<p class="w3-xlarge w3-serif W3-center w3-text-themea"><b>Level Payment Plan or
 				<br>Budget Payment Plan</b></p>
-				<p class="w3-small">Electrical District No. 3 is now offering two Programs to help manage your electric bill. The Level Payment Plan and Budget Payment Plan.</p>
+				<p class="w3-small">Electrical District No. 3 offers two Programs to help manage your electric bill. The Level Payment Plan and Budget Payment Plan.</p>
 				<p class="w3-large w3-text-themea w3-serif"><i>Level Payment Plan (LPP)</i></p>
 				<p class="w3-small"><b>LPP</b> - is a no fee Program that averages the most recent twelve (12) months of account history. Each month your power bill will be a different amount and will vary from month to month.
 				<p class="w3-large w3-text-themea w3-serif"><i>Budget Payment Plan (BPP)</i></p>
@@ -317,12 +514,10 @@
 				<a href="../Images/LPP BPP Res Sm Comm APP (Rev 10 072617).pdf"  class="w3-text-theme">LPP or BPP Application</a>
 				<br>
 				<br>
-				
+
 				<button onclick="document.getElementById('LPP-BPP-FORM').style.display='block'" class="w3-btn w3-round w3-hover-blue w3-theme">LPP/BPP <br>Web Form</button>
-				 
-					
-				<p class="w3-small">Please print and complete the above form. You can fax the completed application to us at 520-494-7053 or it can be mailed to 41630 W. Louis Johnson Dr., Maricopa, AZ 85138.  
-				It can also be dropped by either of our locations at 41630 W. Louis Johnson Dr. or 19756 N. John Wayne Pkwy, Suite 101.</p>
+	
+				<p class="w3-small">If you would like to sign up, please click and complete the automated form button above OR print and complete the form viewed above labeled "LPP or BPP Application." Please feel free to fax this form to us at 520-494-7053 or it can be mailed to 41630 W. Louis Johnson Dr., Maricopa, AZ 85138. It can also be dropped by either of our locations at 41630 W. Louis Johnson Dr. or 19756 N. John Wayne Pkwy, Suite 101.</p>
 				
 				</div>
 				<div id="LPP-BPP-FORM" class="w3-modal">
@@ -339,8 +534,8 @@
 							<p>ED3 uses your annual energy usage for the previous year with the current rate to calculate your monthly payment amount.</p>
 							<p>Any changes in District rates will be reflected in your monthly payment amount.</p>
 							<p>Your account will continue to be charged for the actual amount of energy used and the monthly payment amount will be adjusted quarterly to continue to more evenly spread the costs of your power usage.</p>
-							<p>Quarterly reviews will be done in January, April, July and October.</p>
-							<p>Account reconciliation will take place each year in October and upon closing of the account.</p>
+							<p>Quarterly reviews will be done in January, April, July and October. <span class="w3-text-red">For Budget Plans</span></p>
+							<p>Account reconciliation will take place each year in October and upon closing of the account. <span class="w3-text-red">For Budget Plans</span></p>
 							<p>Monthly statements will continue to be sent to you so you can monitor your energy usage. </p>
 							<p>You will remain responsible for the costs of your actual usage and this plan will spread these costs throughout the year.</p>
 							</div>
@@ -506,7 +701,7 @@
 				<br>
 				<div>
 				<p class="w3-xlarge w3-serif W3-center w3-text-themea"><b>Time of Use (TOU)</b></p>
-				<p>Electrical District No. 3 is now offering Time of Use (TOU) Programs!  Please review the links below to become familiar with the requirements of these programs.</p>
+				<p>Electrical District No. 3 offers Time of Use (TOU) Programs!  Please review the links below to become familiar with the requirements of these programs.</p>
 				<p class="w3-large w3-text-red"><i>To Sign Up</i></p>
 				<a href="../Images/TOU 9-9 Cust Ap (Rev 9 072617).pdf" class="w3-text-theme">TOU Application 9:00 a.m. to 9:00 p.m.</a>
 				<br>
@@ -683,9 +878,7 @@
 					</div>
 				</div>
 				
-				<p>If you would like to sign up, please print and complete the form viewed above labeled "Time of Use Application."  
-				Please feel free to fax this form to us at 520-494-7053 or it can be mailed to 41630 W. Louis Johnson Dr., Maricopa, AZ 85138.  It can also be dropped by either of our locations at 
-				41630 W. Louis Johnson Dr. or 19756 N. John Wayne Pkwy, Suite 101.</p>
+				<p>If you would like to sign up, please click and complete the automated form button above OR print and complete the form viewed above labeled "Time of Use Application." Please feel free to fax this form to us at 520-494-7053 or it can be mailed to 41630 W. Louis Johnson Dr., Maricopa, AZ 85138. It can also be dropped by either of our locations at 41630 W. Louis Johnson Dr. or 19756 N. John Wayne Pkwy, Suite 101.</p>
 				
 				</div>
 				<hr>
@@ -712,13 +905,14 @@
 				</p>
 				<hr>
 				<p>
-				Most ED3 customers can elect at any time to have a pre-paid meter installed.  Please see the Terms and Conditions below.  
-				Customers may begin this program by completing the form linked below and returning it to an ED3 office.<br>
+				Most ED3 customers can elect at any time to have a pre-paid meter installed. Please see the Terms and Conditions below. Customers may begin this program by completing the form linked below and returning it to an ED3 office.<br>
 				<br>
 				Customer Service Office:<br>
+				Fax: (520)-494-7053<br>
 				19756 N. John Wayne Pkwy, Suite 101, Maricopa, AZ 85139<br>
 				<br>
 				District Office:<br>
+				Fax: (520)-423-4949<br>
 				41630 W. Louis Johnson Dr., Maricopa, AZ 85138<br>
 				<br>
 				Customers must provide the following information in order to set up the PPM Program on their account:<br>
@@ -917,13 +1111,14 @@
 											 Service Reconnected  
 											</div>
 											<div class="w3-col s3 w3-right">
-												<input class="w3-radio w3-right" type="radio" name="reconnect" id="Reconnect" value="Both" required>
+												<input class="w3-radio w3-right" type="radio" name="reconnect" id="Reconnect" value="Email" required>
 											</div>											
 											<div class="w3-col s3 w3-right">
 												<input class="w3-radio w3-right" type="radio" name="reconnect" id="Reconnect" value="Text" required> 
 											</div>
+											
 											<div class="w3-col s3 w3-right">
-												<input class="w3-radio w3-right" type="radio" name="reconnect" id="Reconnect" value="Email" required> 
+												<input class="w3-radio w3-right" type="radio" name="reconnect" id="Reconnect" value="Both" required> 
 											</div>
 											<br>
 											<br>
@@ -965,52 +1160,52 @@
 									<div class="w3-margin w3-padding-bottom">
 										<div>
 											<div class="w3-col s3">&nbsp;</div>
-											<div class="w3-col s3 w3-right-align">Both</div>
+											<div class="w3-col s3 w3-right-align">&nbsp;</div>
 											<div class="w3-col s3 w3-right-align">Text</div>
 											<div class="w3-col s3 w3-right-align">Email</div>
 											
 											<div class="w3-col s3">Account Profile Change</div>
-											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="ProfileChange" id="ProfileChange" value="Both"></div>
-											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="ProfileChange" id="ProfileChange" value="Text"></div>
-											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="ProfileChange" id="ProfileChange" value="Email"></div>
+											<div class="w3-col s3">&nbsp;</div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="checkbox" name="ProfileChange" id="ProfileChange" value="Text"></div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="checkbox" name="ProfileChange" id="ProfileChange" value="Email"></div>
 										<br>
 										<br>
 										<br>
 										<br>
 											<div class="w3-col s3">Returned Check Alert</div>
-											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="ReturnedCheck" id="ReturnedCheck" value="Both" ></div>
-											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="ReturnedCheck" id="ReturnedCheck" value="Text"></div>
-											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="ReturnedCheck" id="ReturnedCheck" value="Email" ></div>
+											<div class="w3-col s3">&nbsp;</div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="checkbox" name="ReturnedCheck" id="ReturnedCheck" value="Text"></div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="checkbox" name="ReturnedCheck" id="ReturnedCheck" value="Email" ></div>
 										<br>
 										<br>
 										<br>
 											<div class="w3-col s3">Payment Confirmation</div>
-											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="PayConfim" id="PayConfim" value="Both" ></div>
-											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="PayConfim" id="PayConfim" value="Text" ></div>
-											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="PayConfim" id="PayConfim" value="Email" ></div>
+											<div class="w3-col s3">&nbsp;</div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="checkbox" name="PayConfim" id="PayConfim" value="Text" ></div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="checkbox" name="PayConfim" id="PayConfim" value="Email" ></div>
 										<br>
 										<br>
 										<br>
 											<div class="w3-col s3">Service Connected</div>
-											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="SvcConnect" id="SvcConnect" value="Both" ></div>
-											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="SvcConnect" id="SvcConnect" value="Text" ></div>
-											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="SvcConnect" id="SvcConnect" value="Email" ></div>
+											<div class="w3-col s3">&nbsp;</div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="checkbox" name="SvcConnect" id="SvcConnect" value="Text" ></div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="checkbox" name="SvcConnect" id="SvcConnect" value="Email" ></div>
 										<br>
 										<br>
 										<br>
 											<div class="w3-col s3">Service Disconnected</div>
-											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="SvcDisconnect" id="SvcDisconnect" value="Both" ></div>
-											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="SvcDisconnect" id="SvcDisconnect" value="Text" ></div>
-											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="SvcDisconnect" id="SvcDisconnect" value="Email" ></div>
+											<div class="w3-col s3">&nbsp;</div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="checkbox" name="SvcDisconnect" id="SvcDisconnect" value="Text" ></div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="checkbox" name="SvcDisconnect" id="SvcDisconnect" value="Email" ></div>
 										<br>
 										<br>
 										<br>
 										
 										
 											<div class="w3-col s3">Low Balance Threshold Reached</div>
-											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="LBTReached" id="LBTReached" value="Both" ></div>
-											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="LBTReached" id="LBTReached" value="Text" ></div>
-											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="LBTReached" id="LBTReached" value="Email" ></div>
+											<div class="w3-col s3">&nbsp;</div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="checkbox" name="LBTReached" id="LBTReached" value="Text" ></div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="checkbox" name="LBTReached" id="LBTReached" value="Email" ></div>
 										 
 
 										
@@ -1027,9 +1222,9 @@
 										<br>
 										<br>
 											<div class="w3-col s3">High Usage Alert</div>
-											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="HighUse" id="HighUse" value="Both"></div>
-											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="HighUse" id="HighUse" value="Email"></div>
-											<div class="w3-col s3"><input class="w3-radio w3-right" type="radio" name="HighUse" id="HighUse" value="Text"></div>
+											<div class="w3-col s3">&nbsp;</div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="checkbox" name="HighUse" id="HighUse" value="Email"></div>
+											<div class="w3-col s3"><input class="w3-radio w3-right" type="checkbox" name="HighUse" id="HighUse" value="Text"></div>
 										<br>
 										<br>
 										<br>
@@ -1146,203 +1341,3 @@
 	</body>
 		
 </html>
-<?php			
-	
-	$first_name = "";
-	$last_name = ""; 
-	$middle_initial = "";  
-	$service_address = "";
-	$city = ""; 
-	$state = ""; 
-	$zip = ""; 
-	$email = ""; 
-	$account_number = ""; 
-	$phone1 = ""; 
-	$phone2 = "";  
-	$program_choice = ""; 
-	$agreement = ""; 
-		
-	if ($_SERVER["REQUEST_METHOD"] == "POST") 
-	{
-		$form = $_POST['form'];
-		
-		
-		if($form == "LPP-BPP-FORM")
-		{
-		
-		
-		$first_name = filter_var($_POST['first_name'], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
-		$last_name = filter_var($_POST["last_name"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
-		$middle_initial = filter_var($_POST["middle_initial"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
-		$service_address = filter_var($_POST["service_address"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
-		$city = filter_var($_POST["city"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
-		$state = $_POST["state"];
-		$zip = $_POST["zip"];
-		$email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
-		$email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
-		$account_number = filter_var($_POST["account_number"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
-		$phone1 = $_POST["phone1"];
-		$phone2 = $_POST["phone2"];
-		$program_choice = $_POST["program_choice"];
-		$agreement = filter_var($_POST["agreement"], FILTER_VALIDATE_BOOLEAN);	
-			
-			
-		
-		$myemail = "customerservice@ed-3.org, keith.gehrke@ed-3.org";
-		$subject = "ED3 Application";
-		$message = "			$form
-		this is a test message
-		First Name:			$first_name, 
-		Last Name:			$last_name 
-		Initial:			$middle_initial
-		Service Address:  		$service_address
-		City:				$city
-		State:				$state
-		Zip Code:			$zip
-		E-Mail:				$email
-		Account Number:		$account_number
-		Primary Phone:			$phone1
-		Secondary Phone:		$phone2
-		Program Choice:		$program_choice
-		Agreement:			$agreement
-		
-			End of message
-			";
-		/* Send the message using mail() function */
-		mail($myemail, $subject, $message);
-		}
-		elseif($form == "TOU-FORM")
-		{
-			$first_name = filter_var($_POST['first_name'], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
-		$last_name = filter_var($_POST["last_name"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
-		$middle_initial = filter_var($_POST["middle_initial"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
-		$service_address = filter_var($_POST["service_address"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
-		$city = filter_var($_POST["city"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
-		$state = $_POST["state"];
-		$zip = $_POST["zip"];
-		$email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
-		$email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
-		$account_number = filter_var($_POST["account_number"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
-		$phone1 = $_POST["phone1"];
-		$phone2 = $_POST["phone2"];
-		$program_choice = $_POST["program_choice"];
-		$agreement = filter_var($_POST["agreement"], FILTER_VALIDATE_BOOLEAN);	
-			
-			
-		
-		$myemail = "customerservice@ed-3.org, keith.gehrke@ed-3.org";
-		$subject = "ED3 Application";
-		$message = "			$form
-		
-		
-		First Name:			$first_name, 
-		Last Name:			$last_name 
-		Initial:			$middle_initial
-		Service Address:  		$service_address
-		City:				$city
-		State:				$state
-		Zip Code:			$zip
-		E-Mail:				$email
-		Account Number:		$account_number
-		Primary Phone:			$phone1
-		Secondary Phone:		$phone2
-		Program Choice:		$program_choice
-		Agreement:			$agreement
-			
-			End of message
-			";
-		/* Send the message using mail() function */
-		mail($myemail, $subject, $message);
-		}
-		elseif($form == "PPM-FORM"){				
-		
-		$first_name = filter_var($_POST['first_name'], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
-		$last_name = filter_var($_POST["last_name"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
-		$middle_initial = filter_var($_POST["middle_initial"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
-		$service_address = filter_var($_POST["service_address"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
-		$city = filter_var($_POST["city"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
-		$state = $_POST["state"];
-		$zip = $_POST["zip"];
-		$email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
-		$email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
-		$account_number = filter_var($_POST["account_number"], FILTER_SANITIZE_STRING, [FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH]);
-		$carrier= $_POST["carrier"];
-		$phone1 = $_POST["phone1"];
-		$phone2 = $_POST["phone2"];
-		$reconnect = $_POST["reconnect"];
-		$baluse_alert = $_POST["baluse_alert"];
-		$pend_disconect = $_POST["pend_disconect"];
-		$ProfileChange = $_POST["ProfileChange"];
-		$ReturnedCheck = $_POST["ReturnedCheck"];
-		$PayConfim = $_POST["PayConfim"];
-		$SvcConnect = $_POST["SvcConnect"];
-		$SvcDisconnect = $_POST["SvcDisconnect"];
-		$LBTReached = $_POST["LBTReached"];
-		$LBTamount = $_POST["LBTamount"];
-		$HighUse = $_POST["HighUse"];
-		$HighUseamount = $_POST["HighUseamount"];
-		$agreementpt1 = filter_var($_POST["agreementpt1"], FILTER_VALIDATE_BOOLEAN);
-		$agreementpt2 = filter_var($_POST["agreementpt2"], FILTER_VALIDATE_BOOLEAN);
-		$agreementpt3 = filter_var($_POST["agreementpt3"], FILTER_VALIDATE_BOOLEAN);
-		$agreement = filter_var($_POST["agreement"], FILTER_VALIDATE_BOOLEAN);	
-			
-			
-		
-		$myemail = "customerservice@ed-3.org, keith.gehrke@ed-3.org";
-		$subject = "ED3 Application";
-		$message = "			$form
-		
-		
-		
-		First Name:			$first_name, 
-		Last Name:			$last_name 
-		Initial:			$middle_initial
-		Service Address:  		$service_address
-		City:				$city
-		State:				$state
-		Zip Code:			$zip
-		E-Mail:				$email
-		Account Number:		$account_number
-		Phone Provider:		$carrier
-		Primary Phone:			$phone1
-		Secondary Phone:		$phone2
-		
-		Notification Preferences - Required
-		Service 
-		Reconnected:			$reconnect
-		Balance & 
-		Usage Alert:			$baluse_alert
-		Pending Auto		 
-		Disconnect Alert:		$pend_disconect
-		
-		Notification Preferences - Optional
-		Account Profile 
-		Change:			$ProfileChange
-		Returned 
-		Check Alert:			$ReturnedCheck
-		Payment 
-		Confirmation:			$PayConfim
-		Service Connected:		$SvcConnect
-		Service 
-		Disconnected:			$SvcDisconnect
-		Low Balance 
-		Threshold Reached:		$LBTamount 00 	$LBTReached
-		High Usage Alert:		$HighUseamount 00 	$HighUse
-		Agreement:			( $agreement )
-		
-		
-		( $agreementpt1 )I am aware that I will be required to receive PPM Program alerts via mobile phone, email, or both, and I am willing to accept the responsibility to make sure a working mobile phone number and email address is on file.
-		
-		( $agreementpt2 )I am willing to accept the responsibility of monitoring my usage and account balance.
-		
-		( $agreementpt3 )I am aware that ED3 personnel must continue to have safe, continuous and unrestricted access to the meter and the meter cannot be behind a locked gate or within a fenced yard with a dog. 
-			
-			End of message
-			";
-		/* Send the message using mail() function */
-		mail($myemail, $subject, $message);
-
-		}
-		exit(0);
-	}
-		?>
